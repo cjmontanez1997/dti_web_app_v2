@@ -16,7 +16,6 @@ class _main:
 	app.errorhandler(404)
 
 	# ======================================================================================================
-
 	@app.route("/webrep",methods=["POST","GET"])
 	def home():
 		return render_template("home.html")
