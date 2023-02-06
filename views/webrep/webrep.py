@@ -40,6 +40,6 @@ class _main:
 
 
 	def moderator(segment,page):
-		pass
+		pass;
 
 		# /rapid/whatwedo/
