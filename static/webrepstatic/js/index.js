@@ -55,4 +55,23 @@ $('.navbar-nav>li>a').on('click', function(){
 });
 
 
+//Other form
+$(document).on('change', '#formPlatform', function(e){  
+	console.log("adsadsadasdadasdsa")
+        e.preventDefault();
+        el = $("#OthersForm");
+        formPlatform = this.value;
+        console.log(el)
+        if (formPlatform == "Others") {
+            el.show();
 
+        }
+        else {
+            el.hide();
+        }
+    });
+/*var other_formPlatform = document.getElementById("formPlatform")
+
+other_formPlatform.addEventListener("change",function(res){
+	console.log(res)
+})*/
