@@ -1,0 +1,642 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="card"
+    style="width:80%;   margin: 0 auto; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    <div class="card-header" style="background-color: #004d00;">
+        <h3 style="color: white; text-align: center;">Product Development & Consultancy Services</h3>
+    </div>
+
+    <div class="card-body" style="background-color: #c6ecd9;">
+        <form style="margin-left: 2%; margin-right: 2%;">
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <strong>
+                            <label for="name">Implementing Unit</label>
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+
+
+                            <label for="name">RCU</label>
+
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="rcu_trade_prom">
+
+                        </div>
+                        <div class="col-md-4">
+
+                            <label for="position">PCU</label>
+
+                            <input type="text" class="form-control dcf_product_development"
+                                id="pcu_trade_prom">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6"><br>
+                        <strong>
+                            <label>Title of Product Development/ Enhancement Assistance Provided/ Consultancy
+                                Services:</label>
+                        </strong>
+                        <input type="text" class="form-control dcf_product_development"
+                            id="title_product">
+                        </select>
+                    </div>
+                    <div class="col-md-3"><br>
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Type of Assistance:</label>
+                        </strong>
+                        <select  class="form-control dcf_product_development" id="type_assistance">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="product_dev">Product Development/Enhancement</option>
+                            <option value="consultancy_serv">Consultancy Services</option>
+
+                        </select>
+
+                    </div>
+                    <div class="col-md-3"><br>
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Type of Activity:</label>
+                        </strong>
+                        <select  class="form-control dcf_product_development" id="type_activity">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Training/Seminar</option>
+                            <option>Cliniquing</option>
+                            <option>Consultancy Services</option>
+
+                        </select>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3"><br>
+
+                        <strong>
+                            <label for="dip_alignment">DIP Alignment:</label>
+                        </strong>
+                        <select  class="form-control dcf_product_development" name="dip_alignment"
+                            id="dip_alignment_prod">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="dipyesprod">Yes</option>
+                            <option value="dipno">No</option>
+                        </select>
+                        <input style=" display: none;" type="text"
+                            class="form-control hidden-textbox13 dcf_product_development" id="dip_alignment_yes_prod"
+                            placeholder="Provide entries for DIPs">
+
+                    </div>
+
+                    <div class="col-md-3"><br>
+
+
+                        <strong>
+                            <label for="name">Activity Duration</label>
+                        </strong>
+                        <div  class="input-group date">
+                            <label style="background-color: #b3ffec;" class="input-group-text">Started
+                                Date:</label>
+                            <input type="date" class="form-control dcf_product_development" id="start_date_prod">
+                           
+                        </div>
+                        <div  class="input-group date">
+                            <label style=" width: 34%; background-color: #ffcccc;" class="input-group-text">Ended
+                                Date:</label>
+                            <input type="date" class="form-control dcf_product_development" id="ended_date_prod">
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <br>
+                        <strong>
+                            <label for="name">Venue</label>
+                        </strong>
+                        <input type="text" class="form-control dcf_product_development"
+                            id="venue_prod">
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <br>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+
+                        <strong>
+                            <label for="name">Name of Resource Person/Facilitator/BDSP:</label>
+                        </strong>
+                        <input  type="text" class="form-control dcf_product_development"
+                            id="name_resource">
+
+                    </div>
+                    <div class="col-md-4">
+                        <strong>
+                            <label for="position">Rapid Actual Budget:</label>
+                        </strong>
+                        <input type="text" class="form-control dcf_product_development"
+                            id="rapid_actual_budget">
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <strong>
+                            <label for="name">Fully & partially funded by partners outside RAPID</label>
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+
+
+                            <label for="name">Name of Partner/Organization:</label>
+
+                            <input type="text" class="form-control dcf_product_development"
+                                id="name_partner_prod">
+
+                        </div>
+                        <div  class="col-md-2">
+
+                            <label for="position">Amount:</label>
+
+                            <input type="text" class="form-control dcf_product_development"
+                                id="amount_prod">
+                        </div>
+
+                      
+
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div  class="col-md-5">
+
+                        <strong>
+                            <label for="position">Name of Beneficiary/Participant: </strong></label>
+
+                        <input  type="text" class="form-control dcf_product_development"
+                            id="name_benificiary_prod">
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <strong>
+                            <label for="position">Commodity: </strong></label>
+
+                        <input type="text" class="form-control dcf_product_development"
+                            id="commodity">
+                    </div>
+
+                    </div>
+                    </div>
+<br>
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-2">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Type of Beneficiary:</label>
+                        </strong>
+                        <select class="form-control dcf_product_development"
+                            id="type_beneficiary_prod">
+                            <option value="" selected disabled>Please select</option>
+                            <option>MSME</option>
+                            <option>FO</option>
+                            <option>Farmer</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sex:</label>
+                        </strong>
+                        <select class="form-control dcf_product_development" id="sex_prod">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-2">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sector:</label>
+                        </strong>
+                        <select class="form-control dcf_product_development" id="sector_prod">
+                            <option value="" selected disabled>Please select</option>
+                            <option>PWD</option>
+                            <option>Youth</option>
+                            <option>IP</option>
+                            <option>SC</option>
+                        </select>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+            <br>
+            <div style="display: none;" class="hidden-column_18_21">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+
+                            <strong>
+                                <label for="name">Outputs for Product Development</label>
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <br>
+                                <strong>
+                                    <label for="name">Products Developed</label>
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-5">
+
+
+                                <label for="name">Name of Product Developed:</label>
+
+                                <input  type="text" class="form-control dcf_product_development"
+                                    id="name_prod_dev">
+
+                            </div>
+                            <div class="col-md-3">
+
+
+
+                                <label for="name">Date Launched to Market:</label>
+
+                                <div  class="input-group date">
+                                    <input type="date" class="form-control dcf_product_development" id="date_launched">
+                                   
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+
+                                <strong>
+                                    <label for="name">Products Improved</label>
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-5">
+
+
+                                <label for="name">Name of Improved Product:</label>
+
+                                <input type="text" class="form-control dcf_product_development"
+                                    id="name_improved_prod">
+
+                            </div>
+                            <div class="col-md-3">
+
+                            
+                                    <label for="exampleFormControlSelect1">Type of Product Improvement:</label>
+                           
+                                <select class="form-control dcf_product_development"
+                                    id="type_prod_improved">
+                                    <option value="" selected disabled>Please select</option>
+                                    <option>Product Quality</option>
+                                    <option>Packaging</option>
+                                    <option>Labels</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: none;" class="hidden-column_22_28">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+                            <br>
+                            <strong>
+                                <label for="name">Outputs for Consultancy Services</label>
+                            </strong>
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+
+
+                        <div class="col">
+                            <br>
+                            <strong>
+                                <label for="name">Productivity Improvement</label>
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-5">
+
+
+                            <label for="name">Name the System/Process Established/Improved:</label>
+
+                            <input type="text" class="form-control dcf_product_development"
+                                id="name_system_prod">
+
+                        </div>
+                        <div class="col-md-3">
+
+
+
+                            <label for="name">Date of Establishment/ Adoption:</label>
+
+                            <div  class="input-group date">
+                                <input type="date" class="form-control dcf_product_development" id="date_estab">
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+
+
+                        <div class="col">
+                            <br>
+                            <strong>
+                                <label for="name">Quality and Trade Certifications</label>
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+
+
+                            <label for="name">Name/Title of Certifications Facilitated:</label>
+                            <select  class="form-control dcf_product_development" id="title_cert">
+                                <option value="" selected disabled>Please select</option>
+                                <option>GMP</option>
+                                <option>HACCP</option>
+                                <option>Halal</option>
+                                <option>Organic Certification</option>
+                                <option>FDA-LTO Certification</option>
+                                <option>FDA - CPR</option>
+                                <option value="other_specifics"> Others , specify</option>
+                                <input style=" display: none;" type="text"
+                                    class="form-control hidden-textbox15 dcf_product_development"
+                                    placeholder="Please specify">
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+                    <div class="form-row">
+
+
+                        <div class="col">
+                            <br>
+                            <strong>
+                                <label for="name">Post Consultancy Outputs</label>
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+
+
+                            <label for="name">Name/Title of Certifications Facilitated:</label>
+                            <select  class="form-control dcf_product_development" id="title_cert2">
+                                <option value="" selected disabled>Please select</option>
+                                <option>GMP</option>
+                                <option>HACCP</option>
+                                <option>Halal</option>
+                                <option>Organic Certification</option>
+                                <option>FDA-LTO Certification</option>
+                                <option>FDA - CPR</option>
+                                <option value="others_specifics"> Others , specify</option>
+                                <input style=" display: none;" type="text"
+                                    class="form-control hidden-textbox16 dcf_product_development"
+                                    placeholder="Please specify">
+
+                            </select>
+
+                        </div>
+
+                        <div class="col">
+
+
+
+                            <label for="name">Date of Issuance:</label>
+
+                            <div  class="input-group date">
+                                <input type="date" class="form-control dcf_product_development" id="date_issuance">
+                             
+                            </div>
+
+                        </div>
+
+                        <div class="col">
+
+
+
+                            <label for="name">Expiration Date:</label>
+
+                            <div  class="input-group date" >
+                                <input type="date" class="form-control dcf_product_development" id="exp_date_prod">
+                                
+                            </div>
+
+                        </div>
+
+                        <div class="col">
+
+
+                            <label for="name">Product Certified:</label>
+
+                            <input type="text" class="form-control dcf_product_development"
+                                id="prod_certified">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+
+
+                <div class="col">
+                    <br>
+                    <strong>
+                        <label for="name">Client Feedback survey (average per activity)</label>
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+
+
+                        <label for="name">Rating</label>
+
+                        <input  type="text" class="form-control dcf_product_development"
+                            id="rating_prod">
+
+                    </div>
+                    <div class="col">
+
+
+
+                        <label for="name">Comments/Areas of Improvement:</label>
+                        <textarea  type="text" class="form-control dcf_product_development"
+                            id="comments_improvement"></textarea>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <label class="form-label" for="customFile"><strong>MOVs Uploading</strong> <i>(attendance
+                                sheets, activity report/activity documentation/proceedings,
+                                CSF report, Pre and post photos of products)</i> </label>
+                        <input type="file" class="form-control dcf_product_development" id="customFile2" />
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+</form>
+
+</div>
+</div>
+
+
+{% endblock %}

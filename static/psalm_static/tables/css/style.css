@@ -1,0 +1,48 @@
+div.dataTables_wrapper {
+    width: 800px;
+    margin: 0 auto;
+    
+}
+
+/* Important part */
+#modaldialogedit{
+    overflow-y: initial !important
+}
+#modalbodyedit{
+    height: 80vh;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: #172b4d;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+  
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: #d9d9d9;
+  }
+  
+  .scroll-box {
+    overflow-y: scroll;
+    height: 200px;
+    border: 1px solid #ccc;
+  }
+
+  img {
+    pointer-events: none;
+      
+  }
+  
+  

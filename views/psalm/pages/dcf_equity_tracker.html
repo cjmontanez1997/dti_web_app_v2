@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="card"
+    style="width:80%;   margin: 0 auto; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    <div class="card-header" style="background-color: #004d00;">
+        <h3 style="color: white; text-align: center;">Equity Financing Tracker</h3>
+    </div>
+
+    <div class="card-body" style="background-color: #c6ecd9;">
+        <form style="margin-left: 2%; margin-right: 2%;">
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-sm-2">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Dip Alignment:</label>
+                        </strong>
+                        <select class="form-control dcf_equity_tracker" id="dip_alignment_eq">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <strong>
+                            <label for="name">Title of Project Proposal:</label>
+                        </strong>
+                        <input type="text" class="form-control dcf_equity_tracker" id="title_proj_eq">
+
+                    </div>
+
+
+                    <div class="col-sm-2">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Industry Cluster:</label>
+                        </strong>
+                        <select class="form-control dcf_equity_tracker" id="industry_clus_eq">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Coffee</option>
+                            <option>Cacao</option>
+                            <option>Coconut</option>
+                            <option>PFN</option>
+                            <option value="specsss">Specify PFN Commodity</option>
+                        </select>
+                        <input type="text" class="form-control hidden-textbox19 dcf_equity_tracker" id="specify_pfn_com" placeholder="Please specify" style="display: none;">
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+
+
+                    <div class="col-md-6">
+                        <br>
+                        <strong>
+                            <label for="name">Name of Beneficiary: </strong><i> (Registered Business/FO
+                            Name)</i></label>
+
+                        <input type="text" class="form-control  dcf_equity_tracker" id="name_benef_eq">
+
+                    </div>
+
+                    <div class="col-md-2">
+                        <br>
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sex:</label>
+                        </strong>
+                        <select class="form-control  dcf_equity_tracker" id="sex_eq">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-2">
+                        <br>
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sector:</label>
+                        </strong>
+                        <select class="form-control  dcf_equity_tracker" id="sector_eq">
+                            <option value="" selected disabled>Please select</option>
+                            <option>PWD</option>
+                            <option>Youth</option>
+                            <option>IP</option>
+                            <option>SC</option>
+                        </select>
+
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3"><br>
+
+
+                        <strong>
+                            <label for="name">Dates:</label>
+                        </strong>
+                        <div class="input-group date">
+                            <label style=" background-color: #b3ffec;" class="input-group-text">Date Submitted to
+                                SBC:</label>
+                            <input type="date" class="form-control  dcf_equity_tracker" id="date_sub_eq">
+                           
+                        </div>
+                        <div class="input-group date">
+                            <label style="  background-color: #ffcccc;" class="input-group-text">Date
+                                Approved:</label>
+                            <input type="date" class="form-control  dcf_equity_tracker" id="date_app_eq">
+                            
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <br>
+                        <strong>
+                            <label for="name">Amount of Equity Financing Approved:</label>
+                        </strong>
+                        <input type="text" class="form-control  dcf_equity_tracker" id="ammount_app_eq">
+
+                    </div>
+
+                    <div class="col-md-3">
+                        <br>
+                        <strong>
+                            <label for="name">Date Released:</label>
+                        </strong>
+                        <div class="input-group date">
+                            <input type="date" class="form-control  dcf_equity_tracker" id="date_rel_eq">
+                           
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+    </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+</form>
+
+</div>
+</div>
+
+
+{% endblock %}

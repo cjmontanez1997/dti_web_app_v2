@@ -120,9 +120,12 @@ class form_excel_a_handler:
 					msg = "Corrupt File"
 					status = "failed"
 				else:
-					raise e
+					msg = "Corrupt File"
+					status = "failed"
+					println(e)
 			# if(counter >= 3):
 			# 	break
+		print(" * Done excel process")
 		return {"status":status,"msg":msg,"success_files":FROM_EXCEL_RPOFILES}
 
 # /////////////////// 94#2023-01-16#Profile_AGUSAN_DEL_SUR1.xlsx

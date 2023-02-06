@@ -55,4 +55,18 @@ class _main:
 	@app.route("/get_session")
 	def get_session():
 		return jsonify(session )
+
+
+
+	@app.route("/check_username",methods=["POST"])
+	def check_username():
+		res = {"success":False,"data":"none"}
+		username = request.form['user_name']
+		log_res = rapid_mysql.select("SELECT * from `users` WHERE `username` = '{}';".format(username))
+		if(len(log_res)!=0):
+			res["success"] = True
+			res["data"] = log_res[0]['name']
+			return jsonify(res);
+		else:
+			return jsonify(res);
 		

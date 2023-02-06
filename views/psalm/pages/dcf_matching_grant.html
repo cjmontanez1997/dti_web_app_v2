@@ -1,0 +1,450 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="card"
+    style="width:80%;   margin: 0 auto; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    <div class="card-header" style="background-color: #004d00;">
+        <h3 style="color: white; text-align: center;">Matching Grant Implementation Tracker</h3>
+    </div>
+
+    <div class="card-body" style="background-color: #c6ecd9;">
+        <form style="margin-left: 2%; margin-right: 2%;">
+
+ 
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3">
+
+                        <strong>
+                            <label for="name">Implementing Unit:</label>
+                        </strong>
+                        <input  type="text" class="form-control dcf_product_development"
+                            id="implementing_unit">
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <strong>
+                            <label for="name">DIP:</label>
+                        </strong>
+                        <input  type="text" class="form-control dcf_product_development"
+                            id="dip_match">
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <strong>
+                            <label for="name">FO/MSME Recipients:</label>
+                        </strong>
+                        <input  type="text" class="form-control dcf_product_development"
+                            id="msme_rcp">
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <strong>
+                            <label for="name">FO Member Recipients:</label>
+                        </strong>
+                        <input  type="text" class="form-control dcf_product_development"
+                            id="msme_rcp">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3"><br>
+                        <strong>
+                            <label>Commodity:</label>
+                        </strong>
+                        <input  type="text" class="form-control dcf_product_development"
+                            id="commodity_match">
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <br>
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sex:</label>
+                        </strong>
+                        <select class="form-control dcf_product_development" id="sex_match">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-3">
+                        <br>
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sectoral Group:</label>
+                        </strong>
+                        <select class="form-control dcf_product_development" id="sector_match">
+                            <option value="" selected disabled>Please select</option>
+                            <option>PWD</option>
+                            <option>Youth</option>
+                            <option>IP</option>
+                            <option>SC</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-3">
+                        <br>
+                        <strong>
+                            <label for="exampleFormControlSelect1">Type of Investment:</label>
+                        </strong>
+                        <select class="form-control dcf_product_development" id="type_inv_match">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="productive_investment">Productive investments</option>
+                            <option value="expansion">Expansion</option>
+                            <option value="rehabilitation">Rehabilitation</option>
+                        </select>
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div style="display: none;" class="hidden-column_9_18">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4"><br>
+
+                            <strong>
+                                <label for="name">Total of MGAs based on approved DIP:</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="total_approved_dip">
+
+                        </div>
+
+                        <div class="col-md-4"><br>
+
+                            <strong>
+                                <label for="name">Total of MGAs Signed:</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="total_signed">
+
+
+                        </div>
+
+                        <div class="col-md-4"><br>
+
+                            <strong>
+                                <label for="name">Total of MGAs not yet Signed:</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="total_not_signed">
+
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+
+                <br>
+
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-5">
+
+                            <strong>
+                                <label for="name">Total Matching Grant Based on Approved Business Plan (IN PHP):</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="total_businessplanphp">
+
+
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <strong>
+                                <label for="name">Previous Matching Grant Availment (IN PHP) - First Availment:</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="prev_availment">
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-5">
+
+                            <strong>
+                                <label for="name"> Matching Grant Availment as of this Reporting Period (IN PHP) and
+                                    date:</label>
+                            </strong>
+                            <input type="text" class="form-control dcf_product_development"
+                                id="reporting_period">
+
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <strong>
+                                <label for="name"> Remaining Matching Grant Balance (in PHP):</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="reporting_period">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-3"><br>
+
+
+                                <strong>
+                                    <label for="name">Inclusive Timeline of Implementation:</label>
+                                </strong>
+                                <div  class="input-group date">
+                                    <label style=" background-color: #b3ffec;"
+                                        class="input-group-text">Start Date:</label>
+                                    <input type="date" class="form-control dcf_trade_promotion" id="start_date">
+                                   
+                                </div>
+                                <div  class="input-group date" >
+                                    <label style="  background-color: #ffcccc;" class="input-group-text">End
+                                        Date:</label>
+                                    <input type="date" class="form-control dcf_trade_promotion" id="ended_date">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <br>
+                                <strong>
+                                    <label for="name">Time Elapse:</label>
+                                </strong>
+                                <input  type="text" class="form-control dcf_product_development"
+                                    id="time_elapse">
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div style="display: none;" class="hidden-column_19_26">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4"><br>
+
+                            <strong>
+                                <label for="name">Total Budget as Approved in the DIP:</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="total_budget_approved_dip">
+
+                        </div>
+
+                        <div class="col-md-4"><br>
+
+                            <strong>
+                                <label for="name">Actual Cost of Procurement:</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="cost_procurement">
+
+
+                        </div>
+
+                        <div class="col-md-4"><br>
+
+                            <strong>
+                                <label for="name">Summary of Actual Tools Procured:</label>
+                            </strong>
+                            <input type="text" class="form-control dcf_product_development"
+                                id="summary_total_procured">
+
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+
+                <br>
+
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-5">
+
+                            <strong>
+                                <label for="name">Inclusive Timeline of Implementation:</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="timeline_imp">
+
+
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <strong>
+                                <label for="name">Time Elapse:</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="time_elapse_match">
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-5">
+
+                            <strong>
+                                <label for="name"> Matching Grant Availment as of this Reporting Period (IN PHP) and
+                                    date:</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="reporting_period">
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <strong>
+                                <label for="name"> Remaining Matching Grant Balance (in PHP):</label>
+                            </strong>
+                            <input  type="text" class="form-control dcf_product_development"
+                                id="reporting_period">
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="form-row">
+
+                            <div class="col-md-4">
+                                <br>
+                                <strong>
+                                    <label for="name">Time Elapse:</label>
+                                </strong>
+                                <input type="text" class="form-control dcf_product_development"
+                                    id="time_elapse">
+
+                            </div>
+
+                            <div class="col-md-3">
+
+                                <br>
+                                <strong>
+                                    <label for="name">Date of Distribution/Training:</label>
+                                </strong>
+                                <div  class="input-group date" >
+                                    <input type="date" class="form-control dcf_product_development" id="date_dist">
+                                    
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <br>
+                                <strong>
+                                    <label for="name">Remarks on the Delivered Tools:</label>
+                                </strong>
+                                <input  type="text" class="form-control dcf_product_development"
+                                    id="remarks_delivered">
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <label class="form-label" for="customFile"><strong>MOVs for Uploading:</strong> <i>Signed MGAs,
+                                Release Forms, and etc.</i></label>
+                        <input type="file" class="form-control dcf_product_development" id="customFile3" />
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+</form>
+
+</div>
+</div>
+
+
+{% endblock %}

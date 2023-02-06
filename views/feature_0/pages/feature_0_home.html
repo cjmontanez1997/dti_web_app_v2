@@ -18,7 +18,6 @@
 			<div class="x-bar-item x-right x-small x-right">
 				{% include 'notification.html' %}
 				{% include 'excel_upload_download_btn.html' %}
-				<button class="x-btn x-border x-round" onclick="logout()"> <span class="x-text-red fa fa-power-off"></span> Logout</button>
 			</div>
 		</header>
 		<!-- Sidebar/menu -->
@@ -37,11 +36,20 @@
 			<div class="x-bar-block">
 				<a href="#" class="x-bar-item x-button x-padding-16 x-hide-large x-dark-grey x-hover-black" onclick="x_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a>
 				<a href="#dashboard" class="x-bar-item x-button x-padding" onclick="show_view('dashboard','page_content')"><i class="fa fa-users fa-fw"></i>&nbsp; Overview</a>
-				<a href="#lists" class="x-bar-item x-button x-padding" onclick="show_view('lists','page_content')"><i class="fa fa-eye fa-fw"></i>&nbsp; lists</a>
-				<a href="#forms" class="x-bar-item x-button x-padding" onclick="show_view('forms','page_content')"><i class="fa fa-users fa-fw"></i>&nbsp; Forms</a>
-				<a href="#history" class="x-bar-item x-button x-padding" onclick="show_view('history','page_content')"><i class="fa fa-history fa-fw"></i>&nbsp; History</a>
-				<a href="#settings" class="x-bar-item x-button x-padding" onclick="show_view('settings','page_content')"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a><hr>
+				<a class="x-bar-item x-button x-padding" onclick="not_ready('lists','page_content')"><i class="fa fa-eye fa-fw"></i>&nbsp; lists</a>
+				<a class="x-bar-item x-button x-padding" onclick="not_ready('forms','page_content')"><i class="fa fa-users fa-fw"></i>&nbsp; Forms</a>
+				<a class="x-bar-item x-button x-padding" onclick="not_ready('history','page_content')"><i class="fa fa-history fa-fw"></i>&nbsp; History</a>
+				<a class="x-bar-item x-button x-padding" onclick="not_ready('settings','page_content')"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a><hr>
+				<hr>
 				
+			</div>
+			<div class="x-container x-center">
+				<div class="x-container x-row x-padding">
+					<button class="x-block x-btn x-border x-round x-border-orange" onclick="goto('/menu')"> <span class="x-text-orange x-hover-orange fa fa-home"></span> Home</button>
+				</div>
+				<div class="x-container x-row x-padding">
+					<button class="x-block x-btn x-round x-red" onclick="logout()"> <span class="x-text fa fa-power-off"></span> Logout</button>
+				</div>
 			</div>
 		</nav>
 
@@ -53,20 +61,38 @@
 			<div id="dashboard" class="page_content x-animate-left">
 				{% include 'dashboard.html' %}
 			</div>
-			<div id="lists" class="page_content x-animate-left">
+			<div id="lists" class="page_content x-animate-left" style="display:none;">
 				{% include 'lists_profile.html' %}
 			</div>
-			<div id="forms" class="page_content x-animate-left">
+			<div id="forms" class="page_content x-animate-left" style="display:none;">
 				forms
 			</div>
-			<div id="history" class="page_content x-animate-left">
+			<div id="history" class="page_content x-animate-left" style="display:none;">
 				history
 			</div>
-			<div id="settings" class="page_content x-animate-left">
+			<div id="settings" class="page_content x-animate-left" style="display:none;">
 				settings
 			</div>
 		</div>
 
+		<footer class="x-container x-padding-16 x-white" style="margin-left:200px;margin-top:43px;">
+			
+			<div class="x-container x-col l2 x-text-grey">
+				<div class="x-col l4">
+					<img src="../static/img/dti.png" style="width:100%;">
+				</div>
+				<div class="x-col l4">
+					<img src="../static/img/icon.png" style="width:100%;">
+				</div>
+				<div class="x-col l4">
+					<img src="../static/img/ifad.jpg" style="width:100%;">
+				</div>
+			</div>
+			<div class="x-container x-padding x-col l6 x-text-grey">
+				<b>DTI RAPID MIS</b>
+				<p class="x-small">| all rights reserve | v2023 | C.S.C.J | </p>
+			</div>
+		</footer>
 		<script>
 		// Get the Sidebar
 		show_view(URL_ARGS_ID,'page_content')
@@ -83,6 +109,31 @@
 		function logout() {
 			redirectto("/logout");
 		}
+
+		function not_ready(...args){
+			var under_dev = $dialog({
+				title : "Feature Not Ready",
+				subtitle : "Feature is currently not Available",
+				content : (`
+					<div class="x-padding x-container">
+						<div class="x-row x-padding x-center">
+							<img class="x-round-large" src="../static/img/underdev2.gif" style="width: 70%;">
+						</div>
+						<div class="x-row x-padding">
+							<b class='x-text-grey x-small'>
+								<span class="x-large">We are also excited to have this feature</span><br>
+									Don't worry, the Developers are working on this. 
+									If you have concern in getting the data using this feature, please contact us 
+								<br>
+							</b>
+						</div>
+					</div>
+				`)
+			})
+
+			under_dev.show()
+		}
+
 		// ====================================================
 		_MONEY_TAGS_ = document.getElementsByClassName('_money_tag')
 		for (var i = 0; i < _MONEY_TAGS_.length; i++) {

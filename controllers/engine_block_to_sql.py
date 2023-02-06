@@ -260,9 +260,12 @@ class form_a6_handler:
 			datum_ = datum.replace("-","_")
 			fields = fields + ",`"+ datum_ +"`"
 			datum_val = post_harvest_fields[datum]
-			if(datum=="farmer_code"): datum_val = str(datum_val).replace("[","").replace("]","")  # REMOVE BRACKERS FROM STRING IN ID
-			if(datum=="USER_ID"): datum_val = str(datum_val).replace("[","").replace("]","")  # REMOVE BRACKERS FROM STRING IN ID
-			vals = vals + ",'"+ str(datum_val).replace("'"," ").replace('''"'''," ") +"'"
+			if(datum=="farmer_code" or datum=="USER_ID"):
+				datum_val = str(str(datum_val).replace("[","").replace("]","")).replace(" ","")  # REMOVE BRACKERS FROM STRING IN ID
+				vals = vals + ",'"+ str(datum_val).replace("'","").replace('''"''',"") +"'"
+			else:
+				vals = vals + ",'"+ str(datum_val).replace("'"," ").replace('''"'''," ") +"'"
+
 			
 		fields = fields[1:]; vals = vals[1:]
 
@@ -307,9 +310,12 @@ class form_a7_handler:
 			datum_ = datum.replace("-","_")
 			fields = fields + ",`"+ datum_ +"`"
 			datum_val = marketing_sales_fields[datum]
-			if(datum=="farmer_code"): datum_val = str(datum_val).replace("[","").replace("]","")  # REMOVE BRACKERS FROM STRING IN ID
-			if(datum=="USER_ID"): datum_val = str(datum_val).replace("[","").replace("]","")
-			vals = vals + ",'"+ str(datum_val).replace("'"," ").replace('''"'''," ") +"'"
+			if(datum=="farmer_code" or datum=="USER_ID"):
+				datum_val = str(str(datum_val).replace("[","").replace("]","")).replace(" ","")  # REMOVE BRACKERS FROM STRING IN ID
+				vals = vals + ",'"+ str(datum_val).replace("'","").replace('''"''',"") +"'"
+			else:
+				vals = vals + ",'"+ str(datum_val).replace("'"," ").replace('''"'''," ") +"'"
+
 			
 		fields = fields[1:]; vals = vals[1:]
 
@@ -385,9 +391,12 @@ class form_a9_handler:
 			datum_ = datum.replace("-","_").replace("[]","_array")
 			fields = fields + ",`"+ datum_ +"`"
 			datum_val = feedback_fields[datum]
-			if(datum=="farmer_code"): datum_val = str(datum_val).replace("[","").replace("]","")  # REMOVE BRACKERS FROM STRING IN ID
-			if(datum=="USER_ID"): datum_val = str(datum_val).replace("[","").replace("]","")
-			vals = vals + ",'"+ str(datum_val).replace("'"," ").replace('''"'''," ") +"'"
+			if(datum=="farmer_code" or datum=="USER_ID"):
+				datum_val = str(str(datum_val).replace("[","").replace("]","")).replace(" ","")  # REMOVE BRACKERS FROM STRING IN ID
+				vals = vals + ",'"+ str(datum_val).replace("'","").replace('''"''',"") +"'"
+			else:
+				vals = vals + ",'"+ str(datum_val).replace("'"," ").replace('''"'''," ") +"'"
+
 			
 		fields = fields[1:]; vals = vals[1:]
 
@@ -397,6 +406,8 @@ class form_a9_handler:
 
 
 # ================================MAIN=============================
+CONN = rapid_mysql.db_ready()
+
 class form_migration:
 	def __init__(self,args):
 		super(form_migration, self).__init__()
@@ -439,6 +450,8 @@ class form_migration:
 				elif(path.find("@feedback")>=0):
 					_CLASS_ = form_a9_handler(__name__)
 					__a[9] = __a[9] + 1
+				else:
+					continue
 				__a[0] == _counter
 				loads_.desc = ('''inserted [{}] A1 [{}]  A2 [{}] A3 [{}] A4 [{}] A5 [{}] A6 [{}] A7 [{}] A8 [{}] A9 [{}] ''').format(*__a)
 				try:
@@ -455,12 +468,14 @@ class form_migration:
 					print(message)
 					return ({"response":"error","message":message,"file":path})
 		random.shuffle(res)
+		CONN.commit()
 		return res
 
 class file_to_sql:
 	def insert_sql_move_file(mv_file_to,table,fields,vals,FILENAME):
 		sql = ("INSERT INTO `{}` ({}) VALUES ({})".format(table,fields,vals))
-		rapid_mysql.do(sql)
+		# rapid_mysql.do(sql)
+		resp = rapid_mysql.do_(sql,CONN)
 		# shutil.copy(
 		# 	c.RECORDS+"/objects/profiling_forms/queued/pf_a/"+FILENAME,
 		# 	c.RECORDS+"/objects/profiling_forms/migrated/pf_a/{}/{}".format(mv_file_to,FILENAME)

@@ -4,57 +4,132 @@
 	<body>
 		<style type="text/css">
 			#container_b{
-				background-image: url('../static/img/login_bg_dark.jpg');
+/*				background-image: url('../static/img/login_bg_dark.jpg');*/
 				/*background-image: url('../static/img/bg.webp');*/
-			
+				background: 
+					linear-gradient(rgba(0, 0, 0, 0.5),
+					rgba(0, 0, 0, 0.5)),
+					url('../static/img/bg.jpg');
 				background-position: center;
 				background-size: cover;
 			}
-			#mapid { height: 180px; }
+			#container__layer{
+/*				background-image: url('../static/img/login_bg_dark.jpg');*/
+				/*background-image: url('../static/img/bg.webp');*/
+				background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+				background-position: center;
+				background-size: cover;
+			}
 		</style>
 		<!-- <div id="" class="" style="height: 100vh;"> -->
 
 
-	<body class="x-light-grey">
+	<body class="" id="container_b">
+	<!-- <body class="x-light-grey container_b"> -->
 		<div class="x-display-container" style="height:100vh;padding: 0px;">
+			<div class="x-display-bottomright x-padding">
+				<div class="x-container x-padding">
+					<img src="../static/img/ifad.jpg" class="x-img x-round" style="width:3%">
+					<img src="../static/img/dti.png" class="x-img x-round" style="width:3%">
+					<img src="../static/img/icon.png" class="x-img x-round" style="width:3%">
+				</div>
+			</div>
 			<div class="x-display-middle x-padding">
-				<div class="x-container x-card x-round-large x-padding">
-					<div class="x-container x-half x-padding ">
-						<div class="">
-							<span class="x-right x-large x-round x-text-teal x-text x-jumbo"><b>misRG.</b></span><br>
-							<span class="x-right x-xlarge x-text-teal x-right-align">management <br>information system</span><br>
-							<span class="x-right x-right-align x-tiny x-text-grey">
-								DTI RAPID GROWTH PROJECT MIS <br>
-								Version 2.3.3
+				<div class="x-container x-padding-large x-round-large" id="container__layer">
+					<div class="x-container">
+						<div class="x-container x-col l6 x-round x-white">
+							<span class="x-right x-text-teal x-text">
+								<b id="username_welcome"><span class="x-jumbo">misRG.</span></b>
+							</span>
+						</div>
+						<div class="x-container x-col l6">
+							<span class="x-left x-text-white x-left-align">
+								<b class="x-xlarge">m</b><span class="x-large">anagement</span> <br>
+								<b class="x-xlarge">i</b><span class="x-large">nformation</span> 
+								<b class="x-xlarge">s</b><span class="x-large">ystem</span></span><br>
+							<span class="x-left x-left-align x-tiny x-text-light-grey">
+								DTI RAPID GROWTH PROJECT MIS |
+								V2023
 							</span><br>
 						</div>
 					</div>
-					<div class="x-container x-half x-leftbar x-border-teal">
-						<label class="x-small">Username</label>
-						<input class="login_field x-input x-border x-border-teal x-round-xxlarge" type="usernames" name="" placeholder="@username" required>
-						<label class="x-small">Password</label>
-						<input class="login_field x-input x-border x-border-teal x-round-xxlarge" type="password" name="" placeholder="********" required><br>
-						<button class="x-btn x-round-xxlarge x-teal x-block x-text-white" onclick="login()">Login <span class="fa fa-arrow-right"></span></button>
-					</div>
+					<br>
+					<div class="x-container x-padding">
+						<div class=" x-animate-opacity" id="username_cont">
+							<b class="x-small x-text-white x-padding x-large">Username</b>
+							<div class="x-row">
+								<div class="x-col l8">
+									<input class="login_field x-input x-border" type="username" name="" placeholder="@username"
+									style="border-radius: 20px 0px 0px 20px; height:50px;border:0px" required>
+								</div>
+								<div class="x-col l4">
+									<button class="x-button x-input x-teal x-block"
+										style="border-radius: 0px 20px 20px 0px; height:50px;border:0px"
+										onclick="check_user_name()">
+										Next &#10148;
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class=" x-animate-opacity" id="password_cont" style="display:none">
+							<b class="x-small x-text-white x-padding x-large">Password</b>
+							<div class="x-row">
+								<div class="x-col l8">
+									<input class="login_field x-input x-border" type="password" name="" placeholder="password: ********..."
+									style="border-radius: 20px 0px 0px 20px; height:50px;border:0px" required>
+								</div>
+								<div class="x-col l4">
+									<button class="x-button x-input x-green x-block"
+										style="border-radius: 0px 20px 20px 0px; height:50px;border:0px"
+										onclick="login()">
+										Login &#10148;
+									</button>
+								</div>
+							</div>
+						</div>
+					</div><br>
+					<div id="err_log" class=" x-animate-opacity x-container x-card x-round-large x-padding x-leftbar x-border-red x-pale-red" style="display:none;background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));"></div>
 				</div>
 			</div>
 			<div class="x-display-right">
-				<div id="err_log" class=" x-animate-right x-container x-card x-round-large x-padding x-leftbar x-border-red x-pale-red" style="display:none">
-					<span class="x-xxlarge x-text-red">Ooops!</span><br>
-					<span class="x-large x-text-red">it looks like you've you made a mistake in filling the form</span>
-				</div>
 				<div id="good_log" class=" x-animate-right x-container x-card x-round-large x-padding x-leftbar x-border-green x-pale-green" style="display:none">
 					<span class="x-xxlarge x-text-green">Welcome <b id="fname">----</b></span><br>
 					<span class="fa fa-circle-o-notch fa-spin"></span>
 					<span class="x-small x-text-green"> Please wait while we preapre your login :)</span>
 				</div>
 			</div>
-
 		</div>
-
-
 	</body>
 	<script type="text/javascript">
+		function check_user_name(){
+			var fields = $CLASS('login_field')
+			var cred = {
+				"user_name" :fields[0].value,
+			}
+			$send({
+				action : '/check_username',
+				method : POST,
+				data : $DATA(cred),
+				func : function (__) {
+					var res = JSON.parse(__)
+					println(res)
+					if(res.success){
+						$ID('username_welcome').innerHTML = "<span class='x-large'>Hi There,<br><b class='x-xxlarge'>"+res.data.replaceAll(" ","_")+"</b> </span>"
+						$ID('username_cont').style.display= "none"
+						$ID('password_cont').style.display= "block"
+					}
+					else{
+						$ID('err_log').style.display = 'block'
+						$ID('err_log').innerHTML = (`
+							<span class="x-large x-text-white">Username Not Found</span>
+						`)
+						timeout(function(){$ID('err_log').style.display = 'none'},2000);
+					}
+				}
+			})
+
+		}
+
 		function login(){
 			var fields = $CLASS('login_field')
 			var cred = {
@@ -71,15 +146,18 @@
 						$ID('good_log').style.display = 'block'
 						$ID('fname').innerHTML = JSON.parse(__).user[0].name
 						timeout(function(){
-							redirectto("/home_v2") // NEW VERSION
+							redirectto("/menu") // NEW VERSION
 							// redirectto("/home") // OLD VERSION
 							// alert("GOOD")
-							$ID('good_log').style.display = 'none'
+							// $ID('good_log').style.display = 'none'
 						},3000);
 						
 					}
 					else{
 						$ID('err_log').style.display = 'block'
+						$ID('err_log').innerHTML = (`
+							<span class="x-large x-text-white">Credentials incorrect</span>
+						`)
 						timeout(function(){$ID('err_log').style.display = 'none'},2000);
 					}
 				}

@@ -61,19 +61,16 @@ class outbound:
 	def export_excel_excel(self):
 		DATE_NOW = str(datetime.today()).replace("-","_").replace(" ","_").replace(":","_").replace(".","_")
 		USER_ID = self.session["USER_DATA"][0]["id"]
-		print(" *  Generating and Running SQL [For all in Excel Uploads]".format(form))
+		print(" *  Generating and Running SQL [For all in Excel Uploads]")
 		EXCEL_UPLOADS = self.db.select('''
 				SELECT
-					form_a_farmer_profiles.*
+					excel_import_form_a.*
 				   
-				FROM `form_a_farmer_profiles` 
+				FROM `excel_import_form_a` 
 
 				WHERE
-				   form_a_farmer_profiles.USER_ID in (SELECT users.id from users {} );
-			'''.format(form,form,form,self.position_data_filter()))
-
-		
-
+				   excel_import_form_a.user_id in (SELECT users.id from users {} );
+			'''.format(self.position_data_filter_excel()))
 		DATA = EXCEL_UPLOADS
 		# dict_= json.loads(res)
 		# df2 = pd.DataFrame.from_dict(dict_, orient="index")
@@ -104,6 +101,19 @@ class outbound:
 		else:
 			self.session["USER_DATA"][0]["office"] = "Regional ({})".format(self.session["USER_DATA"][0]["rcu"])
 			_filter = "WHERE  form_a_farmer_profiles.USER_ID in ( SELECT users.id from users WHERE rcu='{}' )".format(self.session["USER_DATA"][0]["rcu"])
+
+		return _filter
+
+	def position_data_filter_excel(self):
+		_filter = "WHERE 1 "
+		JOB = self.session["USER_DATA"][0]["job"].lower()
+
+		if(JOB in "admin" or JOB in "super admin"):
+			self.session["USER_DATA"][0]["office"] = "NPCO"
+			_filter = "WHERE 1 "
+		else:
+			self.session["USER_DATA"][0]["office"] = "Regional ({})".format(self.session["USER_DATA"][0]["rcu"])
+			_filter = "WHERE  excel_import_form_a.USER_ID in ( SELECT users.id from users WHERE rcu='{}' )".format(self.session["USER_DATA"][0]["rcu"])
 
 		return _filter
 

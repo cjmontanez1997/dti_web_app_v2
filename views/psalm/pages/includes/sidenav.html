@@ -1,0 +1,41 @@
+<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light" id="sidenav-main" style="background-color: #FEFBF3;">
+  <div class="scrollbar-inner">
+ 
+    <div class="sidenav-header  align-items-center" style="background-color: #334257;">
+      <a class="navbar-brand" href="/formcdashboard">
+        <span class="brand-text text-white font-weight"><h1 align="center" class="text-white"> <i class="ni ni-building text-white"></i><strong> MSME</strong></h1></span>
+      </a>
+    </div>
+    <div class="navbar-inner">
+ 
+      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link {{ 'active' if active_page == 'formcdashboard' else '' }}"  href="/formcdashboard">
+              <i class="ni ni-tv-2 text-default {{ 'text-white' if active_page == 'formcdashboard' else '' }} "></i>
+              <span class="nav-link-text text-default {{ 'text-white' if active_page == 'formcdashboard' else '' }} ">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ 'active' if active_page == 'formc' else '' }}" href="/cform">
+              <i class="ni ni-single-02 text-default {{ 'text-white' if active_page == 'formc' else '' }}"></i>
+              <span class="nav-link-text text-default {{ 'text-white' if active_page == 'formc' else '' }}">Form C</span>
+            </a>
+          </li>
+        
+      
+          <li class="nav-item">
+            <a class="nav-link {{ 'active' if active_page == 'spreadsheet' else '' }}" href="/spreadsheet">
+              <i class="ni ni-single-copy-04 text-default {{ 'text-white' if active_page == 'spreadsheet' else '' }}"></i>
+              <span class="nav-link-text text-default {{ 'text-white' if active_page == 'spreadsheet' else '' }}">Spreadsheet Management</span>
+            </a>
+          </li>
+       
+
+   
+
+      </div>
+    </div>
+  </div>
+</nav>

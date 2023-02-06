@@ -21,24 +21,44 @@ function export_farmer_excel(argument) {
 	})
 	export_dialog.show()
 }
-function mobile_export(){
-	var mobile_export_selection = $ID('mobile_export_selection').value
-	$send({
-		action : "/migrations/export_excel_mobile",
-		method : POST,
-		data : $DATA({"form":mobile_export_selection}),
-		func : function (res){
-			println(" Generating Table")
-			var RES = JSON.parse(res) 
-			printtable(res)
-			println(" Generating Table ended")
-			get_notif()
-		}
+function _export(args){
+	show_notif_instrc()
+	if(args==0){
+		var mobile_export_selection = $ID('mobile_export_selection').value
+		$send({
+			action : "/migrations/export_excel_mobile",
+			method : POST,
+			data : $DATA({"form":mobile_export_selection}),
+			func : function (res){
+				println(" Generating Table")
+				var RES = JSON.parse(res) 
+				printtable(res)
+				println(" Generating Table ended")
+				get_notif()
+			}
 
-	})
+		})
+	}
+	if(args==1){
+		$send({
+			action : "/migrations/export_excel_excel",
+			method : POST,
+			func : function (res){
+				println(" Generating Table")
+				var RES = JSON.parse(res) 
+				printtable(res)
+				println(" Generating Table ended")
+				get_notif()
+			}
+
+		})
+	}
 }
 
-
+function show_notif_instrc(){
+	$ID('export_panel').style.display = 'none'
+	$ID('export_panel_ins').style.display = 'block'
+}
 
 function download_excel(fff){
 	let a= document.createElement('a');
@@ -79,15 +99,24 @@ function import_farmer_excel(argument) {
 	get_uploaded_excel()
 }
 function upload_excel(){
-	excel_upload_dialog.hide()
 	SPINNER_LOADER.show()
+	excel_upload_dialog.hide()
 	var uploader_id  = ("{{USER_DATA['id']}}")
 	$send({
 		action : "/excel_upload",
 		data : $DATA({"uploader" : uploader_id}).appendFile($ID("excel_file")),
 		method : POST,
+		err : function(r){
+			SPINNER_LOADER.hide()
+			println("ERROR")
+			println(r)
+		},
 		func : function(r){
+			SPINNER_LOADER.hide()
+			println(r)
+			excel_upload_dialog.destroy()
 			var res = JSON.parse(r)
+			var diadata = {} 
 			if(res['status']=="failed"){
 				diadata = {
 					type :"error",
@@ -96,6 +125,9 @@ function upload_excel(){
 					buttons : ['Finished Transaction'],
 					buttons_actions : [done_transac_excel]
 				}
+				SPINNER_LOADER.hide()
+				var dialog = $dialog(diadata)
+				dialog.show()
 			}
 			if(res['status']=="success"){
 				diadata = {
@@ -105,10 +137,10 @@ function upload_excel(){
 					buttons : ['Finished Transaction'],
 					buttons_actions : [done_transac_excel]
 				}
+				SPINNER_LOADER.hide()
+				var dialog = $dialog(diadata)
+				dialog.show()
 			}
-			// get_uploaded_excel()
-			var dialog = $dialog(diadata)
-			dialog.show()
 			SPINNER_LOADER.hide()
 		}
 	})
@@ -119,6 +151,7 @@ function done_transac_excel(){
 
 
 function get_uploaded_excel(){
+	$ID("ls_uploaded_excel").innerHTML = ""
 	var uploader_id  = ("{{USER_DATA['id']}}")
 	$send({
 		action : "/feature_0/get_uploaded_excel",
@@ -186,14 +219,15 @@ function confirm_delete_excel(fff){
 
 function delete_excel(fff){
 	SPINNER_LOADER.show()
-	download_excel(fff)
+	// download_excel(fff)
 	$send({
 		action : "/delete_excel",
 		method : POST,
 		data : $DATA({"file":fff.replace("#","@@").replace("#","@@")}),
 		func : function(res){
 			SPINNER_LOADER.hide()
-			excel_upload_dialog.destroy()
+			get_uploaded_excel()
+			// excel_upload_dialog.destroy()
 			location.reload()
 		}
 	})

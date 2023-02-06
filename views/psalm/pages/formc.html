@@ -1,0 +1,1871 @@
+{% extends 'layouts/base.html' %}
+{% set active_page = "formc" %}
+{% block title %} FormC {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- Header -->
+    
+<div class="card" style="width:80%;   margin: 0 auto; margin-top: 20px; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    <div class="card-header" style="background-color: #004d00;">
+        <h3 style="color: white;">C-1 Respondent’s Profile</h3>
+    </div>
+
+    <div class="card-body" style="background-color: #c6ecd9;">
+
+        <form style="margin-left: 2%; margin-right: 2%;" action="/insert" method="POST">
+            {% include "sweetalert.html" %}
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+
+                        <strong>
+                            <label for="name">Name:</label>
+                        </strong>
+                        <input type="hidden" name="id" value="1">
+                        <input type="text" class="form-control form_data_c" id="name" name="name" required>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <strong>
+                            <label for="position">Position in the Firm/ Company:</label>
+                        </strong>
+                        <input type="text" class="form-control form_data_c" id="position_company" name="position_firm">
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3">
+                        <strong>
+                            <label for="no_indigenous_group">Member of Indigenous Group:</label>
+                        </strong>
+                        <select class="form-control form_data_c" name="member_indegenous" id="no_indigenous_group">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <input type="text" name="member_indegenous" class="form-control hidden-textbox3 form_data_c" id="indigenous_group" placeholder="Please specify which group" style="display: none;">
+                    </div>
+
+
+
+                    <div class="col-md-2">
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sex:</label>
+                        </strong>
+                        <select class="form-control form_data_c" id="sex" name="sex">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <strong>
+                            <label for="age">Age:</label>
+                        </strong>
+                        <input type="text" class="form-control form_data_c" id="age" name="age">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <strong>
+                            <label for="age">Contact Details (Phone Number):</label>
+                        </strong>
+                        <input  type="text" class="form-control form_data_c" name="contact_details" id="phone_no">
+                    </div>
+
+                    <div class="col-md-4">
+                        <strong>
+                            <label for="email">Email Address:</label>
+                        </strong>
+                        <input type="email" class="form-control form_data_c" id="email_add" name="email_add">
+                    </div>
+                </div>
+            </div>
+
+
+
+    </div>
+</div>
+
+
+<div class="card" style="width:80%;  margin: 0 auto; float: none; margin-top: 30px; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <style>
+
+        th,td{
+        border-color: white !important;
+        border: 2px solid white;
+        }
+        
+        </style>
+    <div class="card-header" style="background-color: #004d00;">
+        <h3 style="color: white;">C-2 Business Information</h3>
+    </div>
+
+    <div class="card-body" style="background-color: #c6ecd9;">
+
+
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-6">
+                        <strong> <label for="exampleFormControlSelect1">VC Stakeholder Category:</label></strong>
+                        <select class="form-control form_data_c" id="vc_stakeholders" name="vc_stakeholders">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="MSME">MSME</option>
+                            <option value="Large Firm">Large Firm</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <strong>
+                            <label for="industry_cluster">Industry Cluster:</label>
+                        </strong>
+                        <select class="form-control form_data_c" name="industry_cluster" id="industry_cluster">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Cacao">Cacao</option>
+                            <option value="Coconut">Coconut</option>
+                            <option value="Coffee">Coffee</option>
+                            <option value="">PFN-Specify</option>
+                        </select>
+                        <input type="text" class="form-control hidden-textbox2 form_data_c" name="pfn_specify" id="pfn_specify"
+                            placeholder="Please specify" style="display: none;">
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+
+
+                    <div class="col-md-6">
+                        <strong>
+                            <label for="name">Registered Business Name:</label>
+                        </strong>
+                        <input type="text" class="form-control form_data_c" name="reg_businessname" id="reg_businessname">
+                    </div>
+
+                    <div class="col-md-6">
+                        <strong>
+                            <label for="ifyes">Business Address:</label>
+                        </strong>
+                        <input type="text" name="business_addr" class="form-control form_data_c " id="business_addr">
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-6">
+                        <strong>
+                            <label>Form of Enterprise:</label>  
+                        </strong>
+                        <select class="form-control form_data_c" name="form_interprise" id="form_interprise">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Single/Sole">Single/Sole</option>
+                            <option value="Partnership">Partnership</option>
+                            <option value="Corporation">Corporation</option>
+                            <option value="others">Other</option>
+                        </select> 
+                        <input type="text" class="form-control hidden-textbox form_data_c" name="interprise_other" id="interprise_other" placeholder="Please specify" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <br>
+                        <strong><label>Availability of official/legal/administrative documents. Check
+                                all that applies</label>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-left: 20px;" class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <strong>
+                            <label>a. Administration</label>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-left: 40px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" name="pick" value="1" id="business_reg_check"
+                            onclick="myFunction()" />
+                            <strong>  <label class="form-check-label" for="business_reg_check">Business Registration</label></strong>
+
+                    
+                            <div id="textt" style="display: none;">
+                                <div class="input-group">
+                                    <label style=" background-color: #b3ffec;" class="input-group-text">Issued by:</label>
+                                    <input type="text" class="form-control form_data_c" id="issued_by_business_reg" name="issued_by_business_reg">
+                                  
+                                        
+                                </div>
+                                <div class="input-group date">
+                                    <label style=" background-color: #ffcccc;"
+                                        class="input-group-text">Expiration date:</label>
+                                    <input type="date" class="form-control form_data_c" id="expired_date_business_reg" name="expired_date_business_reg">
+                                  
+                                </div>
+</div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="padding-left: 40px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="product_reg_check" onclick="myFunction()" />
+                           <strong><label class="form-check-label" for="product_reg_check">Product Registration</label></strong> 
+
+                           <div id="textt2" style="display: none;">
+                                <div class="input-group">
+                                    <label style="background-color: #b3ffec; "
+                                        class="input-group-text">Issued by:</label>
+                                    <input type="text" class="form-control form_data_c" id="issued_by_product_reg" name="issued_by_product_reg">
+                                
+                                </div>
+                                <div class="input-group date">
+                                    <label style=" background-color: #ffcccc;"
+                                        class="input-group-text">Expiration date:</label>
+                                    <input type="date" class="form-control form_data_c" id="expired_date_product_reg" name="expired_date_product_reg">
+                             
+                                </div>
+                           
+</div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="padding-left: 40px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+
+                        <div class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="cert_reg" onclick="myFunction()" />
+                            <strong><label class="form-check-label" for="cert_reg">Certificate of Registration</label></strong>
+
+                            <div id="textt3" style="display: none;">
+                                <div class="input-group">
+                                    <label style=" background-color: #b3ffec; "
+                                        class="input-group-text">Issued by:</label>
+                                    <input type="text" class="form-control form_data_c" id="issued_by_cert_reg" name="issued_by_cert_reg">
+                                    
+                                </div>
+                                <div class="input-group date">
+                                    <label style="  background-color: #ffcccc;"
+                                        class="input-group-text">Expiration date:</label>
+                                    <input type="date" class="form-control form_data_c" id="expired_date_cert_reg" name="expired_date_cert_reg">
+                                  
+                                </div>
+                         </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-left: 40px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+
+                        <div class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="lic_op" onclick="myFunction()" />
+                            <strong><label class="form-check-label" for="lic_op">License to Operation</label></strong>
+
+                            <div id="textt4" style="display: none;">
+                                <div class="input-group">
+                                    <label style=" background-color: #b3ffec;"
+                                        class="input-group-text">Issued by:</label>
+                                    <input type="text" class="form-control form_data_c" id="issued_by_lic_op" name="issued_by_lic_op">
+                                
+                                </div>
+                                <div class="input-group date">
+                                    <label style=" background-color: #ffcccc;"
+                                        class="input-group-text">Expiration date:</label>
+                                    <input type="date" class="form-control form_data_c" id="expired_date_lic_op" name="expired_date_lic_op">
+                                    
+                                </div>
+                           
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<br>
+            <div style="padding-left: 20px;" class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <strong>
+                            <label>b. Product Quality</label>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-left: 40px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" name="pick" value="1" id="iso_cert"
+                            onclick="myFunction()" />
+                           <strong> <label class="form-check-label" for="iso_cert">ISO Certification</label></strong>
+                            <input type="text" class="form-control form_data_c" name="iso_cert_specific" id="iso_cert_specific" style="display: none;" placeholder="Please Specify">
+
+                            
+                            <div id="textt5" style="display: none;">
+                                <div class="input-group">
+                                    <label style="background-color: #b3ffec;"
+                                        class="input-group-text">Issued by:</label>
+                                    <input type="text" class="form-control form_data_c" id="issued_by_iso_cert" name="issued_by_iso_cert">
+                              
+                                </div>
+                                <div class="input-group date">
+                                    <label style=" background-color: #ffcccc;"
+                                        class="input-group-text">Expiration date:</label>
+                                    <input type="date" class="form-control form_data_c" id="expired_date_iso_cert" name="expired_date_iso_cert">
+                                
+
+
+
+
+                                </div>
+                           </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="padding-left: 40px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="gapgmp_cert"onclick="myFunction()" />
+                           <strong> <label class="form-check-label" for="Gap_cert">GAP/GMP Certification</label></strong>
+
+                           <div id="textt6" style="display: none;">
+                                <div class="input-group">
+                                    <label style=" background-color: #b3ffec;"
+                                        class="input-group-text">Issued by:</label>
+                                    <input type="text" class="form-control form_data_c" id="issued_by_gapgmp_cert" name="issued_by_gapgmp_cert">
+                                  
+                                </div>
+
+                                <div class="input-group date">
+                                    <label style="  background-color: #ffcccc;"
+                                        class="input-group-text">Expiration date:</label>
+                                    <input type="date" class="form-control form_data_c" id="expired_date_gapgmp_cert" name="expired_date_gapgmp_cert">
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="padding-left: 40px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+
+                        <div class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="organic" onclick="myFunction()" />
+                        <strong>  <label class="form-check-label" for="organic">Organic</label></strong>  
+                        <div id="textt7" style="display: none;">
+                                <div class="input-group">
+                                    <label style=" background-color: #b3ffec;"
+                                        class="input-group-text">Issued by:</label>
+                                    <input type="text" class="form-control form_data_c" id="issued_by_organic" name="issued_by_organic">
+                                 
+                                </div>
+                                <div class="input-group date">
+                                    <label style=" background-color: #ffcccc;"
+                                        class="input-group-text">Expiration date:</label>
+                                    <input type="date" class="form-control form_data_c" id="expired_date_organic" name="expired_date_organic">
+                                   
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-left: 40px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+
+                        <div class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="halal" onclick="myFunction()" />
+                           <strong> <label class="form-check-label" for="halal">Halal</label></strong>
+
+                           <div id="textt8" style="display: none;">
+                                <div class="input-group">
+                                    <label style=" background-color: #b3ffec;"
+                                        class="input-group-text">Issued by:</label>
+                                    <input type="text" class="form-control form_data_c" id="issued_by_halal" name="issued_by_halal">
+                                   
+                                </div>
+                                <div class="input-group date">
+                                    <label style="background-color: #ffcccc;"
+                                        class="input-group-text">Expiration date:</label>
+                                    <input type="date" class="form-control form_data_c" id="expired_date_halal" name="expired_date_halal">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div style="padding-left: 40px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="other_cert"
+                                onclick="myFunction()" />
+                           <strong> <label class="form-check-label" for="other_cert">Other Certification</label></strong>
+                            <input type="text" class="form-control form_data_c" id="other_cert_specify" name="other_cert_specify" placeholder="Please Specify " style="display: none;">
+
+                            <div id="textt9" style="display: none;">
+                                <div class="input-group">
+                                    <label style=" background-color: #b3ffec;"
+                                        class="input-group-text">Issued by:</label>
+                                    <input type="text" class="form-control form_data_c" id="issued_by_other_cert" name="issued_by_other_cert">
+                                   
+                                </div>
+                                <div class="input-group date">
+                                    <label style=" background-color: #ffcccc;"
+                                        class="input-group-text">Expiration date:</label>
+                                    <input type="date" class="form-control form_data_c" id="expired_date_other_cert" name="expired_date_other_cert">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+<br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-check">
+                      <input class="form-check-input form_data_c" type="checkbox" value="None of the Above/On-process/Informal" name="none_of_the_above" id="none_of_the_above" />
+                      <strong> <label class="form-check-label">None of the Above/On-process/Informal</label></strong> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+<br>
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-6">
+                        <strong> <label for="exampleFormControlSelect1">Type of Enterprise/Business Size</strong> <i>(by asset, exc. land)</i></label>
+                        <select class="form-control form_data_c" id="type_enterprise" name="type_enterprise">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Micro (3M below) ">Micro (3M below) </option>
+                            <option value="Small (3-15M)">Small (3-15M)</option>
+                            <option value="Medium (15.1M-100M)">Medium (15.1M-100M)</option>
+                            <option value="Large (Above 100M)">Large (Above 100M)</option>
+                        </select>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <br>
+                        <strong><label>Business Classification and Current Value Addition Activity</label> </strong>
+                    </div>
+                </div>
+                
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                <label>Please mark&nbsp;&nbsp;<i class="fa fa-check-square"
+                    aria-hidden="true"></i>&nbsp;&nbsp;the main economic activity of the enterprise.</label>
+                    </div>
+                    </div>
+        </div>
+
+            </div>
+
+            
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-check">
+                            <strong><label class="form-check-label" for="none">Input Supplier</label></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <table class="table table-bordered table-dark">
+                            <thead style="background-color: #004d00 ;">
+                                <tr style="color: white;">
+                                    <th scope="col">Specific Products</th>
+                                    <th scope="col">Store Capacity (Current Volume, ave./month</th>
+                                    <th scope="col">Potential/Target Capacity</th>
+                                    <th scope="col">Other Info</th>
+                                </tr>
+                            </thead>
+                           
+                    
+            <tbody>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+
+                                <label class="form-check-label" for="none">Fertilizers</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-left: 40px;" class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                
+                                <label class="form-check-label" for="none">Organic</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-left: 40px;" class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <br><br>
+                                <label class="form-check-label" for="none">Synthetic</label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                
+                <td><br><textarea class="form-control form_data_c" id="store_capacity_organic" name="store_capacity_organic"></textarea><br>
+                    <textarea class="form-control form_data_c" id="store_capacity_synthetic" name="store_capacity_synthetic"></textarea>
+                </td>
+                <td><br><textarea class="form-control form_data_c" id="potential_organic" name="potential_organic"></textarea><br>
+                    <textarea class="form-control form_data_c" id="potential_synthetic" name="potential_synthetic"></textarea>
+                </td>
+                <td><br><textarea class="form-control form_data_c" id="other_info_organic" name="other_info_organic"></textarea><br>
+                    <textarea class="form-control form_data_c" id="other_info_synthetic" name="other_info_synthetic"></textarea>
+                </td>
+                
+            </tr>
+
+            <tr>
+
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+
+                                <label class="form-check-label" for="none">Chemicals</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-left: 40px;" class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                            
+                                <label class="form-check-label" for="none">Pesticides</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-left: 40px;" class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <br><br>
+                                <label class="form-check-label" for="none">Herbicides</label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td><br><textarea class="form-control form_data_c" id="store_capacity_pesticides" name="store_capacity_pesticides"></textarea><br>
+                    <textarea class="form-control form_data_c" id="store_capacity_herbicides" name="store_capacity_herbicides"></textarea>
+                </td>
+                <td><br><textarea class="form-control form_data_c" id="potential_pesticides" name="potential_pesticides"></textarea><br>
+                    <textarea class="form-control form_data_c" id="potential_herbicides" name="potential_herbicides"></textarea>
+                </td>
+                <td><br><textarea class="form-control form_data_c" id="other_info_pesticides" name="other_info_pesticides"></textarea><br>
+                    <textarea class="form-control form_data_c" id="other_info_herbicides" name="other_info_herbicides"></textarea>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-left: 30px;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <br>    
+                                <label class="form-check-label" for="none">Vermicast Compost</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="store_capacity_vermicast_compost" name="store_capacity_vermicast_compost"></textarea>
+            
+                </td>
+                <td><textarea class="form-control form_data_c" id="potential_vermicast_compost" name="potential_vermicast_compost"></textarea>
+
+                </td>
+                <td><textarea class="form-control form_data_c" id="other_info_vermicast_compost" name="other_info_vermicast_compost"></textarea>
+                </td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-left: 30px;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <br>
+                                <label class="form-check-label" for="none">Seedlings (Nursery Operator)</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="store_capacity_seedlings" name="store_capacity_seedlings"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_seedlings" name="potential_seedlings"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_seedlings" name="other_info_seedlings"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-left: 30px;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                              
+                                <label class="form-check-label" for="none">Others</label>
+                                <input type="text" class="form-control form_data_c" id="others_specific_products" name="others_specific_products"
+                                    placeholder="Please Specify ">
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="store_capacity_others_specific_products" name="store_capacity_others_specific_products"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_others_specific_products" name="potential_others_specific_products"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_others_specific_products" name="other_info_others_specific_products"></textarea></td>
+
+                </td>
+            </tr>
+
+
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-check">
+                            <strong><label class="form-check-label" for="none">Post- Harvest</label></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <table class="table table-bordered table-dark">
+                            <thead style="background-color: #004d00 ;">
+                                <tr style="color: white;">
+                                    <th scope="col">Specifics</th>
+                                    <th scope="col">Area/Capacity Utilization (%)</th>
+                                    <th scope="col">Potential for Expansion-demand based? (Y/N)</th>
+                                    <th scope="col">Other Information</th>
+                                </tr>
+                            </thead>
+                            
+                
+
+            <tbody>
+
+            <tr>
+                <td style="padding-left: 30px;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <label class="form-check-label" for="none">Drying</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="area_capacity_drying" name="area_capacity_drying"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_exp_drying" name="potential_exp_drying"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_drying" name="other_info_drying"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-left: 30px;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+      
+                                <label class="form-check-label" for="none">Storage Hauling</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="area_capacity_storage_hauling" name="area_capacity_storage_hauling"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_exp_storage_hauling" name="potential_exp_storage_hauling"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_storage_hauling" name="other_info_storage_hauling"></textarea></td>
+
+                </td>
+            </tr>
+
+
+
+
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-check">
+                            <strong><label class="form-check-label" for="none">Processing</label></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <table class="table table-bordered table-dark">
+                            <thead style="background-color: #004d00 ;">
+                                <tr style="color: white;">
+                                    <th scope="col">Specifics</th>
+                                    <th scope="col">Current Capacity/ Production</th>
+                                    <th scope="col">Potential for Expansion? (Y/N)</th>
+                                    <th scope="col">Other Information</th>
+                                </tr>
+                            </thead>
+                           
+                
+            <tbody>
+
+            <tr>
+                <td style="padding-left: 30px;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <label class="form-check-label" for="none">Semi Processing</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="current_capacity_semi_processing" name="current_capacity_semi_processing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_exp_semi_processing" name="potential_exp_semi_processing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_semi_processing" name="other_info_semi_processing"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-left: 30px;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <label class="form-check-label" for="none">Final Product Form</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="current_capacity_final_product" name="current_capacity_final_product"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_exp_final_product" name="potential_exp_final_product"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_final_product" name="other_info_final_product"></textarea></td>
+
+                </td>
+            </tr>
+
+
+
+
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-check">
+  
+                            <strong><label class="form-check-label" for="none">Trading</label></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <table class="table table-bordered table-dark">
+                            <thead style="background-color: #004d00 ;">
+                                <tr style="color: white;">
+                                    <th scope="col">Specifics</th>
+                                    <th scope="col">Volume/ Capacity</th>
+                                    <th scope="col">Potential for Expansion? (Y/N)</th>
+                                    <th scope="col">Other Information</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+
+            <tr>
+                <td style="padding-left: 30px;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+         
+                                <label class="form-check-label" for="none">Consolidation/ Buy & Sell</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="volume_consolidation" name="volume_consolidation"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_consolidation" name="potential_consolidation"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_consolidation" name="other_info_consolidation"></textarea></td>
+
+                </td>
+            </tr>
+
+
+
+
+
+
+
+            </tbody>
+            </table>
+  </div>
+                </div>
+            </div>
+
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-check">
+       
+                            <strong><label class="form-check-label" for="none">Marketing</label></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <table class="table table-bordered table-dark">
+                            <thead style="background-color: #004d00 ;">
+                                <tr style="color: white;">
+                                    <th scope="col">Specifics</th>
+                                    <th scope="col">Production Cap./Month</th>
+                                    <th scope="col">Potential for Expansion? (Y/N)</th>
+                                    <th scope="col">Other Information</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+               
+
+
+            <tr>
+                <td style="padding-left: 30px;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+              
+                                <label class="form-check-label" for="none">Packaging and Labelling Marketing (Retail and
+                                    Wholesale)</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="production_pack_label" name="production_pack_label"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_pack_label" name="potential_pack_label"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_pack_label" name="other_info_pack_label"></textarea></td>
+
+                </td>
+            </tr>
+
+
+
+
+
+
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-check">
+
+                            <strong><label class="form-check-label" for="none">Financial Services</label></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <table class="table table-bordered table-dark">
+                            <thead style="background-color: #004d00 ;">
+                                <tr style="color: white;">
+                                    <th scope="col">Specifics</th>
+                                    <th scope="col">Loan Portfolio (specific to RAPID priority crops)</th>
+                                    <th scope="col">Potential for Expansion? (Y/N)</th>
+                                    <th scope="col">Other Information</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            
+
+
+
+            <tr>
+                <td style="padding-left: 30px;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                     
+                                <label class="form-check-label" for="none">Micro-financing</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="loan_portfo_micro_financing" name="loan_portfo_micro_financing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_micro_financing" name="potential_micro_financing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_micro_financing" name="other_info_micro_financing"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-left: 30px;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                     
+                                <label class="form-check-label" for="none">Insurance (equipment, crop, other asset)</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="loan_portfo_insurance" name="loan_portfo_insurance"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_insurance" name="potential_insurance"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_insurance" name="other_info_insurance"></textarea></td>
+
+                </td>
+            </tr>
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <strong> <label class="form-check-label" for="none">Production & Sales</label>
+                        </strong>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+
+                            <i> <label class="form-check-label" for="none">Assumption: Profiled individual/organization
+                                    is into any of the project’s priority commodity e.i cacao, coffee, PFN,
+                                    Coconut)</label>
+                            </i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <table class="table table-bordered table-dark">
+                            <thead style="background-color: #004d00 ;">
+                                <tr style="color: white;">
+                                    <th scope="col">Product/Services <br>( under VC only)</th>
+                                    <th scope="col">Sales Volume/month</th>
+                                    <th scope="col">Unit Selling Price</th>
+                                    <th scope="col">Unit Measurement <br>(kgs/sack/pc, interest)</th>
+                                    <th scope="col">Payment Terms</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                  
+
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <textarea class="form-control form_data_c" id="prodsales_product_service" name="prodsales_product_service"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="prodsales_sales_vol" name="prodsales_sales_vol"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="prodsales_unit_selling" name="prodsales_unit_selling"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="prodsales_unit_measurement" name="prodsales_unit_measurement"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="prodsales_payment_terms" name="prodsales_payment_terms"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <textarea class="form-control form_data_c" id="prodsales_product_service2" name="prodsales_product_service2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="prodsales_sales_vol2" name="prodsales_sales_vol2"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="prodsales_unit_selling2" name="prodsales_unit_selling2"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="prodsales_unit_measurement2" name="prodsales_unit_measurement2"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="prodsales_payment_terms" name="prodsales_payment_terms2"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <textarea class="form-control form_data_c" id="prodsales_product_service3" name="prodsales_product_service3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="prodsales_sales_vol3" name="prodsales_sales_vol3"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="prodsales_unit_selling3" name="prodsales_unit_selling3"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="prodsales_unit_measurement3" name="prodsales_unit_measurement3"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="prodsales_payment_terms" name="prodsales_payment_terms3"></textarea></td>
+
+                </td>
+            </tr>
+
+
+
+
+
+
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <strong> <label class="form-check-label" for="none">Supply/Value Chain, Marketing
+                                Channel</label>
+                        </strong>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+
+                            <label class="form-check-label" for="none">Where do you buy your raw materials?</label>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <div style="padding-left: 40px;" class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="Direct Farm" id="direct_farm" name="direct_farm" />
+                            <label class="form-check-label" for="none">Direct Farm</label>
+
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Public Market" id="public_market" name="public_market" />
+                            <label style="padding-left: 40px;" class="form-check-label" for="none">Public Market</label>
+
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Trader/Consolidator" id="trader_conso" name="trader_conso" />
+                            <label style="padding-left: 40px;" class="form-check-label"
+                                for="none">Trader/Consolidator</label>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <table class="table table-bordered table-dark">
+                            <thead style="background-color: #004d00 ;">
+                                <tr style="color: white;">
+                                    <th scope="col">Raw Materials</th>
+                                    <th scope="col">Volume/Supply Requirement</th>
+                                    <th scope="col">Quality Requirement (organic, color, packaging, etc.)</th>
+                                    <th scope="col">Unit Measurement<br>(kgs/sack/pc, interest)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            
+
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <textarea class="form-control form_data_c" id="raw_materials" name="raw_materials"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="volume_supply" name="volume_supply"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="quality_requirement" name="quality_requirement"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="unit_measurement_raw" name="unit_measurement_raw"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <textarea class="form-control form_data_c" id="raw_materials2" name="raw_materials2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="volume_supply2" name="volume_supply2"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="quality_requirement2" name="quality_requirement2"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="unit_measurement_raw2" name="unit_measurement_raw2"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <textarea class="form-control form_data_c" id="raw_materials3" name="raw_materials3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="volume_supply3" name="volume_supply3"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="quality_requirement3" name="quality_requirement3"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="unit_measurement_raw3" name="unit_measurement_raw3"></textarea></td>
+
+                </td>
+            </tr>
+
+
+
+
+
+
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                            <strong><label class="form-check-label" for="none">Marketing/ Sales Distribution
+                                    Channel</label></strong>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+
+                            <label class="form-check-label" for="none">Where do you sell your products/services?</label>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <table class="table table-bordered table-dark">
+                            <thead style="background-color: #004d00 ;">
+                                <tr style="color: white;">
+                                    <th scope="col">Clients</th>
+                                    <th scope="col">Distribution Point/Location</th>
+                                    <th scope="col">Sales Volume (ave. month)</th>
+                                    <th scope="col">Payment Terms (COD, consignment, others)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+              
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+
+                                <label class="form-check-label" for="none">Local Customer</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+                <td><textarea class="form-control form_data_c" id="distrib_point_local_cust" name="distrib_point_local_cust"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sales_vol_local_cust" name="sales_vol_local_cust"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="payment_terms_local_cust" name="payment_terms_local_cust"></textarea></td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+
+                                <label class="form-check-label" for="none">Middleman/ Distributor</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+
+                <td><textarea class="form-control form_data_c" id="distrib_point_middleman" name="distrib_point_middleman"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sales_vol_middleman" name="sales_vol_middleman"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="payment_terms_middleman" name="payment_terms_middleman"></textarea></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <label class="form-check-label" for="none">Export</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="distrib_point_export" name="distrib_point_export"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sales_vol_export" name="sales_vol_export"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="payment_terms_export" name="payment_terms_export"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <label class="form-check-label" for="none">Others</label>
+                                <input type="text" class="form-control form_data_c" id="others_specify_marketing" name="others_specify_marketing" placeholder="Please specify">
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="distrib_point_others_specify_marketing" name="distrib_point_others_specify_marketing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sales_vol_others_specify_marketing" name="sales_vol_others_specify_marketing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="payment_terms_others_specify_marketing" name="payment_terms_others_specify_marketing"></textarea></td>
+
+                </td>
+            </tr>
+
+
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <strong> <label class="form-check-label" for="none">Number of Workers/Laborers</label>
+                        </strong>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <table class="table table-bordered table-dark">
+                            <thead style="background-color: #004d00 ;">
+                                <tr style="color: white;">
+                                    <th scope="col">Type of Labor/Workers</th>
+                                    <th scope="col">Number of Workers (Qty)</th>
+                                    <th scope="col">Member of IP Group?(Y/N)</th>
+                                    <th scope="col">Ave. # of workdays/mo.</th>
+                                    <th scope="col">Ave. Salary/ Wage/month</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+             
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+
+                                <label class="form-check-label" for="none">No. of in-house</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+                <td><textarea class="form-control form_data_c" id="inhouse_num_workers" name="inhouse_num_workers"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="inhouse_memb_ip_group" name="inhouse_memb_ip_group"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="inhouse_ave_workdays" name="inhouse_ave_workdays"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="inhouse_ave_salary" name="inhouse_ave_salary"></textarea></td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+
+                                <label class="form-check-label" for="none">No. of sub-contractor</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+
+                <td><textarea class="form-control form_data_c" id="sub_cont_num_workers" name="sub_cont_num_workers"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sub_cont_memb_ip_group" name="sub_cont_memb_ip_group"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sub_cont_ave_workdays" name="sub_cont_ave_workdays"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sub_cont_ave_salary" name="sub_cont_ave_salary"></textarea></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <label class="form-check-label" for="none">No. of piece rate (pakyaw)</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="piece_rate_num_workers" name="piece_rate_num_workers"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="piece_rate_memb_ip_group" name="piece_rate_memb_ip_group"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="piece_rate_ave_workdays" name="piece_rate_ave_workdays"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="piece_rate_ave_salary" name="piece_rate_ave_salary"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <label class="form-check-label" for="none">Total</label>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="total_num_workers" name="total_num_workers"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="total_memb_ip_group" name="total_memb_ip_group"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="total_ave_workdays" name="total_ave_workdays"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="total_ave_salary" name="total_ave_salary"></textarea></td>
+
+                </td>
+            </tr>
+
+
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="card" style="width:80%;   margin: 0 auto; float: none; margin-top: 30px; margin-bottom: 150px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    <div class="card-header" style="background-color: #004d00;">
+        <h3 style="color: white;">C3-Challenges in business operations and support needed</h3>
+    </div>
+
+    <div class="card-body" style="background-color: #c6ecd9;">
+
+
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col">
+                        <strong> <label for="exampleFormControlSelect1">Does your company/firm encounter
+                                <strong><u>problems, issues</strong></u> on the following:</label></strong>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div style="padding-left: 20px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3">
+                        <strong>
+                            <label>a. Form of Interprise</label>
+                        </strong>
+                        <select  class="form-control form_data_c"  id="form_interprise2" name="form_interprise2">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <input  type="text" style="display: none;" class="form-control hidden-textbox4 form_data_c" id="ifyes_form_interprise" name="ifyes_form_interprise" placeholder="Please specify">
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="padding-left: 20px;" class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-3">
+                        <strong>
+                            <label>b. Pricing</label>
+                        </strong>
+                        <select  class="form-control form_data_c"  id="pricing" name="pricing">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <input name="ifyes_pricing" type="text" class="form-control hidden-textbox5 form_data_c" id="ifyes_pricing" placeholder="Please specify" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="padding-left: 20px;" class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-3">
+                        <strong>
+                            <label>c. Quality of Raw Materials</label>
+                        </strong>
+                        <select  class="form-control form_data_c" name="quality_raw" id="quality_raw">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <input type="text" class="form-control hidden-textbox6  form_data_c" id="ifyes_quality_raw" name="ifyes_quality_raw" placeholder="Please specify" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="padding-left: 20px;" class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-3">
+                        <strong>
+                            <label >d. Quality of Final Product </label>
+                        </strong>
+                        <select class="form-control form_data_c" name="quality_final_prod" id="quality_final_prod">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <input type="text" class="form-control hidden-textbox7  form_data_c" id="ifyes_quality_final_prod" name="ifyes_quality_final_prod" placeholder="Please specify" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="padding-left: 20px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3">
+
+                        <strong>
+                            <label>e. Other, please specify</label>
+                        </strong>
+                        <input  type="text" class="form-control form_data_c" id="other_specifyc3" name="other_specifyc3">
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-4">
+                        <strong>
+                            <label>Do you have existing commercial partnership with
+                                suppliers?</label>
+                        </strong>
+                        <select class="form-control form_data_c" name="existing_comm" id="existing_comm">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <input  type="text" class="form-control hidden-textbox8 form_data_c" id="ifyes_existing_comm" name="ifyes_existing_comm" placeholder="Please specify" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-4">
+                        <strong>
+                            <label>Do you provide support/assistance to your current
+                                partners?</label>
+                        </strong>
+                        <select class="form-control form_data_c" id="prov_supp_assis" name="prov_supp_assis" >
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <input  type="text" class="form-control hidden-textbox9 form_data_c" id="ifyes_prov_supp_assis" name="ifyes_prov_supp_assis" placeholder="Please specify" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-4">
+                        <strong>
+                            <label >Are you satisfied with your current business/production
+                                performance?</label>
+                        </strong>
+                        <select  class="form-control form_data_c" id="business_prodc3" name="business_prodc3" >
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <input  type="text" name="ifyes_business_prodc3" class="form-control hidden-textbox10 form_data_c" id="ifyes_business_prodc3" placeholder="Please specify" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-10">
+
+                        <strong>
+                            <label>IF No, what do you think you need to do to improve it? Please specify your answer in
+                                the space provided:</label>
+                        </strong>
+                        <input type="text" class="form-control form_data_c" id="ifnoc3" name="ifnoc3">
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <hr>
+                        <strong><label>Please check box if answer falls in any of the following:</label> </strong>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <div style="padding-left: 40px;" class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="Capability" id="capability" name="capability" />
+                            <label class="form-check-label" for="none">Capability</label>
+
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Technology/Equipment" name="tech_equip" id="tech_equip" />
+                            <label style="padding-left: 40px;" class="form-check-label"
+                                for="none">Technology/Equipment</label>
+
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Access to Market" name="access_market" id="access_market" />
+                            <label style="padding-left: 40px;" class="form-check-label" for="none">Access to
+                                Market</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <div style="padding-left: 40px;" class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="Communication & Network with key partners" name="commu_key_part" id="commu_key_part" />
+                            <label class="form-check-label" for="none">Communication & Network with key partners</label>
+
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Political" name="political" id="political"/>
+                            <label style="padding-left: 40px;" class="form-check-label" for="none">Political</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <br>
+                        <strong>
+                            <label>Support Network/ Group</label>
+                        </strong>
+
+                    </div>
+
+                </div>
+       
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <strong>
+                            <label>Are you a member of any of the following? </label>
+                        </strong>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <div style="padding-left: 40px;" class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="Chamber of Commerce" name="chamber_commerce" id="chamber_commerce" />
+                            <label class="form-check-label" for="none">Chamber of Commerce</label>
+
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Trade Association" name="trade_assoc" id="trade_assoc" />
+                            <label style="padding-left: 40px;" class="form-check-label"
+                                for="none">Trade Association </label>
+
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Cooperative" name="coopera" id="coopera" />
+                            <label style="padding-left: 40px;" class="form-check-label" for="none">Cooperative</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="form-col">
+                        <div style="padding-left: 40px;" class="form-check">
+                            <input class="form-check-input form_data_c" type="checkbox" value="City organized group" name="commu_key_part2" id="commu_key_part2" />
+                            <label class="form-check-label" for="none">City organized group </label>
+
+                            
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Other Organization" id="other_orgs_checkbox" onclick="myFunction2()"/>
+                            <label style="padding-left: 40px;" class="form-check-label" for="none">Other orgs, specify: </label>
+                            <input style="margin-left: 55%; display: none;"  type="text" class="form-control form_data_c" id="other_orgs_pls_spec" name="other_orgs_pls_spec"
+                            placeholder="Please Specify ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="padding-left: 20px;" class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+
+
+                        <label>Name of Organization: </label>
+
+                        <input type="text" class="form-control form_data_c" name="name_org" id="name_org">
+                    </div>
+                    <div class="col-md-6">
+
+                        <label for="position">Location:</label>
+
+                        <input type="text" name="location_org" class="form-control form_data_c" id="location_org">
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-5">
+                        <strong>
+                            <label>Does your membership in the organization helps you in your
+                                livelihood?</label>
+                        </strong>
+                        <select  class="form-control form_data_c"  id="member_livelihood" name="member_livelihood" >
+                            <option value="" selected disabled>Please select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                        <input  type="text" class="form-control hidden-textbox12  form_data_c" id="ifyes_member_livelihood" name="ifyes_member_livelihood" placeholder="in what way it helps?" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-12">
+
+                        <strong>
+                            <label>What do you think the LGU, NGAs and other agencies should do to improve the local
+                                commodity cluster industry? (Cacao, Coffee, Coco, Process Fruits & nuts) </label>
+                        </strong>
+                        <input type="text" class="form-control form_data_c" name="what_cluster_industry" id="what_cluster_industry">
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="form-group">
+
+
+                <button class="btn btn-primary" type="submit">Submit</button>
+
+             </div>
+
+        </form>
+    </div>
+  
+</div>
+
+
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+{% endblock javascripts %}

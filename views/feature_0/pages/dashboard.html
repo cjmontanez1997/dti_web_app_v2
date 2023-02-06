@@ -11,9 +11,10 @@
 		</span>
 	</header>
 	<!-- ================================================== -->
+
 	<div class="x-container x-row">
 		<div class="x-container x-col l2 x-padding">
-			<div class="x-container x-center x-padding x-round-large x-teal">
+			<div class="x-container x-center x-padding x-round x-teal">
 				<b id="total_num_farmer" class="_money_tag x-xxlarge">{{dash_data_['all_farmer_count']}}</span></b><br>
 				<span class="x-small _money_tag">
 					Number of Profiles <br>
@@ -24,7 +25,7 @@
 			<!-- TEMPORARY HIDDEN FOR DEV -->
 		</div>
 		<div class="x-container x-col l2 x-padding">
-			<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-orange">
+			<div class="x-container x-center x-padding x-round x-border-dashed x-border-orange">
 				<b id="total_num_farmer_with_dip" class="x-xxlarge _money_tag">{{dash_data_['with_dip']}}</b><br>
 				<span class="x-small">
 					Number of Profiles <br>
@@ -33,7 +34,7 @@
 			</div>
 		</div>
 		<div class="x-container x-col l2 x-padding">
-			<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-blue">
+			<div class="x-container x-center x-padding x-round x-border-dashed x-border-blue">
 				<b id="total_num_farmer_with_fo" class="x-xxlarge _money_tag">{{dash_data_['with_fo']}}</b><br>
 				<span class="x-small">
 					Number of Profiles <br>
@@ -42,7 +43,7 @@
 			</div>
 		</div>
 		<div class="x-container x-col l2 x-padding">
-			<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-green">
+			<div class="x-container x-center x-padding x-round x-border-dashed x-border-green">
 				<b id="total_num_farmer_head" class="x-xxlarge _money_tag">{{dash_data_['is_hh_head_num']}}</b><br>
 				<span class="x-small">
 					Number of Profiles <br>
@@ -51,8 +52,8 @@
 			</div>
 		</div>
 		<div class="x-container x-col l2 x-padding">
-			<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-green">
-				<b id="total_num_farmer_geotagged" class="x-xxlarge _money_tag">{{dash_data_['all_farmer_count']}}</b><br>
+			<div class="x-container x-center x-padding x-round x-border-dashed x-border-green">
+				<b id="total_num_farmer_geotagged" class="x-xxlarge _money_tag">{{(dash_data_['mobile_geotag']|length)}}</b><br>
 				<span class="x-small">
 					<b class="x-small">Geotagged</b><br>
 					<b class="x-tiny x-text-grey">That has Map Coordinates</b>
@@ -60,7 +61,7 @@
 			</div>
 		</div>
 		<div class="x-container x-col l2 x-padding">
-			<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-green">
+			<div class="x-container x-center x-padding x-round x-border-dashed x-border-green">
 				<div class="x-round-large x-small" style="display:block"> 
 					<span class="x-text-grey">Male :<b class="x-text-black _money_tag" id="count_all_male">{{dash_data_['all_sex_male']}}</b></span><br>
 					<span class="x-text-grey">Female :<b class="x-text-black _money_tag" id="count_all_female">{{dash_data_['all_sex_female']}}</b></span><br>
@@ -73,44 +74,64 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- ================================================== -->
+	<div class="x-container x-padding-large">
+		<div id="x-container x-row" >
+			<span class="x-xlarge x-text-green">
+				What's in the Basket <span class="fa fa-basket"></span>
+			</span>
+		</div>
+		<div class="x-container x-pale-green x-padding x-border- x-border-dashed x-border-green x-round-large x-row">
+			<div id="basket_container" class="x-row x-container">
+
+				<div class="x-col x-padding" style="width:10%;">
+					<div class="x-container x-card x-white x-center x-padding x-round-large x-hover-black x-border" onclick="view_all_commodity_count()">
+						<b>Others</b><br>
+						<img src="../static/img/commodity/others.png" style="width:100%"><br>
+						<b class="x-tiny _money_tag">View all commodity</b>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- =========================================== -->
+
 	<div class="x-panel">
 		<div class="x-row-padding" style="margin:0 -16px">
-			<div class="x-col l5">
+			<div class="x-col l3">
 				<h5><b>Areas Covered</b></h5>
 				<div>
 					{% include 'maps/dash_map1.html' %}
 					<!-- <img src="../static/img/region.jpg" style="width:100%" alt="Google Regional Map"> -->
 				</div>
 			</div>
-			<div class="x-col l2">
-				<h5><b>Value Chain commodity</b></h5>
+			<div class="x-col l3">
+				<h5><b>Enumerators for Mobile</b></h5>
 				<div class="" style="overflow-y:scroll;height: 520px;">
-					<table class="x-table x-striped x-white">
-						<tbody>
-							<tr class="x-teal">
-								<th>Commodities</th>
-								<th>Count</th>
-							</tr>
-							{% for comdty_name in dash_data_['ls_arr']['primary_crop']['main']%}
-							<tr>
-								<td><b>{{comdty_name[0]}}</b></td>
-								<td class="_money_tag x-right">{{comdty_name[1]}}</td>
-							</tr>
-							{% endfor %}
+					{% for comdty_name in dash_data_['ls_arr']['primary_crop']['main']%}
+						{% if comdty_name[1] != 0 :%}
+						<div class="x-padding">
+							<div class="x-container x-card x-white x-padding x-round-large x-hover-green">
+								<img src="../static/img/commodity/{{comdty_name[0]}}.png" style="width:10%">
+								<span>
+									<b>{{comdty_name[0]}}</b> 
+									<b class="x-large _money_tag">{{comdty_name[1]}}</b>
+								</span>
 
-							<tr class="x-center x-grey">
-								<td>See Other Results</td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
+							</div>
+						</div>
+						{% endif %}
+					{% endfor %}
 				</div>
 			</div>
 			<div class="x-col l2">
-				<h5><b>Enumerators for Mobile</b></h5>
+				<span class="x-xlarge x-text-green">
+					What's in the Basket <span class="fa fa-basket"></span>
+				</span>
 				<div class="" style="overflow-y:scroll;height: 520px;">
-					<table class="x-table x-striped x-white">
+					<table class="x-table x-border x-striped x-white">
 						<thead>
 							<tr class="x-blue">
 								<th>Name</th>
@@ -133,7 +154,7 @@
 			<div class="x-col l2">
 				<h5><b>Enumerators for Excel</b></h5>
 				<div class="" style="overflow-y:scroll;height: 520px;">
-					<table class="x-table x-striped x-white">
+					<table class="x-table x-border x-striped x-white">
 						<thead>
 							<tr class="x-blue">
 								<th>Name</th>
@@ -276,10 +297,56 @@
 	</div> -->
 
 	<!-- Footer -->
-	<footer class="x-container x-padding-16 x-light-grey">
-		<h4>FOOTER</h4>
-		<p>Powered by <a href="" target="_blank">x.css</a></p>
-	</footer>
 
 	<!-- End page content -->
 </div>
+<script>
+	function view_all_commodity_count(){
+		var allcomdity = $dialog({
+			title : "Commodities (Value Chain)",
+			subtitle : "Number of Commodities based on encoded profiles",
+			content :(`
+				<div class="x-col l6">
+					<h5><b>From Mobile Inputs</b></h5>
+					<div class="" style="overflow-y:scroll;height: 520px;">
+						<table class="x-table x-border x-striped x-white">
+							<tbody>
+								<tr class="x-teal">
+									<th>Commodities</th>
+									<th>Count</th>
+								</tr>
+								{% for comdty_name in dash_data_['ls_arr']['primary_crop']['breakdown']['mobile']%}
+								<tr>
+									<td><b>{{comdty_name}}</b></td>
+									<td class=" x-right">{{dash_data_['ls_arr']['primary_crop']['breakdown']['mobile'][comdty_name]}}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="x-col l6">
+					<h5><b>From Excel Inputs</b></h5>
+					<div class="" style="overflow-y:scroll;height: 520px;">
+						<table class="x-table x-border x-striped x-white">
+							<tbody>
+								<tr class="x-teal">
+									<th>Commodities</th>
+									<th>Count</th>
+								</tr>
+								{% for comdty_name in dash_data_['ls_arr']['primary_crop']['breakdown']['excel']%}
+								<tr>
+									<td><b>{{comdty_name}}</b></td>
+									<td class=" x-right">{{dash_data_['ls_arr']['primary_crop']['breakdown']['excel'][comdty_name]}}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			`)
+		})
+		allcomdity.dialog.style.width="40%"
+		allcomdity.show()
+	}
+</script>

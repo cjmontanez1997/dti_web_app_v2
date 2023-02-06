@@ -1,0 +1,104 @@
+{% extends 'base2.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="card" style="width:80%;   margin: 0 auto; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    <div class="card-header" style="background-color: #004d00;">
+        <h5 style="color: white;">C-1 Respondent’s Profile</h5>
+    </div>
+
+    <div class="card-body" style="background-color: #c6ecd9;">
+
+        <form style="margin-left: 2%; margin-right: 2%;">
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+
+                        <strong>
+                            <label for="name">Name:</label>
+                        </strong>
+                        <input type="text" class="form-control form_data_c" id="name">
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <strong>
+                            <label for="position">Position in the Firm/ Company:</label>
+                        </strong>
+                        <input type="text" class="form-control form_data_c" id="position_company">
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3">
+                        <strong>
+                            <label for="no_indigenous_group">Member of Indigenous Group:</label>
+                        </strong>
+                        <select class="form-control form_data_c" name="no_indigenous_group" id="no_indigenous_group">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="yess">Yes</option>
+                            <option value="noo">No</option>
+                        </select>
+                        <input type="text" class="form-control hidden-textbox3 form_data_c" id="indigenous_group" placeholder="Please specify which group" style="display: none;">
+                    </div>
+
+
+
+                    <div class="col-md-2">
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sex:</label>
+                        </strong>
+                        <select class="form-control form_data_c" id="sex">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <strong>
+                            <label for="age">Age:</label>
+                        </strong>
+                        <input type="text" class="form-control form_data_c" id="age">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <strong>
+                            <label for="age">Contact Details (Phone Number):</label>
+                        </strong>
+                        <input  type="text" class="form-control form_data_c" id="phone_no">
+                    </div>
+
+                    <div class="col-md-4">
+                        <strong>
+                            <label for="email">Email Address:</label>
+                        </strong>
+                        <input type="email" name="email"class="form-control form_data_c" id="email_add">
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

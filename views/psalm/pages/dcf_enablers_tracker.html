@@ -1,0 +1,408 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="card"
+    style="width:80%;   margin: 0 auto; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    <div class="card-header" style="background-color: #004d00;">
+        <h3 style="color: white; text-align: center;">Enablers Activity Tracker</h3>
+    </div>
+
+    <div class="card-body" style="background-color: #c6ecd9;">
+        <form style="margin-left: 2%; margin-right: 2%;">
+            <br>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Implementing Unit:</label>
+                        </strong>
+                        <select class="form-control dcf_enablers_tracker" id="implementing_unit_en">
+                            <option value="" selected disabled>Please select</option>
+                            <option>RCU</option>
+                            <option>PCU</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <strong>
+                            <label for="name">Activity Title:</label>
+                        </strong>
+                        <input type="text" class="form-control dcf_enablers_tracker" id="act_title_en">
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Type of Training/Activity:</label>
+                        </strong>
+                        <select class="form-control dcf_enablers_tracker" id="training_act_en">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Capbuild</option>
+                            <option>Meetings</option>
+                            <option>Policy Issuances</option>
+                            <option value="training_act_spec">Others to be specified</option>
+                        </select>
+                        <input type="text" class="form-control hidden-textbox17  dcf_enablers_tracker" id="training_act"
+                            placeholder="Please specify" style="display: none;">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3"><br>
+
+
+                        <strong>
+                            <label for="name">Activity Duration:</label>
+                        </strong>
+                        <div class="input-group date">
+                            <label style="background-color: #b3ffec;" class="input-group-text">Start
+                                Date:</label>
+                            <input type="date" class="form-control  dcf_enablers_tracker" id="start_date">
+                       
+                        </div>
+                        <div class="input-group date" >
+                            <label style=" background-color: #ffcccc;" class="input-group-text">End
+                                Date:</label>
+                            <input type="date" class="form-control  dcf_enablers_tracker" id="ended_date">
+                           
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <br>
+                        <strong>
+                            <label for="name">Venue:</label>
+                        </strong>
+                        <input type="text" class="form-control  dcf_enablers_tracker" id="venue_en">
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <br>
+                        <strong>
+                            <label for="name">Name of Resource Person/Facilitator/BDSP</label>
+                        </strong>
+                        <input type="text" class="form-control  dcf_enablers_tracker" id="resource_pers">
+
+                    </div>
+
+                    <div class="col-md-2">
+                        <br>
+                        <strong>
+                            <label for="name">RAPID Actual Budget:</label>
+                        </strong>
+                        <input type="text" class="form-control  dcf_enablers_tracker" id="rapid_actual_budget">
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md">
+                        <br>
+                        <strong>
+                            <label for="name">Fully & partially funded by partners outside RAPID</label>
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-5">
+
+
+                            <label for="name">Name of Organization</label>
+
+                            <input type="text" class="form-control  dcf_enablers_tracker" id="name_org_en">
+
+                        </div>
+                        <div class="col-sm-3">
+
+                            <label for="position">Counterpart Amount</label>
+
+                            <input type="text" class="form-control  dcf_enablers_tracker" id="counterpart_amount_en">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4"><br>
+                        <strong>
+                            <label>Name of Participant:</label>
+                        </strong>
+                        <input type="text" class="form-control  dcf_enablers_tracker" id="name_par_en">
+                        </select>
+                    </div>
+
+                    <div class="col-md-4"><br>
+                        <strong>
+                            <label>Organization:</label>
+                        </strong>
+                        <input type="text" class="form-control  dcf_enablers_tracker" id="org_en">
+                        </select>
+                    </div>
+
+                    <div class="col-md-4"><br>
+                        <strong>
+                            <label>Designation:</label>
+                        </strong>
+                        <input type="text" class="form-control  dcf_enablers_tracker" id="designation_en">
+                        </select>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-2">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sex:</label>
+                        </strong>
+                        <select class="form-control  dcf_enablers_tracker" id="sex_en">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+
+                    </div>
+                    <div class="col-md-2">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sector:</label>
+                        </strong>
+                        <select class="form-control  dcf_enablers_tracker" id="sector_en">
+                            <option value="" selected disabled>Please select</option>
+                            <option>PWD</option>
+                            <option>Youth</option>
+                            <option>IP</option>
+                            <option>SC</option>
+                        </select>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <strong>
+                            <label for="name">Results of Activity </strong> <i>(for capbuild):</i> </label>
+
+
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-3">
+
+
+                                    <label for="name">Pre-test</label>
+
+                                    <input type="text" class="form-control  dcf_enablers_tracker" id="pretest_en">
+
+                                </div>
+                                <div class="col-md-3">
+
+                                    <label for="position">Post-test</label>
+
+                                    <input type="text" class="form-control  dcf_enablers_tracker" id="postest_en">
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Activity Output:</label>
+                        </strong>
+                        <select class="form-control  dcf_enablers_tracker" id="act_output_en">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Policy Issuances/recommendations</option>
+                            <option>Resolutions</option>
+                            <option>Studies</option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <strong>
+                            <label for="name">Results of Activity:</label> </strong>
+
+
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-3">
+
+
+                                    <label for="name">Pre-test</label>
+
+                                    <input type="text" class="form-control  dcf_enablers_tracker" id="pretest_en2">
+
+                                </div>
+                                <div class="col-md-3">
+
+                                    <label for="position">Post-test</label>
+
+                                    <input type="text" class="form-control  dcf_enablers_tracker" id="postest_en2">
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <strong>
+                            <label for="name">Client Feedback survey:</label> </strong>
+
+
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-3">
+
+
+                                    <label for="name">Rating</label>
+
+                                    <input type="text" class="form-control  dcf_enablers_tracker" id="rating_en">
+
+                                </div>
+                                <div class="col-md-3">
+
+                                    <label for="position">Comments/Areas of Improvement</label>
+
+                                    <textarea type="text" class="form-control  dcf_enablers_tracker" id="comments_en">
+                                                                                      </textarea>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <label class="form-label" for="customFile"><strong>MOVs for Uploading:</strong> <i>(attendance
+                                sheets, activity report/activity documentation/proceedings, CSF report, Policy
+                                Issuances)</i></label>
+                        <input type="file" class="form-control  dcf_enablers_tracker" id="customFile4" />
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+</form>
+
+</div>
+</div>
+
+
+{% endblock %}

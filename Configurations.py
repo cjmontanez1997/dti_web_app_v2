@@ -1,10 +1,7 @@
 import socket
-
+print(" ++ Configuration Setting ++")
 host_name = socket.gethostname()
 IP_address = socket.gethostbyname(host_name)
-
-
-
 # --- SYSTEM CONFIG --- #
 SECRET_KEY = "@002342562988603673976#131452@HHPLHKHHH"
 # HOST = host_name

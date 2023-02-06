@@ -1,0 +1,482 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="card"
+    style="width:80%;   margin: 0 auto; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    <div class="card-header" style="background-color: #004d00;">
+        <h3 style="color: white; text-align: center;">DIP Preparation and Approval Tracker</h3>
+    </div>
+
+    <div class="card-body" style="background-color: #c6ecd9;">
+        <form style="margin-left: 2%; margin-right: 2%;">
+            <br>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        
+                        <strong>
+                            <h5>PREPARATION, REVIEW AND APPROVAL STATUS</h5>	
+                        </strong>
+
+                    </div>
+                    </div>
+                    </div>
+<br>
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-2">
+
+                        <strong>
+                            <label for="name">RCUs:</label>
+                        </strong>
+                        <input type="text" class="form-control dcf_preparation_tracker" id="rcus_prep">
+
+                    </div>
+
+                    
+                    <div class="col-md-2">
+
+                        <strong>
+                            <label for="name"># of  DIPs:</label>
+                        </strong>
+                        <input type="text" class="form-control dcf_preparation_tracker" id="dip_prep">
+
+                    </div>
+
+                    
+                    <div class="col-md-6">
+
+                        <strong>
+                            <label for="name">Anchor Firms:</label>
+                        </strong>
+                        <input type="text" class="form-control dcf_preparation_tracker" id="anchor_firms_prep">
+
+                    </div>
+
+
+                    <div class="col-sm-2">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Size of Anchor Firm:</label>
+                        </strong>
+                        <select class="form-control dcf_preparation_tracker" id="size_anch_prep">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Large</option>
+                            <option>Medium</option>
+                            <option>Small</option>
+                            <option>Micro</option>
+                        </select>
+                        
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="col-md-4">
+                        <br>
+                        <strong>
+                            <label for="name">Commodity:</label>
+                        </strong>
+                        <input type="text" class="form-control  dcf_preparation_tracker" id="commodity_prep">
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <br>
+                        <strong>
+                            <label for="name">Scope/Provinces:</label>
+                        </strong>
+                        <input type="text" class="form-control  dcf_preparation_tracker" id="scope_prep">
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <br>
+                        <strong>
+                            <label for="name">For Development:</label>
+                        </strong>
+                        <input type="text" class="form-control  dcf_preparation_tracker" id="for_dev_prep">
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-sm-3">
+                        <br>
+                        <strong>
+                            <label for="name">Date: </strong> <i>CN Approved</i> </label>
+                       
+                        <div class="input-group date">
+                            <input type="date" class="form-control  dcf_preparation_tracker" id="date_cn_prep">
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <br>
+                        <strong>
+                            <label for="name">Date:  </strong> <i>Full BPs and DIPs Finalized/Approved by RCUs and endorsed to NPCO for Review</i> </label>
+                      
+                        <div class="input-group date">
+                            <input type="date" class="form-control  dcf_preparation_tracker" id="date_bp_prep">
+                         
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <br>
+                            <strong>
+                                <label for="name">Date of the Parallel Review with NPCO/RGMS-IFAD-RTWG:</label></strong>
+                          
+                            <div class="input-group date">
+                                <input type="date" class="form-control  dcf_preparation_tracker" id="date_parallel_prep">
+                               
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <br>
+                        <strong>
+                            <label for="name">Date of submission of the  revised DIPs based on the comments from the parallel review:</label></strong>
+                      
+                        <div class="input-group date">
+                            <input type="date" class="form-control  dcf_preparation_tracker" id="date_sub_prep">
+                           
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+            <br>
+           
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3">
+                        
+                            
+                            <strong>
+                                <label for="name">RTWG Approved:</label>
+                            </strong>
+                            <input type="text" class="form-control  dcf_preparation_tracker" id="rtwg_prep">
+    
+                    
+                    
+
+                    </div>
+
+                    <div class="col-md-8">
+                  
+                     
+                            <label for="name">   <strong> Date: </strong> <i>NPCO cursory review of RCU's compliance to parallel review comments; and DIP  endorsement to NOTUS Uploading</i></label>
+                      
+                        <div class="input-group date">
+                            <input type="date" class="form-control  dcf_preparation_tracker" id="date_npco_prep">
+                           
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+  
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <br>
+                        <strong>
+                            <label for="name">Date:</strong> <i>Uploading to IFAD NOTUS</i> </label>
+                      
+                        <div class="input-group date">
+                            <input type="date" class="form-control  dcf_preparation_tracker" id="date_up_prep">
+                        
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <br>
+                        <strong>
+                            <label for="name">Date:</strong> <i>IFAD NO Issuance</i></label>
+                      
+                        <div class="input-group date">
+                            <input type="date" class="form-control  dcf_preparation_tracker" id="date_ifad_prep">
+                           
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+<br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <strong>
+                            <h5>DIP REACH
+                            </h5> </strong>
+<br>
+
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-4">
+
+                                    <strong>
+                                        <label for="name">Name & # of FOs:</label>
+                                    </strong>
+                                    <input type="text" class="form-control dcf_preparation_tracker" id="name_fo_prep">
+            
+                                </div>
+                                <div class="col-md-4">
+
+                                    <strong>
+                                        <label for="name">Name & # of MSMEs:</label>
+                                    </strong>
+                                    <input type="text" class="form-control dcf_preparation_tracker" id="name_msmes_prep">
+            
+                                </div>
+
+                                <div class="col-md-4">
+
+                                    <strong>
+                                        <label for="name">Name of farmer Beneficiaries:</label>
+                                    </strong>
+                                    <input type="text" class="form-control dcf_preparation_tracker" id="name_farmer_prep">
+            
+                                </div>
+
+
+                            </div>
+                        </div>
+<br>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-sm-2">
+
+                                    <strong>
+                                        <label for="name">Total Hectarage Covered:</label>
+                                    </strong>
+                                    <input type="text" class="form-control dcf_preparation_tracker" id="total_hec_prep">
+            
+                                </div>
+                                <div class="col-sm-2">
+
+                                    <strong>
+                                        <label for="name">Hectares for Rehab:</label>
+                                    </strong>
+                                    <input type="text" class="form-control dcf_preparation_tracker" id="hectares_prep">
+            
+                                </div>
+
+                                <div class="col-sm-2">
+
+                                    <strong>
+                                        <label for="name">Total Cost of Rehab:</label>
+                                    </strong>
+                                    <input type="text" class="form-control dcf_preparation_tracker" id="total_cost_prep">
+            
+                                </div>
+
+                                <div class="col-sm-2">
+
+                                    <strong>
+                                        <label for="name">Hectares for Expansion:</label>
+                                    </strong>
+                                    <input type="text" class="form-control dcf_preparation_tracker" id="hectares_exp_prep">
+            
+                                </div>
+
+                                <div class="col-sm-2">
+
+                                    <strong>
+                                        <label for="name">Total Cost of Expansion:</label>
+                                    </strong>
+                                    <input type="text" class="form-control dcf_preparation_tracker" id="total_cost_exp">
+            
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <br>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <strong>
+                                        <label for="name">Total Cost of Productive Investments</strong> <i>(equipment, facilities, warehouse):</i> </label>
+                                    
+                                    <input type="text" class="form-control dcf_preparation_tracker" id="total_cost_prep">
+
+
+</div>
+
+<div class="col-md-4">
+    <strong>
+        <label for="name">Total Matching Grant (AA+AB):</strong></label>
+    
+    <input type="text" class="form-control dcf_preparation_tracker" id="total_matching_prep">
+
+
+</div>
+
+</div>
+</div>
+
+<br>
+<div class="form-group">
+    <div class="form-row">
+        <div class="col-md-6">
+
+            <strong>
+                <label for="name">Capacity Building  COST  </strong> <i>(Organizational + Technical trainings:  post-production, and etc.):</i></label>
+           
+            <input type="text" class="form-control dcf_preparation_tracker" id="capacity_building_prep">
+
+
+            </div>
+
+            <div class="col-md-4">
+
+                <strong>
+                    <label for="name">Supply Chain Manager:</label></strong>
+               
+                <input type="text" class="form-control dcf_preparation_tracker" id="supply_chain_prep">
+    
+    
+                </div>
+
+            </div>
+            </div>
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3">
+            
+                        <strong>
+                            <label for="name">Total Project Cost (Y+AC+AD+AE):</strong></label>
+                       
+                        <input type="text" class="form-control dcf_preparation_tracker" id="total_proj_prep">
+            
+            
+                        </div>
+            
+                        <div class="col-md-3">
+            
+                            <strong>
+                                <label for="name">FMI: </label></strong>
+                           
+                            <input type="text" class="form-control dcf_preparation_tracker" id="fmi_prep">
+                
+                
+                            </div>
+
+                            <div class="col-md-3">
+            
+                                <strong>
+                                    <label for="name">FMI Kms:</label></strong>
+                               
+                                <input type="text" class="form-control dcf_preparation_tracker" id="fmi_kms_prep">
+                    
+                    
+                                </div>
+            
+                        </div>
+                        </div>
+
+
+
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <label class="form-label" for="customFile"><strong>MOVs for Uploading </strong><i>
+                            (DIPs, Implementation Plan, Matching Grant Agreement, etc.):</i>
+                            </label>
+                        <input type="file" class="form-control  dcf_preparation_tracker" id="customFile5" />
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+</form>
+
+</div>
+</div>
+
+
+{% endblock %}

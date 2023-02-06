@@ -1,0 +1,2276 @@
+{% extends 'layouts/base.html' %}
+{% set active_page = "formcdashboard" %}
+{% block title %} Dashboard {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              {{USER_INFO[0]}}
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="/formcdashboard"><i class="fas fa-home"></i></a></li>
+                  <li class="breadcrumb-item"><a href="/formcdashboard">Dashboard</a></li>
+       
+                  
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              <a class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#modal-filter">Filters</a>
+            </div>
+
+            
+    <div class="modal fade" id="modal-filter" tabindex="-1" role="dialog" aria-labelledby="modal-filter" aria-hidden="true">
+        <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <h6 class="modal-title text-uppercase" id="modal-title-default"><strong>Filter</strong> </h6>
+                    <p class="modal-title text-muted" style="font-size: smaller;">&nbsp;&nbsp;&nbsp;Combine two filter to display data.</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                
+                
+                <div class="modal-body">
+<form action="/formcdashboardfilter" method="POST">
+                    <div class="form-group">
+                        <div class="form-row">
+        
+                            <div class="col-md-6">
+                                <strong> <label for="exampleFormControlSelect1">Filter #1</label></strong>
+                                <select class="form-control form_data_c" name="filter1" id="filter1">
+                                    <option value="" selected disabled>Please select</option>
+                                    <option>Form Enterprise</option>
+                                    <option>Industry Cluster</option>
+                                    <option>Business Address</option>
+                                    <option>Gender</option>
+                                </select> 
+                            </div>
+        
+                            <div class="col-md-6">
+                                <strong> <label for="exampleFormControlSelect1">Filter #2</label></strong>
+                                <select class="form-control form_data_c" name="filter2" id="filter2">
+                                 
+                                    <option value="" selected disabled>Please select</option>
+                                    <option>Form Enterprise</option>
+                                    <option>Industry Cluster</option>
+                                    <option>Business Address</option>
+                                    <option>Gender</option>
+                                </select> 
+                            </div>
+        
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <div class="modal-footer">
+                    <button  type="submit" class="btn btn-primary">Done</button>
+                    <button type="button" class="btn btn-warning   ml-auto" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+
+          </div>
+          <!-- Card stats -->
+          <div class="row">
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total Entry</h5>
+                      <span class="h1 font-weight-bold mb-0">{{ count_entry }}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape">
+                        <img src="/static/psalm_static/assets/img/icons/totalentry.png" style="width: 250%; height: 250%;">
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt mb-0 text-sm">
+                   <br>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">New Entry</h5>
+                      <span class="h1 font-weight-bold mb-0">{{ data_currmonth }}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape">
+                        <img src="/static/psalm_static/assets/img/icons/newuser.png" style="width: 250%; height: 250%;">
+                      </div>
+                    </div>
+                  </div>
+                  {% if percentage >=0 %}
+                  <p class="mt mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i>{{ percentage }}%</span>
+                    <span class="text-nowrap">This month</span>
+                  </p>
+                  {%else%}
+                  <p class="mt mb-0 text-sm">
+                    <span class="text-warning mr-2"><i class="fa fa-arrow-down"></i>{{ percentage }}%</span>
+                    <span class="text-nowrap">This month</span>
+                  </p>
+                  {%endif%}
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Registered Business</h5>
+                      <span class="h1 font-weight-bold mb-0">{{ count_reg_business }}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape">
+                        <img src="/static/psalm_static/assets/img/icons/regbusiness.png" style="width: 250%; height: 250%;">
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt mb-0 text-sm">
+                    <br>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+              <div class="card card-stats" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <!-- Card body -->
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Firm/ Company</h5>
+                      <span class="h1 font-weight-bold mb-0">{{ count_position_firm }}</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape">
+                        <img src="/static/psalm_static/assets/img/icons/firmcompany.png" style="width: 250%; height: 250%;">
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt mb-0 text-sm">
+                    <br>
+                  </p>
+                </div>
+
+                
+              </div>
+            </div>
+            
+
+          </div>
+          
+
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col-xl-8">
+          <div class="card bg-default" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
+                  <h5 class="h3 text-white mb-0">Total Entries</h5>
+                </div>
+                <div class="col">
+                  <ul class="nav nav-pills justify-content-end">
+                    <li class="nav-item mr-2 mr-md-0" data-toggle="chart"  data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[{{ data_lastmonth }}, {{ data_currmonth }}, 0, 0, 0, 0, 0, 0]}]}}' >
+                      <a href="#" id="viewgraph" class="nav-link py-2 px-3 active" data-toggle="tab" style="display: none;">
+                      
+                      </a>
+                    </li>
+                   
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card-body">
+              <!-- Chart -->
+              <div class="chart">
+                <!-- Chart wrapper -->
+                <canvas id="chart-sales-dark" class="chart-canvas" ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+              
+        <div class="col-xl-4">
+        <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        
+          <!-- Card header -->
+          <div class="card-header">
+              
+          
+      
+      
+      
+      <!-- Title -->
+      
+      
+      <h5 class="h3 mb-0">Industry Cluster</h5>
+      
+      
+      
+      
+      
+      
+      
+      
+          </div><br>
+          <div class="row" style="justify-content: center;">
+        <p style=" border-radius: 16px; background-color: #1a0d00; height: 10px; margin-top: 8px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>&nbsp;<h4>Coffee: {{ count_coffee }}</h4>&nbsp;&nbsp;&nbsp;
+          <p style=" border-radius: 16px; background-color: #5c5c3d; height: 10px; margin-top: 8px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>&nbsp;<h4>Coconut: {{ count_coconut }}</h4>&nbsp;&nbsp;&nbsp;
+          <p style=" border-radius: 16px; background-color: #994d00; height: 10px; margin-top: 8px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>&nbsp;<h4>Cacao: {{ count_cacao }}</h4>&nbsp;&nbsp;&nbsp;
+          <p style=" border-radius: 16px; background-color: #006666; height: 10px; margin-top: 8px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>&nbsp;<h4>PFN: {{ count_pfn }}</h4>
+
+       
+        </div>
+      
+    
+          
+        <div class="bg-transparent">
+          <div class="row align-items-center">
+        
+            <div class="col">
+              <ul class="nav nav-pills justify-content-end">
+                <li class="nav-item mr-2 mr-md-0" data-toggle="chart"  data-target="#chart-pie" data-update='{"data":{"datasets":[{"data":[{{ count_cacao }},{{ count_coffee }},{{ count_coconut }},{{ count_pfn }} ] }] }}' >
+                  <a href="#" id="viewchart" class="nav-link py-2 px-3 active" data-toggle="tab"  style="display: none;">
+                    
+                  </a>
+                </li>
+               
+              </ul>
+            </div>
+          </div>
+        
+          </div>
+          
+          <!-- Card body -->
+          <div class="card-body">
+              
+          
+      <div class="chart">
+          <!-- Chart wrapper -->
+          <canvas id="chart-pie" class="chart-canvas"></canvas>
+      </div>
+      
+      
+      
+          </div>
+        </div>
+          
+      
+          
+      </div>
+   
+      </div>
+
+
+    </div>
+
+
+    
+
+    <div class="card" style=" margin: 25px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      <!-- Card header -->
+
+      <div class="table-responsive table py-4">
+        <div id="datatable-buttons_wrapper" class="dataTables_wrapper dt-bootstrap4" style="margin: 5%; margin-top: 3%;" >
+          <table class="table table-flush dataTable" id="datatable-buttons" role="grid" aria-describedby="datatable-buttons_info" >
+          <thead class="thead">
+            <tr role="row">
+              <th>ID</th>
+              <th>Business Name</th>
+              <th>Business Address</th>
+              <th>Name</th>
+              <th>Sex</th>
+              <th>Age</th>
+              <th>Phone number</th>
+              <th>VC Stakeholder</th>
+              <th>Industry Cluster</th>
+              <th>Form of Enterprise</th>
+              <th>Action</th>
+              </tr>
+          </thead>
+      
+          <tbody>
+            <tr>
+           <div>
+              {% for row in datatable %}
+              <td>{{ row['id'] }}</td>
+              <td>{{ row['reg_businessname'] }}</td>
+              <td>{{ row['business_addr'] }}</td>  
+              <td>{{ row['name'] }}</td>
+              <td>{{ row['sex'] }}</td>
+              <td>{{ row['age'] }}</td>
+              <td>{{ row['contact_details'] }}</td>
+              <td>{{ row['vc_stakeholders'] }}</td>
+              <td>{{ row['industry_cluster'] }} {{ row['pfn_specify'] }}</td>
+              <td>{{ row['form_interprise'] }}</td>
+              <td><a style="color: #5e72e4;" data-toggle="modal" data-target="#modaledit{{row['id']}}" href="/update/{{row['id']}}"> <span><i class="fa fa-eye" aria-hidden="true"> view</i></span></a>
+              </td>
+
+       
+          </tr>
+        
+          {% endfor  %}
+            </tbody>
+</table>
+{% for row in datatable %}
+<div class="modal fade" id="modaledit{{row['id']}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" id="modaldialogedit" role="document" style="max-width: 80%;">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #172b4d;">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Form C Details</h5>       
+        <button type="button" id="xbutton" class="close sweetalerts" data-dismiss="modal" aria-label="Close">
+          <span class="text-white" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="modalbodyedit">
+        <div class="card" style="width:80%;   margin: 0 auto; margin-top: 20px; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+          <div class="card-header" style="background-color: #004d00;">
+              <h3 style="color: white;">C-1 Respondent’s Profile</h3>
+          </div>
+      
+          <div class="card-body" style="background-color: #c6ecd9;">
+      
+              <form style="margin-left: 2%; margin-right: 2%;" action="/update" method="POST">
+                  {% include "sweetalert.html" %}
+
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-6">
+       
+                              <strong>
+                                  <label for="name">Name:</label>
+                              </strong>
+                              <input type="hidden"  name="id" value="{{ row['id'] }}">
+
+                              <input type="text" class="form-control form_data_c" id="name" value="{{ row['name'] }}" name="name" required>
+                              
+                          </div>
+                          <div class="col-md-6">
+                              <strong>
+                                  <label for="position">Position in the Firm/ Company:</label>
+                              </strong>
+                              <input type="text" class="form-control form_data_c" value="{{ row['position_firm'] }}" id="position_company" name="position_firm">
+                          </div>
+      
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-3">
+                              <strong>
+                                  <label for="no_indigenous_group">Member of Indigenous Group:</label>
+                              </strong>
+                              <select class="form-control form_data_c"  value="{{ row['member_indegenous'] }}" name="member_indegenous" id="no_indigenous_group">
+                                  <option selected>{{ row['member_indegenous'] }}</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                              </select>
+                              <input type="text" name="member_indegenous" class="form-control hidden-textbox3 form_data_c" id="indigenous_group" placeholder="Please specify which group" style="display: none;">
+                          </div>
+      
+      
+      
+                          <div class="col-md-2">
+                              <strong>
+                                  <label for="exampleFormControlSelect1">Sex:</label>
+                              </strong>
+                              <select class="form-control form_data_c" value="{{ row['sex'] }}" id="sex" name="sex">
+                                  <option selected>{{ row['sex'] }}</option>
+                                  <option>Male</option>
+                                  <option>Female</option>
+                              </select>
+                          </div>
+      
+                          <div class="col-md-2">
+                              <strong>
+                                  <label for="age">Age:</label>
+                              </strong>
+                              <input type="text" class="form-control form_data_c" value="{{ row['age'] }}" id="age" name="age">
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-4">
+                              <strong>
+                                  <label for="age">Contact Details (Phone Number):</label>
+                              </strong>
+                              <input  type="text" class="form-control form_data_c"  value="{{ row['contact_details'] }}" name="contact_details" id="phone_no">
+                          </div>
+      
+                          <div class="col-md-4">
+                              <strong>
+                                  <label for="email">Email Address:</label>
+                              </strong>
+                              <input type="email" class="form-control form_data_c" value="{{ row['email_add'] }}" id="email_add" name="email_add">
+                          </div>
+                      </div>
+                  </div>
+      
+      
+      
+          </div>
+      </div>
+      
+      
+      <div class="card" style="width:80%;  margin: 0 auto; float: none; margin-top: 30px; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+          <style>
+      
+              th,td{
+              border-color: white !important;
+              border: 2px solid white;
+              }
+              
+              </style>
+          <div class="card-header" style="background-color: #004d00;">
+              <h3 style="color: white;">C-2 Business Information</h3>
+          </div>
+      
+          <div class="card-body" style="background-color: #c6ecd9;">
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+      
+                          <div class="col-md-6">
+                              <strong> <label for="exampleFormControlSelect1">VC Stakeholder Category:</label></strong>
+                              <select class="form-control form_data_c" value="{{ row['vc_stakeholders'] }}" id="vc_stakeholders" name="vc_stakeholders">
+                                  <option selected>{{ row['vc_stakeholders'] }}</option>
+                                  <option value="MSME">MSME</option>
+                                  <option value="Large Firm">Large Firm</option>
+                              </select>
+                          </div>
+      
+                          <div class="col-md-6">
+                              <strong>
+                                  <label for="industry_cluster">Industry Cluster:</label>
+                              </strong>
+                              <select class="form-control form_data_c"  value="{{ row['industry_cluster'] }}" name="industry_cluster" id="industry_cluster">
+                                  <option selected>{{ row['industry_cluster'] }}{{ row['pfn_specify'] }}</option>
+                                  <option value="cacao">Cacao</option>
+                                  <option value="coconut">Coconut</option>
+                                  <option value="coffee">Coffee</option>
+                              </select>
+                              <input type="text" class="form-control form_data_c" name="pfn_specify" id="pfn_specify"
+                                  placeholder="PFN-specify" >
+                          </div>
+      
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+      
+      
+                          <div class="col-md-6">
+                              <strong>
+                                  <label for="name">Registered Business Name:</label>
+                              </strong>
+                              <input type="text" class="form-control form_data_c" value="{{ row['reg_businessname'] }}" name="reg_businessname" id="reg_businessname">
+                          </div>
+      
+                          <div class="col-md-6">
+                              <strong>
+                                  <label for="ifyes">Business Address:</label>
+                              </strong>
+                              <input type="text" name="business_addr"  value="{{ row['business_addr'] }}" class="form-control form_data_c " id="business_addr">
+                          </div>
+      
+      
+      
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+      
+                          <div class="col-md-6">
+                              <strong>
+                                  <label>Form of Interprise:</label>  
+                              </strong>
+                              <select class="form-control form_data_c" value="{{ row['form_interprise'] }}"  name="form_interprise" id="form_interprise">
+                                  <option selected>{{ row['form_interprise'] }}</option>
+                                  <option value="single">Single/Sole</option>
+                                  <option value="partner">Partnership</option>
+                                  <option value="corporate">Corporation</option>
+                                  <option value="others">Other</option>
+                              </select> 
+                              <input type="text" class="form-control hidden-textbox form_data_c" name="interprise_other" id="interprise_other" placeholder="Please specify" style="display: none;">
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <br>
+                              <strong><label>Availability of official/legal/administrative documents. Check
+                                      all that applies</label>
+                              </strong>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div style="padding-left: 20px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <strong>
+                                  <label>a. Administration</label>
+                              </strong>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div style="padding-left: 40px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-4">
+                              <div class="form-check">
+              
+                                  <strong>  <label class="form-check-label" for="business_reg_check">Business Registration</label></strong>
+      
+                                      <div class="input-group">
+                                          <label style=" background-color: #b3ffec;" class="input-group-text">Issued by:</label>
+                                          <input type="text" class="form-control form_data_c" value="{{ row['issued_by_business_reg'] }}" id="issued_by_business_reg" name="issued_by_business_reg">
+                                        
+                                              
+                                      </div>
+                                      <div class="input-group date">
+                                          <label style=" background-color: #ffcccc;"
+                                              class="input-group-text">Expiration date:</label>
+                                          <input type="date" class="form-control form_data_c" value="{{ row['expired_date_business_reg'] }}" id="expired_date_business_reg" name="expired_date_business_reg">
+                                        
+                                      </div>
+                     
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div style="padding-left: 40px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-4">
+                              <div class="form-check">
+                                 <strong><label class="form-check-label" for="product_reg_check">Product Registration</label></strong> 
+      
+                                      <div class="input-group">
+                                          <label style="background-color: #b3ffec; "
+                                              class="input-group-text">Issued by:</label>
+                                          <input type="text" class="form-control form_data_c" value="{{ row['issued_by_product_reg'] }}" id="issued_by_product_reg" name="issued_by_product_reg">
+                                      
+                                      </div>
+                                      <div class="input-group date">
+                                          <label style=" background-color: #ffcccc;"
+                                              class="input-group-text">Expiration date:</label>
+                                          <input type="date" class="form-control form_data_c" value="{{ row['expired_date_product_reg'] }}"  id="expired_date_product_reg" name="expired_date_product_reg">
+                                   
+                                      </div>
+                                 
+
+                              </div>
+      
+      
+      
+                          </div>
+                      </div>
+      
+                  </div>
+      
+                  <div style="padding-left: 40px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-4">
+      
+                              <div class="form-check">
+
+                                  <strong><label class="form-check-label" for="cert_reg">Certificate of Registration</label></strong>
+
+                                      <div class="input-group">
+                                          <label style=" background-color: #b3ffec; "
+                                              class="input-group-text">Issued by:</label>
+                                          <input type="text" class="form-control form_data_c" value="{{ row['issued_by_cert_reg'] }}" id="issued_by_cert_reg" name="issued_by_cert_reg">
+                                          
+                                      </div>
+                                      <div class="input-group date">
+                                          <label style="  background-color: #ffcccc;"
+                                              class="input-group-text">Expiration date:</label>
+                                          <input type="date" class="form-control form_data_c" value="{{ row['expired_date_cert_reg'] }}" id="expired_date_cert_reg" name="expired_date_cert_reg">
+                                        
+                                      </div>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div style="padding-left: 40px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-4">
+      
+                              <div class="form-check">
+                                  <strong><label class="form-check-label" for="lic_op">License to Operation</label></strong>
+      
+                                      <div class="input-group">
+                                          <label style=" background-color: #b3ffec;"
+                                              class="input-group-text">Issued by:</label>
+                                          <input type="text" class="form-control form_data_c" value="{{ row['issued_by_lic_op'] }}" id="issued_by_lic_op" name="issued_by_lic_op">
+                                      
+                                      </div>
+                                      <div class="input-group date">
+                                          <label style=" background-color: #ffcccc;"
+                                              class="input-group-text">Expiration date:</label>
+                                          <input type="date" class="form-control form_data_c" value="{{ row['expired_date_lic_op'] }}" id="expired_date_lic_op" name="expired_date_lic_op">
+                                          
+                                      </div>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      <br>
+                  <div style="padding-left: 20px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <strong>
+                                  <label>b. Product Quality</label>
+                              </strong>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div style="padding-left: 40px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-4">
+                              <div class="form-check">
+
+                                 <strong> <label class="form-check-label" for="iso_cert">ISO Certification</label></strong>
+                                  <input type="text" class="form-control form_data_c" value="{{ row['iso_cert_specific'] }}" name="iso_cert_specific" id="iso_cert_specific" placeholder="Please Specify">
+
+                                      <div class="input-group">
+                                          <label style="background-color: #b3ffec;"
+                                              class="input-group-text">Issued by:</label>
+                                          <input type="text" class="form-control form_data_c" value="{{ row['issued_by_iso_cert'] }}" id="issued_by_iso_cert" name="issued_by_iso_cert">
+                                    
+                                      </div>
+                                      <div class="input-group date">
+                                          <label style=" background-color: #ffcccc;"
+                                              class="input-group-text">Expiration date:</label>
+                                          <input type="date" class="form-control form_data_c" value="{{ row['expired_date_iso_cert'] }}" id="expired_date_iso_cert" name="expired_date_iso_cert">
+                                      
+      
+      
+      
+      
+                                      </div>
+                               
+                              </div>
+      
+      
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div style="padding-left: 40px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-4">
+                              <div class="form-check">
+                                 <strong> <label class="form-check-label" for="Gap_cert">GAP/GMP Certification</label></strong>
+
+                                      <div class="input-group">
+                                          <label style=" background-color: #b3ffec;"
+                                              class="input-group-text">Issued by:</label>
+                                          <input type="text" class="form-control form_data_c" value="{{ row['issued_by_gapgmp_cert'] }}" id="issued_by_gapgmp_cert" name="issued_by_gapgmp_cert">
+                                        
+                                      </div>
+      
+                                      <div class="input-group date">
+                                          <label style="  background-color: #ffcccc;"
+                                              class="input-group-text">Expiration date:</label>
+                                          <input type="date" class="form-control form_data_c"  value="{{ row['expired_date_gapgmp_cert'] }}" id="expired_date_gapgmp_cert" name="expired_date_gapgmp_cert">
+                                          
+                                      </div>
+                                  
+      
+                              </div>
+      
+      
+      
+                          </div>
+                      </div>
+      
+                  </div>
+      
+                  <div style="padding-left: 40px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-4">
+      
+                              <div class="form-check">
+                              <strong>  <label class="form-check-label" for="organic">Organic</label></strong>  
+                         
+                                      <div class="input-group">
+                                          <label style=" background-color: #b3ffec;"
+                                              class="input-group-text">Issued by:</label>
+                                          <input type="text" class="form-control form_data_c"  value="{{ row['issued_by_organic'] }}" id="issued_by_organic" name="issued_by_organic">
+                                       
+                                      </div>
+                                      <div class="input-group date">
+                                          <label style=" background-color: #ffcccc;"
+                                              class="input-group-text">Expiration date:</label>
+                                          <input type="date" class="form-control form_data_c" value="{{ row['expired_date_organic'] }}" id="expired_date_organic" name="expired_date_organic">
+                                         
+      
+                                      </div>
+                                  
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div style="padding-left: 40px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-4">
+      
+                              <div class="form-check">
+                                 <strong> <label class="form-check-label" for="halal">Halal</label></strong>
+
+                                      <div class="input-group">
+                                          <label style=" background-color: #b3ffec;"
+                                              class="input-group-text">Issued by:</label>
+                                          <input type="text" class="form-control form_data_c"  value="{{ row['issued_by_halal'] }}" id="issued_by_halal" name="issued_by_halal">
+                                         
+                                      </div>
+                                      <div class="input-group date">
+                                          <label style="background-color: #ffcccc;"
+                                              class="input-group-text">Expiration date:</label>
+                                          <input type="date" class="form-control form_data_c"  value="{{ row['expired_date_halal'] }}" id="expired_date_halal" name="expired_date_halal">
+                                          
+                                      </div>
+                                  
+                              </div>
+                          </div>
+                      </div>
+      
+                  </div>
+                  <div style="padding-left: 40px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-4">
+                              <div class="form-check">
+                                 
+                                 <strong> <label class="form-check-label" for="other_cert">Other Certification</label></strong>
+                                  <input type="text" class="form-control form_data_c" value="{{ row['other_cert_specify'] }}" id="other_cert_specify" name="other_cert_specify" placeholder="Please Specify ">
+
+                                      <div class="input-group">
+                                          <label style=" background-color: #b3ffec;"
+                                              class="input-group-text">Issued by:</label>
+                                          <input type="text" class="form-control form_data_c" value="{{ row['issued_by_other_cert'] }}" id="issued_by_other_cert" name="issued_by_other_cert">
+                                         
+                                      </div>
+                                      <div class="input-group date">
+                                          <label style=" background-color: #ffcccc;"
+                                              class="input-group-text">Expiration date:</label>
+                                          <input type="date" class="form-control form_data_c" value="{{ row['expired_date_other_cert'] }}" id="expired_date_other_cert" name="expired_date_other_cert">
+                                          
+                                      </div>
+                                  
+                              </div>
+                          </div>
+                      </div>
+      
+                  </div>
+      <br>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                            <div class="form-check">
+                              {% if (row['none_of_the_above'])!=""  %}
+                                <input class="form-check-input form_data_c" type="checkbox" checked value="None of the Above/On-process/Informal" name="none_of_the_above" id="none_of_the_above" />
+                              {%else%}
+                                <input class="form-check-input form_data_c" type="checkbox" value="None of the Above/On-process/Informal" name="none_of_the_above" id="none_of_the_above" />
+                              {% endif %}
+                              <strong> <label class="form-check-label" for="none">None of the Above/On-process/Informal {{ischeck}}</label></strong> 
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+      <br>
+                  <div class="form-group">
+                      <div class="form-row">
+      
+                          <div class="col-md-6">
+                              <strong> <label for="exampleFormControlSelect1">Type of Enterprise/Business Size</strong> <i>(by asset, exc. land)</i></label>
+                              <select class="form-control form_data_c" value="{{ row['type_enterprise'] }}" id="type_enterprise" name="type_enterprise">
+                                  <option value="" selected>{{ row['type_enterprise'] }}</option>
+                                  <option value="Micro (3M below) ">Micro (3M below) </option>
+                                  <option value="Small (3-15M)">Small (3-15M)</option>
+                                  <option value="Medium (15.1M-100M)">Medium (15.1M-100M)</option>
+                                  <option value="Large (Above 100M)">Large (Above 100M)</option>
+                              </select>
+                          </div>
+      
+      
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <br>
+                              <strong><label>Business Classification and Current Value Addition Activity</label> </strong>
+                          </div>
+                      </div>
+                      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                      <label>Please mark&nbsp;&nbsp;<i class="fa fa-check-square"
+                          aria-hidden="true"></i>&nbsp;&nbsp;the main economic activity of the enterprise.</label>
+                          </div>
+                          </div>
+              </div>
+      
+                  </div>
+      
+                  
+                  <br>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <div class="form-check">
+                                  <strong><label class="form-check-label" for="none">Input Supplier</label></strong>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <table class="table table-bordered table-dark">
+                                  <thead style="background-color: #004d00 ;">
+                                      <tr style="color: white;">
+                                          <th scope="col">Specific Products</th>
+                                          <th scope="col">Store Capacity (Current Volume, ave./month</th>
+                                          <th scope="col">Potential/Target Capacity</th>
+                                          <th scope="col">Other Info</th>
+                                      </tr>
+                                  </thead>
+                                 
+                          
+                  <tbody>
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+      
+                                      <label class="form-check-label" for="none">Fertilizers</label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div style="padding-left: 40px;" class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                      
+                                      <label class="form-check-label" for="none">Organic</label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div style="padding-left: 40px;" class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <br><br>
+                                      <label class="form-check-label" for="none">Synthetic</label>
+                                  </div>
+                              </div>
+                          </div>
+                      </td>
+                      
+                      <td><br><textarea class="form-control form_data_c" value="{{ row['store_capacity_organic'] }}" id="store_capacity_organic" name="store_capacity_organic">{{ row['store_capacity_organic'] }}</textarea><br>
+                          <textarea class="form-control form_data_c" value="{{ row['store_capacity_organic'] }}" id="store_capacity_synthetic" name="store_capacity_synthetic">{{ row['store_capacity_organic'] }}</textarea>
+                      </td>
+                      <td><br><textarea class="form-control form_data_c" value="{{ row['potential_organic'] }}" id="potential_organic" name="potential_organic">{{ row['potential_organic'] }}</textarea><br>
+                          <textarea class="form-control form_data_c" value="{{ row['potential_synthetic'] }}" id="potential_synthetic" name="potential_synthetic">{{ row['potential_synthetic'] }}</textarea>
+                      </td>
+                      <td><br><textarea class="form-control form_data_c" value="{{ row['other_info_organic'] }}" id="other_info_organic" name="other_info_organic">{{ row['other_info_organic'] }}</textarea><br>
+                          <textarea class="form-control form_data_c"  value="{{ row['other_info_synthetic'] }}" id="other_info_synthetic" name="other_info_synthetic">{{ row['other_info_synthetic'] }}</textarea>
+                      </td>
+                      
+                  </tr>
+      
+                  <tr>
+      
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+      
+                                      <label class="form-check-label" for="none">Chemicals</label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div style="padding-left: 40px;" class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                  
+                                      <label class="form-check-label" for="none">Pesticides</label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div style="padding-left: 40px;" class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <br><br>
+                                      <label class="form-check-label" for="none">Herbicides</label>
+                                  </div>
+                              </div>
+                          </div>
+                      </td>
+                      <td><br><textarea class="form-control form_data_c" value="{{ row['store_capacity_pesticides'] }}" id="store_capacity_pesticides" name="store_capacity_pesticides">{{ row['store_capacity_pesticides'] }}</textarea><br>
+                          <textarea class="form-control form_data_c" value="{{ row['store_capacity_herbicides'] }}"  id="store_capacity_herbicides" name="store_capacity_herbicides">{{ row['store_capacity_herbicides'] }}</textarea>
+                      </td>
+                      <td><br><textarea class="form-control form_data_c" value="{{ row['potential_pesticides'] }}" id="potential_pesticides" name="potential_pesticides">{{ row['potential_pesticides'] }}</textarea><br>
+                          <textarea class="form-control form_data_c"  value="{{ row['potential_herbicides'] }}" id="potential_herbicides" name="potential_herbicides">{{ row['potential_herbicides'] }}</textarea>
+                      </td>
+                      <td><br><textarea class="form-control form_data_c" value="{{ row['other_info_pesticides'] }}" id="other_info_pesticides" name="other_info_pesticides">{{ row['other_info_pesticides'] }}</textarea><br>
+                          <textarea class="form-control form_data_c" value="{{ row['other_info_herbicides'] }}" id="other_info_herbicides" name="other_info_herbicides">{{ row['other_info_herbicides'] }}</textarea>
+                          
+                      </td>
+                  </tr>
+                  <tr>
+                      <td style="padding-left: 30px;">
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <br>    
+                                      <label class="form-check-label" for="none">Vermicast Compost</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['store_capacity_vermicast_compost'] }}" id="store_capacity_vermicast_compost" name="store_capacity_vermicast_compost">{{ row['store_capacity_vermicast_compost'] }}</textarea>
+                  
+                      </td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['potential_vermicast_compost'] }}" id="potential_vermicast_compost" name="potential_vermicast_compost">{{ row['potential_vermicast_compost'] }}</textarea>
+      
+                      </td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['other_info_vermicast_compost'] }}" id="other_info_vermicast_compost" name="other_info_vermicast_compost">{{ row['other_info_vermicast_compost'] }}</textarea>
+                      </td>
+      
+                      </td>
+                  </tr>
+      
+                  <tr>
+                      <td style="padding-left: 30px;">
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <br>
+                                      <label class="form-check-label" for="none">Seedlings (Nursery Operator)</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['store_capacity_seedlings'] }}" id="store_capacity_seedlings" name="store_capacity_seedlings">{{ row['store_capacity_seedlings'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['potential_seedlings'] }}" id="potential_seedlings" name="potential_seedlings">{{ row['potential_seedlings'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['other_info_seedlings'] }}" id="other_info_seedlings" name="other_info_seedlings">{{ row['other_info_seedlings'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+                  <tr>
+                      <td style="padding-left: 30px;">
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                    
+                                      <label class="form-check-label" for="none">Others</label>
+                                      <input type="text" class="form-control form_data_c" value="{{ row['others_specific_products'] }}" id="others_specific_products" name="others_specific_products"
+                                          placeholder="Please Specify ">
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['store_capacity_others_specific_products'] }}" id="store_capacity_others_specific_products" name="store_capacity_others_specific_products">{{ row['store_capacity_others_specific_products'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['potential_others_specific_products'] }}" id="potential_others_specific_products" name="potential_others_specific_products">{{ row['potential_others_specific_products'] }}"</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['other_info_others_specific_products'] }}" id="other_info_others_specific_products" name="other_info_others_specific_products">{{ row['other_info_others_specific_products'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+      
+      
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+                  <br>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <div class="form-check">
+                                  <strong><label class="form-check-label" for="none">Post- Harvest</label></strong>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+      
+                              <table class="table table-bordered table-dark">
+                                  <thead style="background-color: #004d00 ;">
+                                      <tr style="color: white;">
+                                          <th scope="col">Specifics</th>
+                                          <th scope="col">Area/Capacity Utilization (%)</th>
+                                          <th scope="col">Potential for Expansion-demand based? (Y/N)</th>
+                                          <th scope="col">Other Information</th>
+                                      </tr>
+                                  </thead>
+                                  
+                      
+      
+                  <tbody>
+      
+                  <tr>
+                      <td style="padding-left: 30px;">
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <label class="form-check-label" for="none">Drying</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['area_capacity_drying'] }}" id="area_capacity_drying" name="area_capacity_drying">{{ row['area_capacity_drying'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['potential_exp_drying'] }}" id="potential_exp_drying" name="potential_exp_drying">{{ row['potential_exp_drying'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['other_info_drying'] }}" id="other_info_drying" name="other_info_drying"></textarea>{{ row['other_info_drying'] }}</td>
+      
+                      </td>
+                  </tr>
+      
+                  <tr>
+                      <td style="padding-left: 30px;">
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+            
+                                      <label class="form-check-label" for="none">Storage Hauling</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c"  value="{{ row['area_capacity_storage_hauling'] }}" id="area_capacity_storage_hauling" name="area_capacity_storage_hauling">{{ row['area_capacity_storage_hauling'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['potential_exp_storage_hauling'] }}" id="potential_exp_storage_hauling" name="potential_exp_storage_hauling">{{ row['potential_exp_storage_hauling'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['other_info_storage_hauling'] }}" id="other_info_storage_hauling" name="other_info_storage_hauling">{{ row['other_info_storage_hauling'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+      
+      
+      
+      
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      
+                  <br>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <div class="form-check">
+                                  <strong><label class="form-check-label" for="none">Processing</label></strong>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+      
+                              <table class="table table-bordered table-dark">
+                                  <thead style="background-color: #004d00 ;">
+                                      <tr style="color: white;">
+                                          <th scope="col">Specifics</th>
+                                          <th scope="col">Current Capacity/ Production</th>
+                                          <th scope="col">Potential for Expansion? (Y/N)</th>
+                                          <th scope="col">Other Information</th>
+                                      </tr>
+                                  </thead>
+                                 
+                      
+                  <tbody>
+      
+                  <tr>
+                      <td style="padding-left: 30px;">
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <label class="form-check-label" for="none">Semi Processing</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['current_capacity_semi_processing'] }}" id="current_capacity_semi_processing" name="current_capacity_semi_processing">{{ row['current_capacity_semi_processing'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c"  value="{{ row['potential_exp_semi_processing'] }}" id="potential_exp_semi_processing" name="potential_exp_semi_processing">{{ row['potential_exp_semi_processing'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['other_info_semi_processing'] }}" id="other_info_semi_processing" name="other_info_semi_processing">{{ row['other_info_semi_processing'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+                  <tr>
+                      <td style="padding-left: 30px;">
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <label class="form-check-label" for="none">Final Product Form</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['current_capacity_final_product'] }}" id="current_capacity_final_product" name="current_capacity_final_product">{{ row['current_capacity_final_product'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['potential_exp_final_product'] }}" id="potential_exp_final_product" name="potential_exp_final_product">{{ row['potential_exp_final_product'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['other_info_final_product'] }}" id="other_info_final_product" name="other_info_final_product">{{ row['other_info_final_product'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+      
+      
+      
+      
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      
+      
+                  <br>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <div class="form-check">
+        
+                                  <strong><label class="form-check-label" for="none">Trading</label></strong>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+      
+                              <table class="table table-bordered table-dark">
+                                  <thead style="background-color: #004d00 ;">
+                                      <tr style="color: white;">
+                                          <th scope="col">Specifics</th>
+                                          <th scope="col">Volume/ Capacity</th>
+                                          <th scope="col">Potential for Expansion? (Y/N)</th>
+                                          <th scope="col">Other Information</th>
+                                      </tr>
+                                  </thead>
+      
+                                  <tbody>
+      
+      
+                  <tr>
+                      <td style="padding-left: 30px;">
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+               
+                                      <label class="form-check-label" for="none">Consolidation/ Buy & Sell</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['volume_consolidation'] }}" id="volume_consolidation" name="volume_consolidation">{{ row['volume_consolidation'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['potential_consolidation'] }}" id="potential_consolidation" name="potential_consolidation">{{ row['potential_consolidation'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['other_info_consolidation'] }}" id="other_info_consolidation" name="other_info_consolidation">{{ row['other_info_consolidation'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+      
+      
+      
+      
+      
+      
+                  </tbody>
+                  </table>
+        </div>
+                      </div>
+                  </div>
+      
+      
+                  <br>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <div class="form-check">
+             
+                                  <strong><label class="form-check-label" for="none">Marketing</label></strong>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+      
+                              <table class="table table-bordered table-dark">
+                                  <thead style="background-color: #004d00 ;">
+                                      <tr style="color: white;">
+                                          <th scope="col">Specifics</th>
+                                          <th scope="col">Production Cap./Month</th>
+                                          <th scope="col">Potential for Expansion? (Y/N)</th>
+                                          <th scope="col">Other Information</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                     
+      
+      
+                  <tr>
+                      <td style="padding-left: 30px;">
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                    
+                                      <label class="form-check-label" for="none">Packaging and Labelling Marketing (Retail and
+                                          Wholesale)</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['production_pack_label'] }}" id="production_pack_label" name="production_pack_label">{{ row['production_pack_label'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['potential_pack_label'] }}" id="potential_pack_label" name="potential_pack_label">{{ row['potential_pack_label'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['other_info_pack_label'] }}" id="other_info_pack_label" name="other_info_pack_label">{{ row['other_info_pack_label'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+      
+      
+      
+      
+      
+      
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      
+                  <br>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <div class="form-check">
+      
+                                  <strong><label class="form-check-label" for="none">Financial Services</label></strong>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+      
+                              <table class="table table-bordered table-dark">
+                                  <thead style="background-color: #004d00 ;">
+                                      <tr style="color: white;">
+                                          <th scope="col">Specifics</th>
+                                          <th scope="col">Loan Portfolio (specific to RAPID priority crops)</th>
+                                          <th scope="col">Potential for Expansion? (Y/N)</th>
+                                          <th scope="col">Other Information</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                  
+      
+      
+      
+                  <tr>
+                      <td style="padding-left: 30px;">
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                           
+                                      <label class="form-check-label" for="none">Micro-financing</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['loan_portfo_micro_financing'] }}" id="loan_portfo_micro_financing" name="loan_portfo_micro_financing">{{ row['loan_portfo_micro_financing'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['potential_micro_financing'] }}" id="potential_micro_financing" name="potential_micro_financing">{{ row['potential_micro_financing'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c"  value="{{ row['other_info_micro_financing'] }}" id="other_info_micro_financing" name="other_info_micro_financing">{{ row['other_info_micro_financing'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+                  <tr>
+                      <td style="padding-left: 30px;">
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                           
+                                      <label class="form-check-label" for="none">Insurance (equipment, crop, other asset)</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['loan_portfo_insurance'] }}" id="loan_portfo_insurance" name="loan_portfo_insurance">{{ row['loan_portfo_insurance'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['potential_insurance'] }}" id="potential_insurance" name="potential_insurance">{{ row['potential_insurance'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['other_info_insurance'] }}" id="other_info_insurance" name="other_info_insurance">{{ row['other_info_insurance'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      
+                  <br>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+      
+                              <strong> <label class="form-check-label" for="none">Production & Sales</label>
+                              </strong>
+      
+                          </div>
+                      </div>
+      
+                      <div class="form-group">
+                          <div class="form-row">
+                              <div class="col">
+      
+                                  <i> <label class="form-check-label" for="none">Assumption: Profiled individual/organization
+                                          is into any of the project’s priority commodity e.i cacao, coffee, PFN,
+                                          Coconut)</label>
+                                  </i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+      
+                              <table class="table table-bordered table-dark">
+                                  <thead style="background-color: #004d00 ;">
+                                      <tr style="color: white;">
+                                          <th scope="col">Product/Services <br>( under VC only)</th>
+                                          <th scope="col">Sales Volume/month</th>
+                                          <th scope="col">Unit Selling Price</th>
+                                          <th scope="col">Unit Measurement <br>(kgs/sack/pc, interest)</th>
+                                          <th scope="col">Payment Terms</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                        
+      
+      
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <textarea class="form-control form_data_c" value="{{ row['prodsales_product_service'] }}" id="prodsales_product_service" name="prodsales_product_service">{{ row['prodsales_product_service'] }}</textarea>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_sales_vol'] }}" id="prodsales_sales_vol" name="prodsales_sales_vol">{{ row['prodsales_sales_vol'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_unit_selling'] }}" id="prodsales_unit_selling" name="prodsales_unit_selling">{{ row['prodsales_unit_selling'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_unit_measurement'] }}" id="prodsales_unit_measurement" name="prodsales_unit_measurement">{{ row['prodsales_unit_measurement'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_payment_terms'] }}" id="prodsales_payment_terms" name="prodsales_payment_terms">{{ row['prodsales_payment_terms'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <textarea class="form-control form_data_c" value="{{ row['prodsales_product_service2'] }}" id="prodsales_product_service2" name="prodsales_product_service2">{{ row['prodsales_product_service2'] }}</textarea>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_sales_vol2'] }}" id="prodsales_sales_vol2" name="prodsales_sales_vol2">{{ row['prodsales_sales_vol2'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_unit_selling2'] }}" id="prodsales_unit_selling2" name="prodsales_unit_selling2">{{ row['prodsales_unit_selling2'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_unit_measurement2'] }}" id="prodsales_unit_measurement2" name="prodsales_unit_measurement2">{{ row['prodsales_unit_measurement2'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_payment_terms2'] }}" id="prodsales_payment_terms2" name="prodsales_payment_terms2">{{ row['prodsales_payment_terms2'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <textarea class="form-control form_data_c" value="{{ row['prodsales_product_service3'] }}" id="prodsales_product_service3" name="prodsales_product_service3">{{ row['prodsales_product_service3'] }}</textarea>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_sales_vol3'] }}" id="prodsales_sales_vol3" name="prodsales_sales_vol3">{{ row['prodsales_sales_vol3'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_unit_selling3'] }}" id="prodsales_unit_selling3" name="prodsales_unit_selling3">{{ row['prodsales_unit_selling3'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_unit_measurement3'] }}" id="prodsales_unit_measurement3" name="prodsales_unit_measurement3">{{ row['prodsales_unit_measurement3'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['prodsales_payment_terms3'] }}" id="prodsales_payment_terms3" name="prodsales_payment_terms3">{{ row['prodsales_payment_terms3'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+      
+      
+      
+      
+      
+      
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      
+                  <br>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+      
+                              <strong> <label class="form-check-label" for="none">Supply/Value Chain, Marketing
+                                      Channel</label>
+                              </strong>
+      
+                          </div>
+                      </div>
+      
+                      <div class="form-group">
+                          <div class="form-row">
+                              <div class="col">
+      
+                                  <label class="form-check-label" for="none">Where do you buy your raw materials?</label>
+      
+                              </div>
+                          </div>
+      
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="form-col">
+                              <div style="padding-left: 40px;" class="form-check">
+                                
+                                {% if (row['direct_farm'])!="" and (row['direct_farm'])!="None" %}
+                                  <input class="form-check-input form_data_c" checked type="checkbox" value="Direct Farm" id="direct_farm" name="direct_farm" />
+                                  {%else%}
+                                  <input class="form-check-input form_data_c" type="checkbox" value="Direct Farm" id="direct_farm" name="direct_farm" />
+                                  {%endif%}
+                                  <label class="form-check-label" for="none">Direct Farm</label>
+                                  {% if (row['public_market'])!="" and (row['public_market'])!="None" %}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" checked type="checkbox" value="Public Market" id="public_market" name="public_market" />
+                                  {%else%}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Public Market" id="public_market" name="public_market" />
+                                  {%endif%}
+                                  <label style="padding-left: 40px;" class="form-check-label" for="none">Public Market</label>
+                                  {% if (row['trader_conso'])!="" and (row['trader_conso'])!="None" %}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" checked type="checkbox" value="Trader/Consolidator" id="trader_conso" name="trader_conso" />
+                                  {%else%}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Trader/Consolidator" id="trader_conso" name="trader_conso" />
+                                  {%endif%}
+                                  <label style="padding-left: 40px;" class="form-check-label"
+                                      for="none">Trader/Consolidator</label>
+      
+      
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+      
+                              <table class="table table-bordered table-dark">
+                                  <thead style="background-color: #004d00 ;">
+                                      <tr style="color: white;">
+                                          <th scope="col">Raw Materials</th>
+                                          <th scope="col">Volume/Supply Requirement</th>
+                                          <th scope="col">Quality Requirement (organic, color, packaging, etc.)</th>
+                                          <th scope="col">Unit Measurement<br>(kgs/sack/pc, interest)</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                  
+      
+      
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <textarea class="form-control form_data_c" value="{{ row['raw_materials'] }}" id="raw_materials" name="raw_materials">{{ row['raw_materials'] }}</textarea>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['volume_supply'] }}" id="volume_supply" name="volume_supply">{{ row['volume_supply'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['quality_requirement'] }}" id="quality_requirement" name="quality_requirement">{{ row['quality_requirement'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['unit_measurement_raw'] }}" id="unit_measurement_raw" name="unit_measurement_raw">{{ row['unit_measurement_raw'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <textarea class="form-control form_data_c" value="{{ row['raw_materials2'] }}" id="raw_materials2" name="raw_materials2">{{ row['raw_materials2'] }}</textarea>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['volume_supply2'] }}" id="volume_supply2" name="volume_supply2">{{ row['volume_supply2'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['quality_requirement2'] }}" id="quality_requirement2" name="quality_requirement2">{{ row['quality_requirement2'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['unit_measurement_raw2'] }}" id="unit_measurement_raw2" name="unit_measurement_raw2">{{ row['unit_measurement_raw2'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <textarea class="form-control form_data_c" value="{{ row['raw_materials3'] }}" id="raw_materials3" name="raw_materials3">{{ row['raw_materials3'] }}</textarea>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['volume_supply3'] }}" id="volume_supply3" name="volume_supply3">{{ row['volume_supply3'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['quality_requirement3'] }}" id="quality_requirement3" name="quality_requirement3">{{ row['quality_requirement3'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['unit_measurement_raw3'] }}" id="unit_measurement_raw3" name="unit_measurement_raw3">{{ row['unit_measurement_raw3'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+      
+      
+      
+      
+      
+      
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      
+      
+                  <br>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                                  <strong><label class="form-check-label" for="none">Marketing/ Sales Distribution
+                                          Channel</label></strong>
+                          </div>
+                      </div>
+      
+      
+                      <div class="form-group">
+                          <div class="form-row">
+                              <div class="col">
+      
+                                  <label class="form-check-label" for="none">Where do you sell your products/services?</label>
+      
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <table class="table table-bordered table-dark">
+                                  <thead style="background-color: #004d00 ;">
+                                      <tr style="color: white;">
+                                          <th scope="col">Clients</th>
+                                          <th scope="col">Distribution Point/Location</th>
+                                          <th scope="col">Sales Volume (ave. month)</th>
+                                          <th scope="col">Payment Terms (COD, consignment, others)</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                    
+      
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+      
+                                      <label class="form-check-label" for="none">Local Customer</label>
+                                  </div>
+                              </div>
+                          </div>
+      
+                      </td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['distrib_point_local_cust'] }}" id="distrib_point_local_cust" name="distrib_point_local_cust">{{ row['distrib_point_local_cust'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['sales_vol_local_cust'] }}" id="sales_vol_local_cust" name="sales_vol_local_cust">{{ row['sales_vol_local_cust'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['payment_terms_local_cust'] }}" id="payment_terms_local_cust" name="payment_terms_local_cust">{{ row['payment_terms_local_cust'] }}</textarea></td>
+                  </tr>
+      
+                  <tr>
+      
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+      
+                                      <label class="form-check-label" for="none">Middleman/ Distributor</label>
+                                  </div>
+                              </div>
+                          </div>
+      
+                      </td>
+      
+                      <td><textarea class="form-control form_data_c" value="{{ row['distrib_point_middleman'] }}" id="distrib_point_middleman" name="distrib_point_middleman">{{ row['distrib_point_middleman'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['sales_vol_middleman'] }}" id="sales_vol_middleman" name="sales_vol_middleman">{{ row['sales_vol_middleman'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['payment_terms_middleman'] }}" id="payment_terms_middleman" name="payment_terms_middleman">{{ row['payment_terms_middleman'] }}</textarea></td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <label class="form-check-label" for="none">Export</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['distrib_point_export'] }}" id="distrib_point_export" name="distrib_point_export">{{ row['distrib_point_export'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['sales_vol_export'] }}" id="sales_vol_export" name="sales_vol_export">{{ row['sales_vol_export'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['payment_terms_export'] }}" id="payment_terms_export" name="payment_terms_export">{{ row['payment_terms_export'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <label class="form-check-label" for="none">Others</label>
+                                      <input type="text" class="form-control form_data_c" value="{{ row['others_specify_marketing'] }}" id="others_specify_marketing" name="others_specify_marketing" placeholder="Please specify">
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['distrib_point_others_specify_marketing'] }}" id="distrib_point_others_specify_marketing" name="distrib_point_others_specify_marketing">{{ row['distrib_point_others_specify_marketing'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['sales_vol_others_specify_marketing'] }}" id="sales_vol_others_specify_marketing" name="sales_vol_others_specify_marketing">{{ row['sales_vol_others_specify_marketing'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['payment_terms_others_specify_marketing'] }}" id="payment_terms_others_specify_marketing" name="payment_terms_others_specify_marketing">{{ row['payment_terms_others_specify_marketing'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+      
+      
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      
+                  <br>
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+      
+                              <strong> <label class="form-check-label" for="none">Number of Workers/Laborers</label>
+                              </strong>
+      
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <table class="table table-bordered table-dark">
+                                  <thead style="background-color: #004d00 ;">
+                                      <tr style="color: white;">
+                                          <th scope="col">Type of Labor/Workers</th>
+                                          <th scope="col">Number of Workers (Qty)</th>
+                                          <th scope="col">Member of IP Group?(Y/N)</th>
+                                          <th scope="col">Ave. # of workdays/mo.</th>
+                                          <th scope="col">Ave. Salary/ Wage/month</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                   
+      
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+      
+                                      <label class="form-check-label" for="none">No. of in-house</label>
+                                  </div>
+                              </div>
+                          </div>
+      
+                      </td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['inhouse_num_workers'] }}" id="inhouse_num_workers" name="inhouse_num_workers">{{ row['inhouse_num_workers'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['inhouse_memb_ip_group'] }}" id="inhouse_memb_ip_group" name="inhouse_memb_ip_group">{{ row['inhouse_memb_ip_group'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['inhouse_ave_workdays'] }}" id="inhouse_ave_workdays" name="inhouse_ave_workdays">{{ row['inhouse_ave_workdays'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['inhouse_ave_salary'] }}" id="inhouse_ave_salary" name="inhouse_ave_salary">{{ row['inhouse_ave_salary'] }}</textarea></td>
+                  </tr>
+      
+                  <tr>
+      
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+      
+                                      <label class="form-check-label" for="none">No. of sub-contractor</label>
+                                  </div>
+                              </div>
+                          </div>
+      
+                      </td>
+      
+                      <td><textarea class="form-control form_data_c" value="{{ row['sub_cont_num_workers'] }}" id="sub_cont_num_workers" name="sub_cont_num_workers">{{ row['sub_cont_num_workers'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c"  value="{{ row['sub_cont_memb_ip_group'] }}" id="sub_cont_memb_ip_group" name="sub_cont_memb_ip_group">{{ row['sub_cont_memb_ip_group'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['sub_cont_ave_workdays'] }}" id="sub_cont_ave_workdays" name="sub_cont_ave_workdays">{{ row['sub_cont_ave_workdays'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['sub_cont_ave_salary'] }}" id="sub_cont_ave_salary" name="sub_cont_ave_salary">{{ row['sub_cont_ave_salary'] }}</textarea></td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <label class="form-check-label" for="none">No. of piece rate (pakyaw)</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['piece_rate_num_workers'] }}" id="piece_rate_num_workers" name="piece_rate_num_workers">{{ row['piece_rate_num_workers'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['piece_rate_memb_ip_group'] }}" id="piece_rate_memb_ip_group" name="piece_rate_memb_ip_group">{{ row['piece_rate_memb_ip_group'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['piece_rate_ave_workdays'] }}" id="piece_rate_ave_workdays" name="piece_rate_ave_workdays">{{ row['piece_rate_ave_workdays'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['piece_rate_ave_salary'] }}" id="piece_rate_ave_salary" name="piece_rate_ave_salary">{{ row['piece_rate_ave_salary'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+                  <tr>
+                      <td>
+                          <div class="form-group">
+                              <div class="form-row">
+                                  <div class="col">
+                                      <label class="form-check-label" for="none">Total</label>
+                                  </div>
+                              </div>
+                          </div>
+                      <td><textarea class="form-control form_data_c" value="{{ row['total_num_workers'] }}" id="total_num_workers" name="total_num_workers">{{ row['total_num_workers'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['total_memb_ip_group'] }}" id="total_memb_ip_group" name="total_memb_ip_group">{{ row['total_memb_ip_group'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c"  value="{{ row['total_ave_workdays'] }}" id="total_ave_workdays" name="total_ave_workdays">{{ row['total_ave_workdays'] }}</textarea></td>
+                      <td><textarea class="form-control form_data_c" value="{{ row['total_ave_salary'] }}" id="total_ave_salary" name="total_ave_salary">{{ row['total_ave_salary'] }}</textarea></td>
+      
+                      </td>
+                  </tr>
+      
+      
+      
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      
+          </div>
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="card" style="width:80%;   margin: 0 auto; float: none; margin-top: 30px; margin-bottom: 150px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      
+          <div class="card-header" style="background-color: #004d00;">
+              <h3 style="color: white;">C3-Challenges in business operations and support needed</h3>
+          </div>
+      
+          <div class="card-body" style="background-color: #c6ecd9;">
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+      
+                          <div class="col">
+                              <strong> <label for="exampleFormControlSelect1">Does your company/firm encounter
+                                      <strong><u>problems, issues</strong></u> on the following:</label></strong>
+                          </div>
+      
+      
+                      </div>
+                  </div>
+      
+      
+                  <div style="padding-left: 20px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-3">
+                              <strong>
+                                  <label>a. Form of Interprise</label>
+                              </strong>
+                              <select  class="form-control form_data_c" value="{{ row['form_interprise2'] }}"  id="form_interprise2" name="form_interprise2">
+                                  <option selected>{{ row['form_interprise2'] }}</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                              </select>
+                              <input  type="text" value="{{ row['ifyes_form_interprise'] }}"  class="form-control form_data_c" id="ifyes_form_interprise" name="ifyes_form_interprise" placeholder="If Yes Please specify">
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div style="padding-left: 20px;" class="form-group">
+                      <div class="form-row">
+      
+                          <div class="col-md-3">
+                              <strong>
+                                  <label>b. Pricing</label>
+                              </strong>
+                              <select  class="form-control form_data_c" value="{{ row['pricing'] }}"  id="pricing" name="pricing">
+                                  <option selected>{{ row['pricing'] }}</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                              </select>
+                              <input name="ifyes_pricing" type="text" value="{{ row['ifyes_pricing'] }}" class="form-control form_data_c" id="ifyes_pricing" placeholder="If Yes Please specify">
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div style="padding-left: 20px;" class="form-group">
+                      <div class="form-row">
+      
+                          <div class="col-md-3">
+                              <strong>
+                                  <label>c. Quality of Raw Materials</label>
+                              </strong>
+                              <select  class="form-control form_data_c" value="{{ row['quality_raw'] }}" name="quality_raw" id="quality_raw">
+                                  <option selected >{{ row['quality_raw'] }}</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                              </select>
+                              <input type="text" class="form-control form_data_c" value="{{ row['ifyes_quality_raw'] }}" id="ifyes_quality_raw" name="ifyes_quality_raw" placeholder="If Yes Please specify">
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div style="padding-left: 20px;" class="form-group">
+                      <div class="form-row">
+      
+                          <div class="col-md-3">
+                              <strong>
+                                  <label >d. Quality of Final Product </label>
+                              </strong>
+                              <select class="form-control form_data_c" value="{{ row['quality_final_prod'] }}" name="quality_final_prod" id="quality_final_prod">
+                                  <option selected>{{ row['quality_final_prod'] }}</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                              </select>
+                              <input type="text" class="form-control  form_data_c" value="{{ row['ifyes_quality_final_prod'] }}" id="ifyes_quality_final_prod" name="ifyes_quality_final_prod" placeholder="If Yes Please specify">
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div style="padding-left: 20px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-3">
+      
+                              <strong>
+                                  <label>e. Other, please specify</label>
+                              </strong>
+                              <input  type="text" class="form-control form_data_c" value="{{ row['other_specifyc3'] }}" id="other_specifyc3" name="other_specifyc3">
+                          </div>
+      
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+      
+                          <div class="col-md-4">
+                              <strong>
+                                  <label>Do you have existing commercial partnership with
+                                      suppliers?</label>
+                              </strong>
+                              <select class="form-control form_data_c" value="{{ row['existing_comm'] }}" name="existing_comm" id="existing_comm">
+                                  <option selected>{{ row['existing_comm'] }}</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                              </select>
+                              <input  type="text" class="form-control form_data_c" id="ifyes_existing_comm" value="{{ row['ifyes_existing_comm'] }}" name="ifyes_existing_comm" placeholder="If Yes Please specify">
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+      
+                          <div class="col-md-4">
+                              <strong>
+                                  <label>Do you provide support/assistance to your current
+                                      partners?</label>
+                              </strong>
+                              <select class="form-control form_data_c" value="{{ row['prov_supp_assis'] }}" id="prov_supp_assis" name="prov_supp_assis" >
+                                  <option selected >{{ row['prov_supp_assis'] }}</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                              </select>
+                              <input  type="text" class="form-control form_data_c" value="{{ row['ifyes_prov_supp_assis'] }}" id="ifyes_prov_supp_assis" name="ifyes_prov_supp_assis" placeholder="If Yes Please specify">
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+      
+                          <div class="col-md-4">
+                              <strong>
+                                  <label >Are you satisfied with your current business/production
+                                      performance?</label>
+                              </strong>
+                              <select  class="form-control form_data_c" value="{{ row['business_prodc3'] }}" id="business_prodc3" name="business_prodc3" >
+                                  <option selected>{{ row['business_prodc3'] }}</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                              </select>
+                              <input  type="text" name="ifyes_business_prodc3" value="{{ row['ifyes_business_prodc3'] }}" class="form-control form_data_c" id="ifyes_business_prodc3" placeholder="If Yes Please specify">
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-10">
+      
+                              <strong>
+                                  <label>IF No, what do you think you need to do to improve it? Please specify your answer in
+                                      the space provided:</label>
+                              </strong>
+                              <input type="text" class="form-control form_data_c" value="{{ row['ifnoc3'] }}" id="ifnoc3" name="ifnoc3">
+                          </div>
+      
+      
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <hr>
+                              <strong><label>Please check box if answer falls in any of the following:</label> </strong>
+      
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="form-col">
+                              <div style="padding-left: 40px;" class="form-check">
+                                {% if (row['capability'])!="" and (row['capability'])!="None"  %}
+                                  <input class="form-check-input form_data_c" checked type="checkbox" value="Capability" id="capability" name="capability" />
+                                  {%else%}
+                                  <input class="form-check-input form_data_c" type="checkbox" value="Capability" id="capability" name="capability" />
+                                  {% endif %}
+                                  <label class="form-check-label" for="none">Capability</label>
+
+                                  {% if (row['tech_equip'])!="" and (row['tech_equip'])!="None"  %}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" checked type="checkbox" value="Technology/Equipment" name="tech_equip" id="tech_equip" />
+                                  {%else%}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Technology/Equipment" name="tech_equip" id="tech_equip" />
+                                  {% endif %}
+                                  <label style="padding-left: 40px;" class="form-check-label"
+                                      for="none">Technology/Equipment</label>
+                                      {% if (row['access_market'])!="" and (row['access_market'])!="None"  %}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" checked type="checkbox" value="Access to Market" name="access_market" id="access_market" />
+                                  {%else%}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Access to Market" name="access_market" id="access_market" />
+                                  {% endif %}
+                                  <label style="padding-left: 40px;" class="form-check-label" for="none">Access to
+                                      Market</label>
+                                      
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="form-col">
+                              <div style="padding-left: 40px;" class="form-check">
+                                {% if (row['commu_key_part'])!="" and (row['commu_key_part'])!="None"  %}
+                                  <input class="form-check-input form_data_c" checked type="checkbox" value="Communication & Network with key partners" name="commu_key_part" id="commu_key_part" />
+                                  {%else%}
+                                  <input class="form-check-input form_data_c" type="checkbox" value="Communication & Network with key partners" name="commu_key_part" id="commu_key_part" />
+                                  {% endif %}
+                                  <label class="form-check-label" for="none">Communication & Network with key partners</label>
+                                    {% if (row['political'])!="" and (row['political'])!="None"  %}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" checked type="checkbox" value="Political" name="political" id="political"/>
+                                  {%else%}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Political" name="political" id="political"/>
+                                  {% endif %}
+                                  <label style="padding-left: 40px;" class="form-check-label" for="none">Political</label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+                              <br>
+                              <strong>
+                                  <label>Support Network/ Group</label>
+                              </strong>
+      
+                          </div>
+      
+                      </div>
+             
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col">
+      
+                              <strong>
+                                  <label>Are you a member of any of the following? </label>
+                              </strong>
+      
+                          </div>
+      
+                      </div>
+                  </div>
+              </div>
+      
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="form-col">
+                              <div style="padding-left: 40px;" class="form-check">
+                                {% if (row['chamber_commerce'])!="" and (row['chamber_commerce'])!="None" %}
+                                  <input class="form-check-input form_data_c" checked type="checkbox" value="Chamber of Commerce" name="chamber_commerce" id="chamber_commerce" />
+                                  {%else%}
+                                  <input class="form-check-input form_data_c" type="checkbox" value="Chamber of Commerce" name="chamber_commerce" id="chamber_commerce" />
+                                  {% endif %}
+                                  <label class="form-check-label" for="none">Chamber of Commerce</label>
+                             
+
+                                  {% if (row['trade_assoc'])!="" and (row['trade_assoc'])!="None"  %}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" checked type="checkbox" value="Trade Association" name="trade_assoc" id="trade_assoc" />
+                                  {%else%}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Trade Association" name="trade_assoc" id="trade_assoc" />
+                                  {% endif %}
+                                  <label style="padding-left: 40px;" class="form-check-label"
+                                      for="none">Trade Association </label>
+                                     
+      
+                                      {% if (row['coopera'])!="" and (row['coopera'])!="None"  %}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" checked type="checkbox" value="Cooperative" name="coopera" id="coopera" />
+                                  {%else%}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Cooperative" name="coopera" id="coopera" />
+                                  {% endif %}
+                                  <label style="padding-left: 40px;" class="form-check-label" for="none">Cooperative</label>
+                               
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="form-col">
+                              <div style="padding-left: 40px;" class="form-check">
+                                  <input class="form-check-input form_data_c" type="checkbox" value="City organized group" name="commu_key_part2" id="commu_key_part2" />
+                                  <label class="form-check-label" for="none">City organized group </label>
+
+                                  {% if (row['other_orgs_checkbox'])!="" and (row['other_orgs_checkbox'])!="None" %}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" checked type="checkbox" value="Other Organization" name="other_orgs_checkbox" id="other_orgs_checkbox"/>
+                                  {%else%}
+                                  <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="Other Organization" name="other_orgs_checkbox" id="other_orgs_checkbox"/>
+                                  {% endif %}
+                                  <label style="padding-left: 40px;" class="form-check-label" for="none">Other orgs, specify: </label>
+                                  <input style="margin-left: 55%;"  type="text" value="{{ row['other_orgs_pls_spec'] }}" class="form-control form_data_c" id="other_orgs_pls_spec" name="other_orgs_pls_spec"
+                                  placeholder="Please Specify ">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div style="padding-left: 20px;" class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-6">
+      
+      
+                              <label>Name of Organization: </label>
+      
+                              <input type="text" class="form-control form_data_c" value="{{ row['name_org'] }}" name="name_org" id="name_org">
+                          </div>
+                          <div class="col-md-6">
+      
+                              <label for="position">Location:</label>
+      
+                              <input type="text" name="location_org"  value="{{ row['location_org'] }}" class="form-control form_data_c" id="location_org">
+                          </div>
+      
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+      
+                          <div class="col-md-5">
+                              <strong>
+                                  <label>Does your membership in the organization helps you in your
+                                      livelihood?</label>
+                              </strong>
+                              <select  class="form-control form_data_c" value="{{ row['member_livelihood'] }}"  id="member_livelihood" name="member_livelihood" >
+                                  <option selected>{{ row['member_livelihood'] }}</option>
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+                              </select>
+                              <input  type="text" class="form-control  form_data_c" value="{{ row['ifyes_member_livelihood'] }}" id="ifyes_member_livelihood" name="ifyes_member_livelihood" placeholder="If Yes in what way it helps?">
+                          </div>
+                      </div>
+                  </div>
+      
+      
+                  <div class="form-group">
+                      <div class="form-row">
+                          <div class="col-md-12">
+      
+                              <strong>
+                                  <label>What do you think the LGU, NGAs and other agencies should do to improve the local
+                                      commodity cluster industry? (Cacao, Coffee, Coco, Process Fruits & nuts) </label>
+                              </strong>
+                              <input type="text" class="form-control form_data_c" value="{{ row['what_cluster_industry'] }}" name="what_cluster_industry" id="what_cluster_industry">
+                          </div>
+                      </div>
+                  </div>
+                  
+                  
+                  
+       
+                    
+                  </div>
+                </div>
+          
+              
+          </div>
+          <div class="modal-footer bg-light">
+             <button type="submit" id="saveupdate" class="btn btn-primary" style="justify-content: right;">Save changes</button>
+            <button type="button" id="closebtn" class="btn btn-warning sweetalerts" data-dismiss="modal">Close</button>
+      </div>
+    </form>
+      
+      
+      </div>
+   
+    </div>
+  </div>
+  {% endfor  %}
+</div>
+            
+            
+            
+            
+          </div>
+          </div>
+        </div>
+      </div>
+            
+    
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+  <script src="/static/psalm_static/assets/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/psalm_static/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+  
+
+{% endblock javascripts %}

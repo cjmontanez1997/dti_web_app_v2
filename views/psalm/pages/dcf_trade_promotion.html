@@ -1,0 +1,364 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<div class="card"
+    style="width:80%;   margin: 0 auto; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    <div class="card-header" style="background-color: #004d00;">
+        <h3 style="color: white; text-align: center;">DATA CAPTURE FORM FOR TRADE PROMOTION SERVICES</h3>
+    </div>
+
+    <div class="card-body" style="background-color: #c6ecd9;">
+        <form style="margin-left: 2%; margin-right: 2%;">
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <strong>
+                            <label for="name">Implementing Unit</label>
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3">
+
+
+                            <label for="name">RCU</label>
+
+                            <input  type="text" class="form-control dcf_trade_promotion" id="rcu">
+
+                        </div>
+                        <div class="col-md-3">
+
+                            <label for="position">PCU</label>
+
+                            <input type="text" class="form-control dcf_trade_promotion" id="pcu">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4"><br>
+                        <strong>
+                            <label>Title of Trade Promotion Services Provided:</label>
+                        </strong>
+                        <input  type="text" class="form-control dcf_trade_promotion"
+                            id="title_trade">
+                        </select>
+                    </div>
+                    <div class="col-md-4"><br>
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Type of Trade Promotion Services organized/
+                                participated:</label>
+                        </strong>
+                        <select  class="form-control dcf_trade_promotion" id="trade_promotion">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Trade Fair - Provincial</option>
+                            <option>Trade Fair - Regional</option>
+                            <option>Trade Fair - National</option>
+                            <option>Trade Fair - International</option>
+                            <option>Trade/Selling Missions Province and Region</option>
+                            <option>Trade/Selling Missions National</option>
+                            <option>Trade/Selling Missions International</option>
+                            <option>Business Matching Province and Region</option>
+                            <option> Business Matching National</option>
+                            <option>Business Matching International </option>
+
+                        </select>
+
+                    </div>
+                    <div class="col-md-3"><br>
+
+                        <strong>
+                            <label for="dip_alignment">DIP Alignment of Activity:</label>
+                        </strong>
+                        <select  class="form-control dcf_trade_promotion"
+                            name="dip_alignment" id="dip_alignment">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="dipyes">Yes</option>
+                            <option value="dipno">No</option>
+                        </select>
+                        <input style=" display: none;" type="text"
+                            class="form-control hidden-textbox14 dcf_trade_promotion" id="dip_alignment_yes"
+                            placeholder="Provide entries for DIPs">
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3"><br>
+
+
+                        <strong>
+                            <label for="name">Activity Duration</label>
+                        </strong>
+                        <div class="input-group date">
+                            <label style=" background-color: #b3ffec;" class="input-group-text">Started
+                                Date:</label>
+                            <input type="date" class="form-control dcf_trade_promotion" id="start_date">
+                            
+                        </div>
+                        <div  class="input-group date">
+                            <label style=" background-color: #ffcccc;" class="input-group-text">Ended
+                                Date:</label>
+                            <input type="date" class="form-control dcf_trade_promotion" id="ended_date">
+                          
+                        </div>
+                    </div>
+
+                    <div class="col-md-4"><br>
+                        <strong>
+                            <label>Venue:</label>
+                        </strong>
+                        <input  type="text" class="form-control dcf_trade_promotion" id="venue">
+                        </select>
+                    </div>
+                    <div class="col-md-4"><br>
+                        <strong>
+                            <label>RAPID Actual Budget:</label>
+                        </strong>
+                        <input  type="text" class="form-control dcf_trade_promotion" id="venue">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <strong>
+                            <label for="name">Activities fully & partially funded by partners outside RAPID</label>
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+
+
+                            <label for="name">Name of Partner/Organization:</label>
+
+                            <input  type="text" class="form-control dcf_trade_promotion"
+                                id="name_partner">
+
+                        </div>
+                        <div  class="col-md-3">
+
+                            <label for="position">Amount:</label>
+
+                            <input  type="text" class="form-control dcf_trade_promotion" id="amount">
+                        </div>
+
+                       
+
+                    </div>
+<br>
+                    <div class="form-row">
+                        <div class="col-md-4">
+
+                            <strong>
+                                <label for="position">Name of Beneficiary: </strong> <i>(Name of farmer, Registered
+                                business)</i></label>
+
+                            <input  type="text" class="form-control dcf_trade_promotion" id="pcu">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+
+
+                        <strong> <label for="name">Commodity:</label></strong>
+
+                        <input  type="text" class="form-control dcf_trade_promotion" id="commodity">
+
+                    </div>
+
+                    <div  class="col-md-3">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Type of Beneficiary:</label>
+                        </strong>
+                        <select  class="form-control dcf_trade_promotion" id="type_beneficiary">
+                            <option value="" selected disabled>Please select</option>
+                            <option>MSME</option>
+                            <option>FO</option>
+                            <option>Farmer</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sex:</label>
+                        </strong>
+                        <select  class="form-control dcf_trade_promotion" id="sex_trade_pro">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sector:</label>
+                        </strong>
+                        <select  class="form-control dcf_trade_promotion" id="sector">
+                            <option value="" selected disabled>Please select</option>
+                            <option>PWD</option>
+                            <option>Youth</option>
+                            <option>IP</option>
+                            <option>SC</option>
+                        </select>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-5">
+
+
+                        <strong> <label for="name">Type of Product(s) (e.g., tablea):</label></strong>
+
+                        <input  type="text" class="form-control dcf_trade_promotion" id="type_prod">
+
+                    </div>
+
+                    <div class="col-md-5">
+
+
+                        <strong> <label for="name">Name of Buyer/Company Matched with Assisted
+                                MSMEs/FOs:</label></strong>
+
+                        <input  type="text" class="form-control dcf_trade_promotion" id="name_buyer">
+
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-3">
+
+                        <strong>
+                            <label for="name">Sales Generated per MSME</label>
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-3">
+
+
+                            <label for="name">Cash Sales:</label>
+
+                            <input  type="text" class="form-control dcf_trade_promotion"
+                                id="cash_sales">
+
+                        </div>
+                        <div style="padding-left: 1%;" class="col">
+
+                            <label for="position">Booked Sales (closed deal):</label>
+
+                            <input  type="text" class="form-control dcf_trade_promotion"
+                                id="booked_sales">
+                        </div>
+
+
+
+                        <div class="col-md-3">
+
+                            <label for="position">Under Negotiations <i>(not closed deal):</i></label>
+
+                            <input type="text" class="form-control dcf_trade_promotion"
+                                id="under_nego">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="position">Total:</label>
+
+                            <input type="text" class="form-control dcf_trade_promotion" id="total">
+
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+                            <label class="form-label" for="customFile"><strong>MOVs for Uploading &nbsp; </strong>
+                                <i>Activity Report/documentation, photos, etc., sales monitoring report, ) </i></label>
+                            <input type="file" class="form-control dcf_trade_promotion" id="customFile" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+    </div>
+
+
+
+
+</div>
+</form>
+
+</div>
+</div>
+
+
+{% endblock %}

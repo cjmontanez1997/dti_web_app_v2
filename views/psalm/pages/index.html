@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="d-flex" id="wrapper">
+        <div class="list-group list-group-flush">
+    <div class="border-end bg-white" id="sidebar-wrapper">
+   
+            
+        <a class="list-group-item list-group-item-action list-group-item-success p-3 active" href="{{ url_for('form_c.resp_prof') }}">Respondent's Profile</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3"href="{{ url_for('form_c.business_info') }}">Business Information</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ url_for('form_c.ciboasn') }}">Challenges in business operations and support</a>
+           
+        </div>
+    </div>
+
+{% endblock %}

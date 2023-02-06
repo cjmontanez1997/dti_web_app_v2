@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-890" lang="en-us">
+
+		<link rel="stylesheet" href="../static/webrepstatic/css/style.css">
+		<link rel="stylesheet" href="../static/webrepstatic/css/w3.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+		<script src="../static/webrepstatic/js/jquery.min.js"></script>
+		<link href="../static/webrepstatic/css/bootstrap.min.css" rel="stylesheet">
+		<script defer src="../static/webrepstatic/js/bs@5.2.3/bootstrap.bundle.min.js"></script>
+		<title>DTI RAPID</title>
+	</head>
+
+<body>
+
+<!-- Top Nav -->
+	<nav class="container-fluid navbar navbar-expand-sm position-absolute" style="z-index: 1;">
+			<div class="container">
+				<div class="container ms-5  mt-5" >
+					<a class="navbar-brandt " href="/rapid/home.html">
+							 <img src="../../static/webrepstatic/img/rapid_project_white.svg" width="150" height="110" class="" alt="home">
+						</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="navbarNavDropdown">
+					<ul class="navbar-nav mt-5 ms-5">
+							<li class="nav-item ">
+								<a href="/login">
+									<button type="button" class="btn btn-outline-light btn-lg">Login</button>
+								</a>
+								<!-- <a type="button" class="btn btn-outline-light " data-bs-toggle="modal" data-bs-target="#loginModal" href="http://dtirapid.ph">Login</a> -->
+							</li>
+					</ul>
+				</div>
+			</div>
+	</nav>
+
+<!-- Login Modals	 -->
+	<div class="modal" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-fullscreen-lg-down">
+		    <div class="modal-content">
+		    	<div class="modal-header justify-content-center mb-3">
+		    		<img src="../../static/webrepstatic/img/RAPID.svg" width="90" height="60" class="mb-1" alt="home">
+			    </div>	     
+			    <div class="modal-body mt-3">
+			    	<div class="container">
+			    		<div class="vstack gap-2 mx-auto">
+						    <div class="mb-3 row">
+							    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+							    <div class="col-sm-10">
+							      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+							    </div>
+							</div>
+							<div class="row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+							    <div class="col-sm-10">
+							      <input type="password" class="form-control" id="inputPassword">
+							    </div>
+							</div> 
+							<div class="mb-3 d-flex justify-content-end">
+							    <a href="#">Forgot Password?</a>				    
+							</div>
+
+							<div class=" d-grid gap-2 mb-3">
+							  <button class="btn btn-outline-dark rounded-pill" type="button">Login</button>
+							  <button class="btn btn-dark rounded-pill" type="button" data-bs-dismiss="modal">Cancel</button>
+							</div>
+						</div>
+			   		</div>
+			   	</div>	
+		    </div>
+		</div>
+	</div>
+
+<!--Carousel-->
+	<div id="carousel" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
+
+			<div class="mySlides carousel-item c-item active" data-bs-interval="5000">
+				<img src="../static/webrepstatic/img/rapidimage/6_CIDOFSFA_BrgyCervantes_Catarman_RCU8.jpg" class="d-block w-100 c-img" alt="...">				
+				<div class="carousel-caption ">	
+					<p class="text-white fs-1 shadowText" style="margin-bottom: 200px; "><span class="text-white display-1 me-1">R</span>esponds to specific gaps in the agricultural sector by linking farmers to MSMEs and large firms.</p>
+
+					<div class="show_talent justify-content-center "></div>
+
+
+				</div>
+			</div>
+			<div class="mySlides carousel-item c-item" data-bs-interval="5000">
+				<img src="../static/webrepstatic/img/rapidimage/6_CIDOFSFA_BrgyCervantes_Catarman (35).jpg" class="d-block w-100 c-img" alt="...">
+				<div class="carousel-caption ">
+					<p class="text-white fs-1 shadowText" style="margin-bottom: 200px;"><span class="text-white display-1 me-1">A</span>dopts a whole-of-government/nation approach in the delivery of services,</p>
+					<div class="show_talent justify-content-center "></div>
+				</div>
+				
+			</div>
+			<div class="mySlides carousel-item c-item" data-bs-interval="5000">
+				<img src="../static/webrepstatic/img/rapidimage/RCU 9 (05).jpg" class="d-block w-100 c-img" alt="...">
+				<div class="carousel-caption  ">
+					<p class="text-white fs-1 shadowText" style="margin-bottom: 200px;"><span class="text-white display-1 ">P</span>roviding strategic business development interventions across the value chain of focused agricultural sector such as coffee, cacao, coconut and processed fruits and nuts.</p>		
+					<div class="show_talent justify-content-center "></div>
+				</div>
+				
+			</div>
+			<div class="mySlides carousel-item c-item" data-bs-interval="5000">
+				<img src="../static/webrepstatic/img/rapidimage/RCU 9 (08).jpg" class="d-block w-100 c-img" alt="...">
+				<div class="carousel-caption  ">	
+					<p class="text-white fs-1 shadowText" style="margin-bottom: 200px;"><span class="text-white display-1 ">I</span>ncrease the income level of smallholder farmers and unemployed rural women and men across selected agri-based value chain.</p>
+					<div class="show_talent justify-content-center "></div>
+				</div>
+			</div>
+			<div class="mySlides carousel-item c-item" data-bs-interval="5000">
+				<img src="../static/webrepstatic/img/rapidimage/RCU 9 (09).jpg" class="d-block w-100 c-img" alt="...">
+				<div class="carousel-caption  ">		
+					<p class="text-white fs-1 shadowText" style="margin-bottom: 200px;"><span class="text-white display-1 me-1">D</span>TI’s goal to bring employment, business and livelihood opportunities to the rural communities.</p>
+					<div class="show_talent justify-content-center "></div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+	<div id="hidden_talent" style="display: none;">
+		<div class="container display-3">
+			<span class="text-white ms-4 me-3" type="button" onclick="mini_carousel(0)">R</span>
+			<span class="text-white ms-4 me-3" type="button" onclick="mini_carousel(1)">A</span>
+			<span class="text-white ms-4 me-3" type="button" onclick="mini_carousel(2)">P</span>
+			<span class="text-white ms-4 me-3" type="button" onclick="mini_carousel(3)">I</span>
+			<span class="text-white ms-4 me-3" type="button" onclick="mini_carousel(4)">D</span>	
+			<div class="section ms-5 me-5" style="padding: 50px;"></div>		
+		</div>
+
+
+	</div>
+
+<!-- Navbar Hover -->
+	<nav class="navbar navbar-expand-md navbar-light bg-white sticky-top " style=" height: 90px !important;">
+	    <div class="collapse navbar-collapse container justify-content-center fs-5" id="navbarNavDropdown">
+	        <ul class="navbar-nav">
+	            <li class="nav-item dropdown">
+	                <a class="nav-link dropdown-toggle ps-4" type="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/rapid/whatwedo/whatWedo.html">What we do</a>
+	                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button" href="/rapid/whatwedo/whatWedo.html#0">Project Goal</a>
+	                        <ul class="dropdown-menu">
+	                            <li><a class="dropdown-item" role="button">Development Objectives</a></li>
+	                            <li><a class="dropdown-item" role="button">Project Outcomes</a></li>	                            
+	                        </ul>
+	                    </li>
+	                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button" href="/rapid/whatwedo/whatWedo.html#1">Project Components and Interventions</a>
+	                        <ul class="dropdown-menu">
+	                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Direct Assistance to Enterprise</a>
+	                                <ul class="dropdown-menu">
+	                                    <li><a class="dropdown-item" role="button">Business Services</a></li>
+	                                    <li><a class="dropdown-item" role="button">Enterprise strengthening</a></li>
+	                                    <li><a class="dropdown-item" role="button">Farm to Market Infrastructure</a></li>
+	                                </ul>
+	                            </li>
+	                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Institutional Strengthening</a>
+	                                <ul class="dropdown-menu">
+	                                    <li><a class="dropdown-item" role="button">Value Chain Governance</a></li>
+	                                    <li><a class="dropdown-item" role="button">Commercial Partnership</a></li>
+	                                </ul>
+	                            </li>
+	                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Technical Assistance to Financial Service Providers (FSPs)</a>
+	                                <ul class="dropdown-menu">
+	                                    <li><a class="dropdown-item" role="button">Technical Assistance to Financial Service Providers (FSPs)</a></li>
+	                                    <li><a class="dropdown-item" role="button">Capacity Building of FSP</a></li>
+	                                    <li><a class="dropdown-item" role="button">Financial Literacy Program</a></li>
+	                                    <li><a class="dropdown-item" role="button">Crop Insurance, Guarantee and Credit Surety Fund</a></li>
+	                                    <li><a class="dropdown-item" role="button">Strategic Financing Scheme</a></li>
+	                                    <li><a class="dropdown-item" role="button">Debt Financing Implementation Process</a></li>
+	                                    <li><a class="dropdown-item" role="button">Matching Grant Fund Pool with GFIs</a></li>
+	                                    <li><a class="dropdown-item" role="button">Accreditation of FSP</a></li>
+	                                </ul>
+	                            </li>
+	                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Innovation Fund/ Financing Support</a>
+	                                <ul class="dropdown-menu">
+	                                    <li><a class="dropdown-item text-truncate" role="button">Training, Conduct of Awareness and promotional activities... <!--on innovative fund, Seminar and workshops on equity venture capital and other innovative financing product--></a></li>
+	                                    <li><a class="dropdown-item" role="button">Equity Venture Capital</a></li>
+	                                </ul>
+	                            </li>
+	                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Project Management</a>
+	                                <ul class="dropdown-menu">
+	                                    <li><a class="dropdown-item" role="button">Establishment of Project Management Structures and Systems</a></li>
+	                                    <li><a class="dropdown-item" role="button">Staff Training and Capacity Building</a></li>
+	                                    <li><a class="dropdown-item" role="button">Project Coordination and Networking</a></li>
+	                                    <li><a class="dropdown-item" role="button">Results Based Project Monitoring and Evaluation</a></li>
+	                                    <li><a class="dropdown-item" role="button">Mainstreaming Gender Equality and Social Inclusion</a></li>
+	                                    <li><a class="dropdown-item" role="button">Financial Performance Monitoring</a></li>
+	                                    <li><a class="dropdown-item" role="button">Procurement</a></li>
+	                                    <li><a class="dropdown-item" role="button">Administrative Support</a></li>
+	                                </ul>
+	                            </li>
+	                        </ul>
+	                    </li>
+	                    <li><a class="dropdown-item" role="button" href="/rapid/whatwedo/whatWedo.html#2">RAPID Business Model</a></li>
+	                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button" href="/rapid/whatwedo/whatWedo.html#3">Value Chain</a>
+	                        <ul class="dropdown-menu">
+	                            <li><a class="dropdown-item" role="button">Cacao</a></li>
+	                            <li><a class="dropdown-item" role="button">Coffee</a></li>
+	                            <li><a class="dropdown-item" role="button">Coconut</a></li>
+	                            <li><a class="dropdown-item" role="button">Processed Fruits and Nuts</a></li>
+	                        </ul>
+	                    </li>
+	                </ul>
+	            </li>
+	            <li class="nav-item ">
+	                <a class="nav-link dropdown-toggle ps-4" role="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/rapid/whoweare/whoweare.html">Who we are</a>
+	                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">	                   	                    
+	                    <li><a class="dropdown-item" role="button">History</a></li>
+	                    <li><a class="dropdown-item" role="button">Agency Mandate Mission & Vision</a></li>	
+	                    <li><a class="dropdown-item" role="button">Organogram</a></li>	
+	                    <li><a class="dropdown-item" role="button">Project Implementation Manual</a></li>	
+	                    <li><a class="dropdown-item" role="button">Accomplishments</a></li>	
+	                    <li><a class="dropdown-item" role="button">Working for RAPID</a></li>	
+	                    <li><a class="dropdown-item" role="button">Contacts</a></li>		                    
+	                </ul>
+	            </li>
+	            <li class="nav-item dropdown">
+	                <a class="nav-link dropdown-toggle ps-4" role="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/rapid/wherewework/whereWework.html"> Where we work </a>
+	                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">	                    
+	                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Eastern Visayas</a>
+	                        <ul class="dropdown-menu">
+	                            <li><a class="dropdown-item" role="button">Northern Samar</a></li>
+	                            <li><a class="dropdown-item" role="button">Leyte</a></li> 
+	                            <li><a class="dropdown-item" role="button">Southern Leyte</a></li>                           
+	                        </ul>
+	                    </li>
+	                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Zamboanga Peninsula</a>
+	                        <ul class="dropdown-menu">
+	                            <li><a class="dropdown-item" role="button">Zamboanga del Norte</a></li>
+	                            <li><a class="dropdown-item" role="button">Zamboanga Sibugay</a></li>
+	                            <li><a class="dropdown-item" role="button">Zamboanga del Sur</a></li>                           
+	                        </ul>
+	                    </li>
+	                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Northern Mindanao</a>
+	                        <ul class="dropdown-menu">
+	                            <li><a class="dropdown-item" role="button">Misamis Oriental</a></li>
+	                            <li><a class="dropdown-item" role="button">Bukidnon</a></li>
+	                            <li><a class="dropdown-item" role="button">Lanao del Norte</a></li>                            
+	                        </ul>
+	                    </li>
+	                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Davao</a>
+	                        <ul class="dropdown-menu">
+	                            <li><a class="dropdown-item" role="button">Davao de Oro</a></li>
+	                            <li><a class="dropdown-item" role="button">Davao Oriental</a></li>
+	                            <li><a class="dropdown-item" role="button">Davao del Norte</a></li>
+	                            <li><a class="dropdown-item" role="button">Davao del Sur</a></li>
+	                            <li><a class="dropdown-item" role="button">Davao del Occidental</a></li>                           
+	                        </ul>
+	                    </li>
+	                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">SOCCSKSARGEN</a>
+	                        <ul class="dropdown-menu">
+	                            <li><a class="dropdown-item" role="button">North Cotabato</a></li>
+	                            <li><a class="dropdown-item" role="button">Sultan Kudarat</a></li>
+	                            <li><a class="dropdown-item" role="button">Sarangani</a></li>                           
+	                        </ul>
+	                    </li>
+	                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">CARAGA</a>
+	                        <ul class="dropdown-menu">
+	                            <li><a class="dropdown-item" role="button">Agusan del Norte</a></li>
+	                            <li><a class="dropdown-item" role="button">Agusan del Sur</a></li> 
+	                            <li><a class="dropdown-item" role="button">Surigao del Sur</a></li>                          
+	                        </ul>
+	                    </li>
+	                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">BARMM</a>
+	                        <ul class="dropdown-menu">
+	                            <li><a class="dropdown-item" role="button">Maguindanao</a></li>                    
+	                        </ul>
+	                    </li>
+	                </ul>
+	            </li>
+	            <li class="nav-item dropdown">
+	                <a class="nav-link dropdown-toggle ps-4" role="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="/rapid/NewsAndStories/NewsAndStories.html"> News & Stories </a>
+	                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	                    <li><a class="dropdown-item" role="button">Latest News</a></li>
+	                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Stories</a>
+	                        <ul class="dropdown-menu">
+	                            <li><a class="dropdown-item" role="button">Cacao Stories</a></li>
+	                            <li><a class="dropdown-item" role="button">Coconut Stories</a></li>
+	                            <li><a class="dropdown-item" role="button">Coffee Stories</a></li>
+	                            <li><a class="dropdown-item" role="button">Processed Fruits and Nuts Stories</a></li>
+	                        </ul>
+	                    </li>
+	                </ul>
+	            </li>
+	            <li class="nav-item">
+	                <a class="nav-link" role="button" href="/rapid/knowledgecenter/knowledgeCenter.html">Knowledge</a>
+	            </li>	            
+	        </ul>
+	    </div>
+	</nav>
+
+<div class="mt-5" style="border: 1px ; height: 50px;"></div>
+
+<!-----Counter---->
+
+		<div class="col-xl container shadow-lg p-3  bg-body rounded-4 " >
+
+			<div class=" container  text-center " >
+
+				<p class=" mt-2 display-2">IMPACT</p>
+				
+			</div>
+
+			<div class="row  container mt-5 text-center mb-5" >
+
+				<div class="col ">
+					<span class="display-4"> -</span>
+					<h5 class=" fst-italic text-secondary" >Farmers</h5>				
+				</div>
+
+				<div class="col ">
+					<span class="display-4 "> -</span>
+					<h5 class=" fst-italic text-secondary" >Farmers Organizations</h5>				
+				</div>				
+
+				<div class="col ">
+					<span class="display-4"> -</span>
+					<h5 class=" fst-italic text-secondary" >MSME's</h5>			
+				</div>
+
+				<div class="col ">
+					<span class="display-4"> -</span>
+					<h5 class=" fst-italic text-secondary" >Anchor Firms</h5>
+				</div>
+				
+			</div>
+			
+		</div>
+
+
+<div class="mt-5" style="border: 1px ; height: 50px;"></div>
+
+
+<!-----Story Carousel---->
+	<div class="container mb-5 ">
+		<div class="container row d-flex">
+			<div class="col-12 ">
+
+				<!-- EVENTS_COUNTER -->
+					<div class="d-flex align-items-start mb-2 ms-auto justify-content-center">						
+						<div class="me-3">
+							<button type="button" class="badge text-bg-secondary position-relative" style="border: none;">
+							  News
+							  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
+								0
+								<span class="visually-hidden">unread messages</span>
+							  </span>
+							</button>
+						</div>
+						<div class="me-3">
+							<button type="button" class="badge text-bg-secondary  position-relative" style="border: none;">
+							  Stories
+							  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
+								0
+								<span class="visually-hidden">unread messages</span>
+							  </span>
+							</button>
+						</div>
+						<div class="me-3">
+							<button type="button" class="badge text-bg-secondary position-relative" style="border: none;">
+							  Events
+								<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
+								0
+								<span class="visually-hidden">unread messages</span>
+							</button>
+						</div>
+					</div>
+
+				<!-- First Carousel Banner -->
+					<div class="mx-auto mx-sm-start mb-5 card2 border-0">
+						<div id="carouselExampleDark" class="carousel carousel slide " data-bs-ride="carousel" style="max-width: 100%;">
+								<!-- <div class="carousel-indicators">
+									<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active " aria-current="true" aria-label="Slide 1" ></button>
+									<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+									<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+								</div> -->
+								<div class="carousel-inner rounded-4">
+									<div class="carousel-item active c2-item" data-bs-interval="2000"  >
+										<img src="../static/webrepstatic/img/rapidimage/6_CIDOFSFA_BrgyCervantes_Catarman_RCU8.jpg" class=" c2-img w-100" alt="...">
+										<div class="carousel-caption ">
+											<a class="text-white stretched-link display-4" href="/rapid/wherewework/whereWeworkEV.html" role="button">Content on going</a>
+											<p class="fst-italic text-white">Our website is ongoing. We will be adding more content in the future. Our website is ongoing. We will be adding more ...</p>
+										</div>
+									</div>
+									<div class="carousel-item c2-item" data-bs-interval="2000">
+										<img src="../static/webrepstatic/img/rapidimage/RCU 9 (05).jpg" class=" c2-img w-100" alt="...">
+										<div class="carousel-caption">
+											<a class="text-white stretched-link display-4" href="/rapid/wherewework/whereWeworkEV.html" role="button">Content on going</a>
+											<p class="fst-italic text-white">Our website is ongoing. We will be adding more content in the future. Our website is ongoing. We will be adding more ...</p>
+										</div>
+									</div>
+									<div class="carousel-item c2-item">
+										<img src="../static/webrepstatic/img/rapidimage/RCU 9 (08).jpg" class=" c2-img w-100" alt="...">
+										<div class="carousel-caption">
+											<a class="text-white stretched-link display-4" href="/rapid/wherewework/whereWeworkEV.html" role="button">Content on going</a>
+											<p class="fst-italic text-white">Our website is ongoing. We will be adding more content in the future. Our website is ongoing. We will be adding more ...</p>
+										</div>
+									</div>
+								</div>
+								<!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Next</span>
+								</button> -->
+							</div>
+						</div>
+
+			</div>
+		</div>
+
+	<!-- Second Carousel Banner -->
+		<!-- 1st -->
+			<div class="container row">
+				<div class="col mx-auto mx-sm-start card2 border-0 ">
+					<div id="carouselExampleDark" class="carousel carousel slide w-100" data-bs-ride="carousel">
+							<!-- <div class="carousel-indicators">
+								<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active " aria-current="true" aria-label="Slide 1" ></button>
+								<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+								<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+							</div> -->
+							<div class="carousel-inner rounded-4">
+								<div class="carousel-item active c3-item" data-bs-interval="2000"  >
+									<img src="https://images.unsplash.com/photo-1654564706005-b7828ace2cbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class=" c3-img w-100" alt="...">
+									<div class="carousel-caption ">
+										<a class="text-white stretched-link fs-1" href="/rapid/wherewework/whereWeworkEV.html" role="button">Content on going</a>
+										<p class="fst-italic text-white small">Our website is ongoing. We will be adding more content in the future. Our website is ongoing. We will be adding more ...</p>
+									</div>
+								</div>
+								<div class="carousel-item c3-item" data-bs-interval="2000">
+									<img src="https://images.unsplash.com/photo-1512427631246-d0c374837803?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class=" c3-img w-100" alt="...">
+									<div class="carousel-caption">
+										<a class="text-white stretched-link fs-1" href="/rapid/wherewework/whereWeworkEV.html" role="button">Content on going</a>
+										<p class="fst-italic text-white small">Our website is ongoing. We will be adding more content in the future. Our website is ongoing. We will be adding more ...</p>
+									</div>
+								</div>
+								<div class="carousel-item c3-item">
+									<img src="https://images.unsplash.com/photo-1530496216518-a53d24e99c31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" class=" c3-img w-100" alt="...">
+									<div class="carousel-caption">
+										<a class="text-white stretched-link fs-1" href="/rapid/wherewework/whereWeworkEV.html" role="button">Content on going</a>
+										<p class="fst-italic text-white small">Our website is ongoing. We will be adding more content in the future. Our website is ongoing. We will be adding more ...</p>
+									</div>
+								</div>
+							</div>
+							<!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button> -->
+					</div>
+				</div>
+
+		<!-- 2nd -->
+				<div class="col mx-auto mx-sm-start card2 border-0">
+					<div id="carouselExampleDark" class="carousel carousel slide w-100" data-bs-ride="carousel">
+							<!-- <div class="carousel-indicators">
+								<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active " aria-current="true" aria-label="Slide 1" ></button>
+								<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+								<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+							</div> -->
+							<div class="carousel-inner rounded-4">
+								<div class="carousel-item active c3-item" data-bs-interval="2000"  >
+									<img src="https://images.unsplash.com/photo-1654564706005-b7828ace2cbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class=" c3-img w-100" alt="...">
+									<div class="carousel-caption ">
+										<a class="text-white stretched-link fs-1 " href="/rapid/wherewework/whereWeworkEV.html" role="button">Content on going</a>
+										<p class="fst-italic text-white small">Our website is ongoing. We will be adding more content in the future. Our website is ongoing. We will be adding more ...</p>
+									</div>
+								</div>
+								<div class="carousel-item c3-item" data-bs-interval="2000">
+									<img src="https://images.unsplash.com/photo-1512427631246-d0c374837803?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class=" c3-img w-100" alt="...">
+									<div class="carousel-caption">
+										<a class="text-white stretched-link fs-1" href="/rapid/wherewework/whereWeworkEV.html" role="button">Content on going</a>
+										<p class="fst-italic text-white small">Our website is ongoing. We will be adding more content in the future. Our website is ongoing. We will be adding more ...</p>
+									</div>
+								</div>
+								<div class="carousel-item c3-item">
+									<img src="https://images.unsplash.com/photo-1530496216518-a53d24e99c31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" class=" c3-img w-100" alt="...">
+									<div class="carousel-caption">
+										<a class="text-white stretched-link fs-1" href="/rapid/wherewework/whereWeworkEV.html" role="button">Content on going</a>
+										<p class="fst-italic text-white small">Our website is ongoing. We will be adding more content in the future. Our website is ongoing. We will be adding more ...</p>
+									</div>
+								</div>
+							</div>
+							<!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button> -->
+					</div>
+				</div>
+			</div>
+
+	</div>
+
+<!-- What we do -->
+	<div class="position-relative mb-5">
+		<div class="cover-item mt-5 " >
+			<img src="https://images.unsplash.com/photo-1622718831336-d6c854e91ccd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="d-block w-100 cover-img" alt="...">
+		</div>
+		<div class="container ">
+			<div class="col-sm position-absolute top-50 start-50 translate-middle mb-5 text-center">
+				<h5 class="display-4 fw-bolder fst-italic text-white">What we do</h5>
+				<p class="col-sm fst-italic text-white text-start mt-5">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
+				<a class="btn btn-outline-light rounded-pill border border-secondary mt-5" href="/rapid/whatwedo/whatWedoDD.html">See More &nbsp <span><i class="fa-solid fa-arrow-right text-white"></i></span></a>
+						
+			 </div>
+		</div>
+	</div>
+
+<!--Todays News & Stories--> 
+	<div class="container shadow-sm p-3 mb-5 bg-body rounded">
+	<!--News & Stories Searchbar-->
+		<div class="title d-flex justify-content-center ">
+			<p class="display-3 newsfont">News & Stories</p>	
+		</div>
+		<div class="container flex-grow-1 col-sm-8 mt-3 mb-5">
+			<form class="searchbar d-flex mb-5" role="search">
+				<input class="form-control form-control-lg me-2 rounded-pill border border-secondary border-2 mb-5" type="search" placeholder="Search" aria-label="Search">
+					<!--<button class="btn btn-dark rounded-5 rounded-pill" type="submit">Search</button>-->
+			</form>
+		</div>
+		<div class=" container mb-3 mt-5 ">
+			<span href="#" class="display-5 newsfont">Latest News</span>
+		</div>
+		<div class="container mt-5" style="height: 500px;">
+			<div class="container row g-2 g-lg-4 overflow-auto" style="height:500px;">
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+						<img  src="https://images.unsplash.com/photo-1447946442870-3be230521a91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3 w-100">
+						<span class="d-block fw-bolder fs-1 mt-3 ">The Farmer Life</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic" >Read...</a>
+					</div> 
+				</div>
+
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+					<img  src="https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3 w-100">
+						<span class="d-block fw-bolder fs-1 mt-3 ">Banana Industry</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic">Read...</a>
+					</div> 
+				</div>
+
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+					<img  src="https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3 w-100">
+						<span class="d-block fw-bolder fs-1 mt-3 ">Good Morning</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic">Read...</a>
+					</div> 
+				</div>
+
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+					<img  src="https://images.unsplash.com/photo-1530541835461-dedaf9cf368a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3 w-100">
+						<span class="d-block fw-bolder fs-1 mt-3 ">Tomatoes Tomato</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic">Read...</a>
+					</div> 
+				</div>
+
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+					<img  src="https://images.unsplash.com/photo-1562191326-80d0d9ddded4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=805&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3 w-100">
+						<span class="d-block fw-bolder fs-1 mt-3 ">Banana Farmers</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic">Read...</a>
+					</div> 
+				</div>
+
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+					<img  src="https://images.unsplash.com/photo-1447946442870-3be230521a91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3 w-100">
+						<span class="d-block fw-bolder fs-1 mt-3 ">The Coffee Grinder</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic">Read...</a>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- Where we work -->
+	<div class="position-relative mb-5">
+		<div class="cover-item mt-5 " >
+			<img src="https://images.unsplash.com/photo-1606313456936-e34dabc46840?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="d-block w-100 cover-img" alt="...">
+		</div>
+		<div class="container ">
+			<div class="col-sm position-absolute top-50 start-50 translate-middle mb-5 text-center">
+				<h5 class="display-4 fw-bolder fst-italic text-white">Who we are</h5>
+				<p class="col-sm fst-italic text-white text-start mt-5">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
+				<a class="btn btn-outline-light rounded-pill border border-secondary mt-5" href="/rapid/whoweare/whoweare.html">See More &nbsp <span><i class="fa-solid fa-arrow-right text-white"></i></span></a>
+						
+			 </div>
+		</div>
+	</div>		
+
+<!--cards-->
+	<div class="container mt-3">
+		<div class=" mt-5 fw-bolder fs-4 title">
+				<!-- <span href="#" class="display-5">Stories</span> -->
+		</div>
+		<div class="row mt-3">
+			<div class="col-lg mb-5 ">
+				<div class="card">
+					<div class="card ">
+						<div class="card-img-overlay">
+							<h5 class="card-title fw-bolder display-4 text-white mt-5 pt-5" style="text-shadow: 3px 3px 20px black;">Coffee</h5>						
+						</div>
+						<img src="https://images.unsplash.com/photo-1629008642899-178df6fc5f2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="card-img-top" alt="...">
+					</div>
+					<div class="card-body">					
+						<!-- <p class="card-text">Our website is ongoing. We will be adding more content in the future.</p>
+						<p class="card-text "><small>Last updated 3 weeks ago</small></p> -->
+
+						<p class="placeholder-wave">
+		                  <span class="placeholder col-6 mb-3"></span>
+		                  <span class="placeholder w-75 mb-3"></span>
+		                  <span class="placeholder mb-3" style="width: 80%;"></span>
+		                </p>
+		                <p class="placeholder-wave mt-3">
+		                  <span class="placeholder mb-3" style="width: 50%;"></span>
+		                </p>
+
+						<div class="hstack gap-3">
+						  <button type="button" class="btn btn-outline-dark " href="#">News</button>
+						  
+						  <button type="button" class="btn btn-outline-dark " href="#">Stories</button>
+						  
+						  <button type="button" class="btn btn-outline-dark " href="#">Provinces</button>
+						</div>						
+					 </div>
+				</div>				
+			</div>
+
+			<div class="col-lg mb-5 ">
+				<div class="card">
+					<div class="card ">
+						<div class="card-img-overlay">
+							<h5 class="card-title fw-bolder display-4 text-white mt-5 pt-5" style="text-shadow: 3px 3px 20px black;">Cacao</h5>					
+						</div>
+						<img src="../static/webrepstatic/img/rapidimage/6_CIDOFSFA_BrgyCervantes_Catarman_RCU8.jpg" class="card-img-top" alt="...">
+					</div>
+					<div class="card-body">					
+						<!-- <p class="card-text">Our website is ongoing. We will be adding more content in the future.</p>
+						<p class="card-text "><small>Last updated 3 weeks ago</small></p> -->
+
+						<p class="placeholder-wave">
+		                  <span class="placeholder col-6 mb-3"></span>
+		                  <span class="placeholder w-75 mb-3"></span>
+		                  <span class="placeholder mb-3" style="width: 80%;"></span>
+		                </p>
+		                <p class="placeholder-wave mt-3">
+		                  <span class="placeholder mb-3" style="width: 50%;"></span>
+		                </p>
+
+						<div class="hstack gap-3">
+						  <button type="button" class="btn btn-outline-dark " href="#">News</button>
+						  
+						  <button type="button" class="btn btn-outline-dark " href="#">Stories</button>
+						  
+						  <button type="button" class="btn btn-outline-dark " href="#">Provinces</button>
+						</div>						
+					 </div>
+				</div>				
+			</div>
+
+			<div class="col-lg mb-5 ">
+				<div class="card">
+					<div class="card ">
+						<div class="card-img-overlay">
+							<h5 class="card-title fw-bolder display-4 text-white mt-5 pt-5" style="text-shadow: 3px 3px 20px black;">Coconut</h5>					
+						</div>
+						<img src="https://plus.unsplash.com/premium_photo-1664910633795-a678f61a8aad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="card-img-top" alt="...">
+					</div>
+					<div class="card-body">					
+						<!-- <p class="card-text">Our website is ongoing. We will be adding more content in the future.</p>
+						<p class="card-text "><small>Last updated 3 weeks ago</small></p> -->
+
+						<p class="placeholder-wave">
+		                  <span class="placeholder col-6 mb-3"></span>
+		                  <span class="placeholder w-75 mb-3"></span>
+		                  <span class="placeholder mb-3" style="width: 80%;"></span>
+		                </p>
+		                <p class="placeholder-wave mt-3">
+		                  <span class="placeholder mb-3" style="width: 50%;"></span>
+		                </p>
+
+						<div class="hstack gap-3">
+						  <button type="button" class="btn btn-outline-dark " href="#">News</button>
+						  
+						  <button type="button" class="btn btn-outline-dark " href="#">Stories</button>
+						  
+						  <button type="button" class="btn btn-outline-dark " href="#">Provinces</button>
+						</div>						
+					 </div>
+				</div>				
+			</div>
+
+			<div class="col-lg mb-5 ">
+				<div class="card">
+					<div class="card ">
+						<div class="card-img-overlay">
+							<h5 class="card-title fw-bolder display-5 text-white mt-5 " style="text-shadow: 3px 3px 20px black;">Processed Fruits & Nuts</h5>					
+						</div>
+						<img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" class="card-img-top" alt="...">
+					</div>
+					<div class="card-body">					
+						<!-- <p class="card-text">Our website is ongoing. We will be adding more content in the future.</p>
+						<p class="card-text "><small>Last updated 3 weeks ago</small></p> -->
+
+						<p class="placeholder-wave">
+		                  <span class="placeholder col-6 mb-3"></span>
+		                  <span class="placeholder w-75 mb-3"></span>
+		                  <span class="placeholder mb-3" style="width: 80%;"></span>
+		                </p>
+		                <p class="placeholder-wave mt-3">
+		                  <span class="placeholder mb-3" style="width: 50%;"></span>
+		                </p>
+
+						<div class="hstack gap-3">
+						  <button type="button" class="btn btn-outline-dark " href="#">News</button>
+						  
+						  <button type="button" class="btn btn-outline-dark " href="#">Stories</button>
+						  
+						  <button type="button" class="btn btn-outline-dark " href="#">Provinces</button>
+						</div>						
+					 </div>
+				</div>				
+			</div>			
+
+		</div>
+			<!-- <div class="fst-italic fs-1 d-flex justify-content-end">
+				<a href="#" style="text-decoration: none !important; color: #1F4F5A; ">See more stories...</a>
+			</div> -->
+	</div>
+
+<!-- Who we are -->
+	<!-- <div class="container">
+		<div class="d-lg-flex mt-5">
+			<div class="www-item">
+				<img src="https://images.unsplash.com/photo-1626984232603-cc32cf514a83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="d-block w-100 www-img">
+			</div>
+			<div class="col-sm mx-auto px-5 px-xl-start mt-5 ">
+				<h5 class="headings display-3 fst-italic " style="color: #1F4F5A !important;">Who we are</h5>
+				<p class="fst-italic mt-5">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
+				<a class="mt-5 fst-italic fs-5" href="#" style="text-decoration: none !important; color: #1F4F5A; ">See more...</a>
+			</div>
+		</div>
+
+	</div> -->
+
+<!--Footer-->
+	<div class="position-relative mt-5 c-item">
+		<img src="https://images.unsplash.com/photo-1504788576473-fa4b594356a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="d-block w-100 c-img" alt="...">
+		<div class="cont position-absolute top-50 start-50 translate-middle"  style="width: 100%;">
+			 <div class="container d-flex" >
+				<div class="mx-auto d-lg-block d-xl-none " style="margin-top: -200px;">
+				  <img src="../static/webrepstatic/img/footer.svg" width="800" height="200" class="" alt="home">
+				</div>	           
+			 </div>
+		</div>
+		<div class="container text-white w-100 position-absolute bottom-0 start-50 translate-middle-x">
+			<div class="col-lg-12  d-flex mt-3 border-bottom border-white">
+				<div class="d-none d-xl-block w-50 ">
+				  <img src="../static/webrepstatic/img/footer.svg" width="400" class="w-100 " alt="home" >
+				</div>
+				<div class="d-block me-5">
+					<h5>Office Hours</h5>
+					<span class="small text-white">Monday - Friday</span><br>
+					<span class="small text-white">8:00am - 5:00pm</span><br>
+					<span class="small text-white">(except hollidays)</span>
+				</div>
+				<div clas="d-block ms-5 ">
+					<h5>Main Office Address</h5>
+					<span class="small text-white">National Project Coordination Office</span><br>
+					<span class="small text-white">RAPID GROWTH PROJECT</span><br>
+					<span class="small text-white">Department of Trade and Industry</span><br>
+					<span class="small text-white">2F MINTRADE BLDG.</span>
+				</div>
+				<div class="d-block ms-5 ">
+					<h5>Feedback</h5>
+					<span class="small text-white">We would like to hear from you.</span><br>
+					<span class="small text-white">Fill out the <a class="text-white" href="#" style="display: inline;">feedback</a> Form to<br>provide us your ideas on <br>how we can improve our website</span><br>
+					<span class="small text-white">Thank you.</span>
+				</div>
+			</div>
+
+			<div class="col-sm-6 mt-1">
+				<div class="d-flex">
+					<a class="text-white" href="">Privacy Policy</a>
+					<a class="text-white ms-3" href=""> Terms</a>
+					<a class="text-white ms-3" href="">Security</a>
+				</div>				
+			</div>
+			<div class="col-sm-4">				
+			</div>			
+		</div>			
+	</div>
+
+<script type="text/javascript" src="../static/webrepstatic/js/index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
