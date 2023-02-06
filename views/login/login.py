@@ -22,7 +22,6 @@ class _main:
 		# return render_template("SITE_OFF.html") # MAINTENANCE
 		return redirect("/login_v2023")
 
-
 	@app.route("/login_dev_test",methods=["POST","GET"])
 	@app.route("/dev_test",methods=["POST","GET"])
 	def login_dev_test():
