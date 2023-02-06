@@ -472,9 +472,8 @@
 					<div class="modal-body">
 
 						<form class="row g-3 needs-validation" >
-
 								<div class="col-md-6">
-									<label for="formUnit" class="form-label">Unit</label>
+									<label for="formUnit" class="form-label small fw-bolder">Unit</label>
 									<select class="form-select" id="formUnit" required>
 										<option>NPCO</option>
 										<option>RCU</option>
@@ -486,7 +485,7 @@
 								</div>
 								
 								<div class="col-md-6">
-									<label for="formDesignation" class="form-label">Designation</label>
+									<label for="formDesignation" class="form-label small fw-bolder">Designation</label>
 									<input type="text" class="form-control" id="formDesignation" required>
 									<div class="invalid-feedback">
 										Please provide a Designation.
@@ -494,15 +493,15 @@
 								</div>
 								
 								<div class="col-md-12">
-									<label for="formTitle" class="form-label form-label-lg">Title of Document</label>
-									<input type="text" class="form-control" id="formTitle" required>
+									<label for="formTitle" class="form-label form-label-lg small fw-bolder">Title of Document</label>
+									<input type="text" class="form-control small fw-bolder" id="formTitle" required>
 									<div class="invalid-feedback">
 										Please provide a Title of Document.
 									</div>
 								</div>
 
-								<div class="col-md-8">
-									<label for="formCategory" class="form-label">Category/Topic</label>
+								<div class="col-md-4">
+									<label for="formCategory" class="form-label small fw-bolder">Category/Topic</label>
 									<select class="form-select" id="formCategory" required>
 										<option>Accomplishment Report</option>
 										<option>Bidding Documents</option>
@@ -521,7 +520,7 @@
 										<option>Letter</option>
 										<option>Marketing Collateral</option>
 										<option>Memo</option>
-										<option>>Memorandum of Agreement</option>
+										<option>Memorandum of Agreement</option>
 										<option>Memorandum of Understanding</option>
 										<option>NEDA Document</option>
 										<option>Post-Activity Report</option>
@@ -529,14 +528,34 @@
 										<option>RSIP</option>
 										<option>Template</option>
 										<option>Terms of Reference</option>
+										<option>Others</option>
 									</select>
 									<div class="invalid-feedback">
-										Please select a Category/Topic.
+										Please select a Unit.
 									</div>
+								</div>
+									<script type="text/javascript">
+										$(document).on('change', '#formCategory', function(e){  
+											e.preventDefault();
+											el = $("#OthersForm");
+											formCategory = this.value;
+											console.log(el)
+											if (formCategory == "Others") {
+												el.show();
+
+											}
+											else {
+												el.hide();
+											}
+										});
+									</script>
+								<div class="col-md-4" id="OthersForm" style="display: none;">
+									<label for="formCategory" class="form-label small fw-bolder">Others:</label>
+									<input type="text" name="Others" id="Others" class="form-control" placeholder="please specify">
 								</div>
 
 								<div class="col-md-4">
-									<label for="formDate" class="form-label">Date Approved</label>
+									<label for="formDate" class="form-label small fw-bolder">Date Approved</label>
 									<input type="date" class="form-control" id="formDate" placeholder="Select Date" required>
 									<div class="invalid-feedback">
 										Please provide a date approve.
@@ -544,40 +563,86 @@
 								</div>
 
 								 <div class="col-md-12">
-									<label for="formDescription" class="form-label">Short Description of Title/Topic/Name of Document</label>
-									<input type="text" class="form-control" id="formDescription" required>
+									<label for="formDescription" class="form-label small fw-bolder">Short Description of Title/Topic/Name of Document</label>
+									<textarea class="form-control" id="formDescription" rows="3"></textarea>
 									<div class="invalid-feedback">
 										Please provide a Title of Document.
 									</div>
 								</div>
 
 								<div class="col-md-12">
-									<label for="formFile" class="form-label">Please upload your files</label>
+									<label for="formFile" class="form-label small fw-bolder">Please upload your files</label>
 									<input class="form-control" type="file" id="formFile">
 									<div class="invalid-feedback">
 										Please provide a Title of Document.
 									</div>
 								</div>
 
-								<div class="col-md-6">
-									<label for="formAccess" class="form-label">Who can Access? (PLS PUT EMAIL ADDRESS/ES)</label>
-									<input type="text" class="form-control" id="formAccess" placeholder="Skip this form for Public access">
-									<div class="invalid-feedback">
-										Please provide a date approve.
-									</div>
+								<div class="col-md-12">
+									<label for="formAccess" class="form-label fw-bolder small">General Access</label>
+										<div class="container border border-light rounded-3 ">
+											<div class="row d-flex align-items-start mb-2">
+												<div class="col-5 mt-3">
+													<select class="form-select border-0 fw-bolder bg-light" id="formAccess">
+														<option class="text-secondary" value=false >Restricted</option>
+														<option class="text-success" value=true >Public</option>
+													</select>	
+												</div>
+												<div class="col-7" id="restrictedDesc" hidden>
+													<p class="small text-muted mt-4" id="">Only people who have access can open this file</p>																							
+												</div>
+												<div class="col-7" id="PublicDesc" hidden>
+													<p class="small text-muted mt-4" id="">Anyone can access this file</p>																							
+												</div>
+											</div>
+									<!-- Restricted -->
+										<div class="mb-3" id="forRestricted" hidden>
+												<div class="container mt-2 mb-2">
+													<input type="text" id="accessPeople" class="form-control" placeholder="Add people can access">
+														<div class="container">
+															<p class="mt-3">People with access</p>
+														<!-- Users -->
+															<div class="row d-flex align-items-center" >
+																<div class="col-1">
+																	<span><i class="fa-regular fa-user"></i></span>
+																</div>
+																<div class="col-8">
+																	<span class="" id="">Christian Castle Bron</span>
+																	<small class="d-block text-muted fst-italic" id=""> ChristianBorn@gmail.com</small>
+																</div>
+																<div class="col-3" id="">
+																	<a class="text-muted fst-italic " type="button"><small>Remove</small></a>
+																</div>					 											
+															</div>														
+														</div>
+												</div>
+										</div>
+										</div>
+										<script type="text/javascript">
+											$(document).on('change', '#formAccess', function(e){  
+												// e.preventDefault();
+												formAccess = JSON.parse(this.value);
+
+												set_show(formAccess)
+											});
+
+
+											function set_show(true_ba){
+												$("#forRestricted").attr("hidden",true_ba)
+												$("#restrictedDesc").attr("hidden",true_ba)
+												$("#PublicDesc").attr("hidden",!true_ba)
+											}
+
+											set_show(false)
+										</script>
 								</div>
 
-								<div class="col-md-6">
-									<label for="formNotification" class="form-label">Do you want to receive notifications in your email?</label>
-									<select class="form-select" id="formNotification" required>
-										<option>YES</option>
-										<option>NO</option>
-									</select>
-									<div class="invalid-feedback">
-										Please select a Unit.
-									</div>
+								<div class="col-md-12 d-flex align-items-center">
+									<input class="form-check-input small me-2" type="checkbox" value="" id="formNotification" >
+								  <label class="form-check-label small text-muted" for="formNotification">
+								    Receive notifications in your email?
+								  </label>
 								</div>
-
 					</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -3155,14 +3220,14 @@
 		<div class="cont position-absolute top-50 start-50 translate-middle"  style="width: 100%;">
 			 <div class="container d-flex" >
 				<div class="mx-auto d-lg-block d-xl-none " style="margin-top: -200px;">
-				  <img src="../static/webrepstatic/img/footer.svg" width="800" height="200" class="" alt="home">
+				  <img src="../../static/webrepstatic/img/footer.svg" width="800" height="200" class="" alt="home">
 				</div>	           
 			 </div>
 		</div>
 		<div class="container text-white w-100 position-absolute bottom-0 start-50 translate-middle-x">
 			<div class="col-lg-12  d-flex mt-3 border-bottom border-white">
 				<div class="d-none d-xl-block w-50 ">
-				  <img src="../static/webrepstatic/img/footer.svg" width="400" class="w-100 " alt="home" >
+				  <img src="../../	static/webrepstatic/img/footer.svg" width="400" class="w-100 " alt="home" >
 				</div>
 				<div class="d-block me-5">
 					<h5>Office Hours</h5>
@@ -3197,6 +3262,5 @@
 		</div>			
 	</div>
 
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 </html>
