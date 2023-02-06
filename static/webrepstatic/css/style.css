@@ -1,0 +1,397 @@
+/*COLOR PALLETE*/
+/*
+#F9F5E7
+#ECF9FF
+#F5F5F5
+*/
+
+
+/**SCROLLBAR**/
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #ffffff; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #1F4F5A; 
+}
+
+/*News Font*/
+
+.newsfont{
+	font-family: 'Times New Roman', sans-serif;
+}
+
+.texttheme{
+	color: #1F4F5A;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #81A33E; }
+
+	.img-thumbnail{
+		border: none 0px;
+
+
+	}
+
+	.navbar-toggler{
+		border: none;
+	}
+
+	a:hover{
+		color: none;
+	}
+
+img {
+    pointer-events: none;
+}
+
+.section {
+
+  width: 100%;
+}
+
+.section::before {
+  animation: bounce 2s ease infinite;
+  bottom: 2rem;
+  color: #fff;
+  content: '╲╱';
+  font-size: 2rem;
+  height: 4rem;
+  left: 50%;
+  letter-spacing: -4px;
+  line-height: 4rem;
+  margin-left: -3rem;
+  opacity: 0.8;
+  position: absolute;
+  text-align: center;
+  width: 6rem;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-50%);
+  }
+}
+
+
+.shadowText{
+/*	text-shadow: 5px 5px 10px black;*/
+}
+
+/*	font*/
+
+  		.searchFont {
+  			font-family: 'Jost', sans-serif;
+  			color: #1F4F5A !important;
+
+  		}
+
+		.fontBold{
+				font-family: 'Jost', sans-serif;
+			}
+
+		a{
+				color: #1F4F5A; 
+				font-family: 'Jost', sans-serif;
+				display: block;
+				text-decoration: none !important; 
+			}
+
+		h5 {
+			font-family: 'Jost', sans-serif !important;
+
+		}
+
+
+		p {
+			font-family: 'Jost', sans-serif;
+			color: #1F4F5A !important;
+		}
+
+		.title span{
+
+			font-family: 'Jost', sans-serif;
+			color: #1F4F5A; 
+
+		}
+
+		span {
+
+			font-family: 'Jost', sans-serif;
+			color: #1F4F5A !important;
+
+		}
+
+
+
+/*Nav Hover Dropdaown*/
+
+.navbar-nav li:hover > ul.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top:-6px;
+    margin-left: 1.9px;
+}
+
+/* rotate caret on hover */
+.dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+} 
+
+/*nav css*/
+
+.nav-pills > li.active > a{
+    color: red;
+}
+
+
+.nav a {
+
+	color: #1F4F5A; 
+	font-family: 'Jost', sans-serif;
+
+}
+.nav-link a:hover{
+
+	background-color: #1F4F5A !important; 
+	color: white;
+}
+
+.nav a:hover{
+
+	background-color: #81A33E; 
+	color: white;
+}
+
+
+/**Carousel CSS**/
+
+
+.c-item{
+height: 1000px;
+
+}
+
+.c-img{
+	height: 100%;
+	object-fit: cover;
+	filter: brightness(0.5);
+}
+
+.content-item{
+	height: 150px;
+
+}
+
+.content-img{
+	height: 100%;
+	object-fit: cover;
+	filter: brightness(0.6);
+}
+
+
+.carousel-indicators a{
+    width: 30px;
+    height: 30px;
+    text-indent: -999px;
+}
+
+.c2-item{
+
+	height: 40% !important;
+
+
+}
+
+.c2-img{
+
+	height: 300px;
+	object-fit: cover;
+	filter: brightness(0.6);
+
+}
+
+.c3-item{
+
+	height: 20% !important;
+
+
+}
+
+.c3-img{
+
+	height: 200px;
+	object-fit: cover;
+	filter: brightness(0.6);
+
+}
+
+.cimg-item{
+
+	max-width: 152px;
+	height: 150px;
+	
+	
+
+}
+
+.cimg-img{
+
+	height: 150px ;
+	width: 150px;
+	object-fit: cover !important;
+
+}
+
+
+.pg-item{
+
+	height: 200px ;
+	width: ;
+	
+
+}
+
+.pg-img{
+
+	height: 200px;
+	object-fit: cover !important;
+    
+}
+
+
+
+
+/**style*//
+.card-size{
+		height: 5rems;
+		width: 5rems;
+}
+
+.card-img{
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+
+}
+
+.card{
+	transition: all 0.3s;
+}
+
+
+.card:hover{
+	transform: scale(1.05);
+}
+
+.card2{
+	transition: all 0.3s;
+}
+
+
+.card2:hover{
+	transform: scale(1.01);
+}
+
+
+/**COVER**/
+.cover-item{
+	height: 700px;
+
+}
+.cover-img{
+	height: 100%;
+		object-fit: cover;
+		filter: brightness(0.4);
+}
+
+
+.www-item{
+	height: 500px;
+
+}
+.www-img{
+	height: 100%;
+		object-fit: cover;
+}
+
+.img-thumbnail {
+
+	border: none;
+}
+
+/**Footer**/
+.footer-item{
+	height: 100px;
+
+}
+.footer-img{
+	height: 100%;
+		object-fit: cover;
+		filter: brightness(0.6);
+}
+
+.footer{
+	height: 300px;
+	--bs-bg-opacity: .4;
+
+}
+
+.contUs{
+
+	margin-top: 10%;
+	font-family: 'Jost', sans-serif;
+
+}
+
+.cont{
+	width: 40%;
+}
+
+.btn-lg{
+	width: 150px;
+
+}
+
+/**News&Stories tablelist**/
+.nsdata-item{
+	height: 100%;
+
+}
+.nsdata-img{
+		height: 100%;
+		object-fit: cover;
+}
+
+
+/**sidebarbtn**/
+
+
+
+/*Div Content Size*/
+
+.tab_size {
+
+ height:400px;
+ width: 100%;
+}
+
+
+
+
