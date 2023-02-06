@@ -5,7 +5,7 @@
 	<body class="x-light-grey">
 
 		<!-- Top container -->
-		<header class="x-header x-bar x-top x-white x-large" style="z-index:9;">
+		<header class="x-header x-bar x-top x-rapid-teal-heavy x-large" style="z-index:9;">
 			<div class="x-container x-padding x-left"  onclick="x_open()">
 				<div class="x-col s4">
 					<img src="../static/img/avatar2.png" class="x-circle x-margin-right" style="width:46px">
@@ -21,7 +21,7 @@
 			</div>
 		</header>
 		<!-- Sidebar/menu -->
-		<nav class="x-sidebar x-collapse x-white x-animate-left" style="width:200px;margin-top: 60px;" id="mySidebar"><br>
+		<nav class="x-sidebar x-collapse  x-rapid-teal-medium x-animate-left" style="width:200px;margin-top: 60px;" id="mySidebar"><br>
 			<div class="x-container x-row">
 				<div class="x-col s12 x-bar">
 					<a href="#" class="x-bar-item x-button"><i class="fa fa-envelope"></i></a>
@@ -29,7 +29,6 @@
 					<a href="#" class="x-bar-item x-button"><i class="fa fa-cog"></i></a>
 				</div>
 			</div>
-			<hr>
 			<div class="x-container">
 				<h5><b>Options</b></h5>
 			</div>
@@ -39,11 +38,9 @@
 				<a class="x-bar-item x-button x-padding" onclick="not_ready('lists','page_content')"><i class="fa fa-eye fa-fw"></i>&nbsp; lists</a>
 				<a class="x-bar-item x-button x-padding" onclick="not_ready('forms','page_content')"><i class="fa fa-users fa-fw"></i>&nbsp; Forms</a>
 				<a class="x-bar-item x-button x-padding" onclick="not_ready('history','page_content')"><i class="fa fa-history fa-fw"></i>&nbsp; History</a>
-				<a class="x-bar-item x-button x-padding" onclick="not_ready('settings','page_content')"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a><hr>
-				<hr>
-				
+				<a class="x-bar-item x-button x-padding" onclick="not_ready('settings','page_content')"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>				
 			</div>
-			<div class="x-container x-center">
+			<div class="x-rowx-center">
 				<div class="x-container x-row x-padding">
 					<button class="x-block x-btn x-border x-round x-border-orange" onclick="goto('/menu')"> <span class="x-text-orange x-hover-orange fa fa-home"></span> Home</button>
 				</div>
@@ -59,33 +56,38 @@
 
 		<div class="x-padding" id="page_content">
 			<div id="dashboard" class="page_content x-animate-left">
+				<br>
 				{% include 'dashboard.html' %}
 			</div>
 			<div id="lists" class="page_content x-animate-left" style="display:none;">
+				<br>
 				{% include 'lists_profile.html' %}
 			</div>
 			<div id="forms" class="page_content x-animate-left" style="display:none;">
+				<br>
 				forms
 			</div>
 			<div id="history" class="page_content x-animate-left" style="display:none;">
+				<br>
 				history
 			</div>
 			<div id="settings" class="page_content x-animate-left" style="display:none;">
+				<br>
 				settings
 			</div>
 		</div>
 
-		<footer class="x-container x-padding-16 x-white" style="margin-left:200px;margin-top:43px;">
+		<footer class="x-container x-padding-16 x-small x-white" style="margin-left:200px;margin-top:43px;">
 			
 			<div class="x-container x-col l2 x-text-grey">
 				<div class="x-col l4">
-					<img src="../static/img/dti.png" style="width:100%;">
+					<img src="../static/img/dti.png" style="width:80%;">
 				</div>
 				<div class="x-col l4">
-					<img src="../static/img/icon.png" style="width:100%;">
+					<img src="../static/img/icon.png" style="width:80%;">
 				</div>
 				<div class="x-col l4">
-					<img src="../static/img/ifad.jpg" style="width:100%;">
+					<img src="../static/img/ifad.jpg" style="width:80%;">
 				</div>
 			</div>
 			<div class="x-container x-padding x-col l6 x-text-grey">

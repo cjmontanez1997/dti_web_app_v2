@@ -27,88 +27,60 @@
             </div>
 
             
-            <div class="modal fade" id="modal-filter" tabindex="-1" role="dialog" aria-labelledby="modal-filter" aria-hidden="true">
-                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                    <div class="modal-content">
-                        
-                        <div class="modal-header">
-                            <h6 class="modal-title" id="modal-title-default">Filter</h6>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        
-                        <div class="modal-body">
-        <form action="/formcdashboardfilter" method="POST">
-                            <div class="form-group">
-                                <div class="form-row">
+          <div class="modal fade" id="modal-filter" tabindex="-1" role="dialog" aria-labelledby="modal-filter" aria-hidden="true">
+        <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
+            <div class="modal-content">
                 
-                                    <div class="col-md-6">
-                                        <strong> <label for="exampleFormControlSelect1">Form of Enterprise:</label></strong>
-                                        <select class="form-control form_data_c" name="form_interprisefilter" id="form_interprisefilter">
-                                            <option value="" selected disabled>Please select</option>
-                                            <option value="Single/Sole">Single/Sole</option>
-                                            <option value="Partnership">Partnership</option>
-                                            <option value="Corporation">Corporation</option>
-                                        </select> 
-                                    </div>
+                <div class="modal-header">
+                    <h6 class="modal-title text-uppercase" id="modal-title-default"><strong>Filter</strong> </h6>
+                    <p class="modal-title text-muted" style="font-size: smaller;">&nbsp;&nbsp;&nbsp;Combine two filter to display data.</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
                 
-                                    <div class="col-md-6">
-                                        <strong>
-                                            <label for="industry_cluster">Industry Cluster:</label>
-                                        </strong>
-                                        <select class="form-control form_data_c"  name="industry_clusterfilter" id="industry_clusterfilter">
-                                            <option selected disabled value="">Please select</option>
-                                            <option value="Cacao">Cacao</option>
-                                            <option value="Coconut">Coconut</option>
-                                            <option value="Coffee">Coffee</option>
-                                            <option value="PFN-specify">PFN</option>
-                                        </select>
-                                    </div>
                 
-                                </div>
+                <div class="modal-body">
+<form action="/formcdashboardfilter" method="POST">
+                    <div class="form-group">
+                        <div class="form-row">
+        
+                            <div class="col-md-6">
+                                <strong> <label for="exampleFormControlSelect1">Filter #1</label></strong>
+                                <select class="form-control form_data_c" name="filter1" id="filter1">
+                                    <option value="" selected disabled>Please select</option>
+                                    <option>Form Enterprise</option>
+                                    <option>Industry Cluster</option>
+                                    <option>Business Address</option>
+                                    <option>Gender</option>
+                                </select> 
                             </div>
         
-                            <div class="form-group">
-                                <div class="form-row">
-                
-                                    <div class="col-md-6">
-                                        <strong>
-                                            <label for="ifyes">Business Address:</label>
-                                        </strong>
-                                        <select class="form-control form_data_c" name="business_addrfilter" id="business_addrfilter">
-                                            <option value="" selected disabled>Please select</option>
-                                            <option>Butuan City</option>
-                                            <option>Davao City</option>
-                                            <option>Zamboanga City</option>
-                                        </select>
-                                    </div>
-                
-                                    <div class="col-md-6">
-                                        <strong>
-                                            <label>Sex:</label>
-                                        </strong>
-                                        <select class="form-control form_data_c" id="sexfilter" name="sexfilter">
-                                            <option selected disabled>Please select</option>
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                        </select>
-                                    </div>
-                
-                                </div>
+                            <div class="col-md-6">
+                                <strong> <label for="exampleFormControlSelect1">Filter #2</label></strong>
+                                <select class="form-control form_data_c" name="filter2" id="filter2">
+                                 
+                                    <option value="" selected disabled>Please select</option>
+                                    <option>Form Enterprise</option>
+                                    <option>Industry Cluster</option>
+                                    <option>Business Address</option>
+                                    <option>Gender</option>
+                                </select> 
                             </div>
-                            
+        
                         </div>
-                        
-                        <div class="modal-footer">
-                            <button  type="submit" class="btn btn-primary">Done</button>
-                            <button type="button" class="btn btn-warning   ml-auto" data-dismiss="modal">Close</button>
-                        </div>
-                    </form>
                     </div>
+                    
                 </div>
+                
+                <div class="modal-footer">
+                    <button  type="submit" class="btn btn-primary">Done</button>
+                    <button type="button" class="btn btn-warning   ml-auto" data-dismiss="modal">Close</button>
+                </div>
+            </form>
             </div>
-
+        </div>
+    </div>
 
           </div>
           <!-- Card stats -->

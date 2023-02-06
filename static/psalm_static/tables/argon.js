@@ -1538,7 +1538,8 @@ var DatatableButtons = (function() {
 	// Variables
 
 	var $dtButtons = $('#datatable-buttons');
-
+	var $dtButtons2 = $('#datatable-buttons2');
+	
 
 	// Methods
 
@@ -1580,6 +1581,9 @@ var DatatableButtons = (function() {
 
 	if ($dtButtons.length) {
 		init($dtButtons);
+	}
+	if ($dtButtons2.length) {
+		init($dtButtons2);
 	}
 
 })();

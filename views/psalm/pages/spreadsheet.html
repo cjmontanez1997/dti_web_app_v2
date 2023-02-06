@@ -11,7 +11,123 @@
 
 
 
+    <div class="card" style="width:70%;   margin: 0 auto; margin-top: 20px; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
+        <div class="card-header" style="background-color: #334257;">
+            <h3 style="color: white;">Spreadsheet Management</h3>
+        </div>
+    
+        <div class="card-body" style="background-color: #b4cde4;;">
+    
+            <form style="margin-left: 2%; margin-right: 2%;" >
+                {% include "sweetalert.html" %}
+                <div class="form-group">
+                    <div class="form-row" >
+             
+                        <div class="col-md-6">
+                            <strong>
+                                <label for="position">Import Data</label>
+                            </strong><br>
+                            <a href="" style="width: 60%;" class="btn btn-primary"  > <span><i class="fa-solid fa-file-arrow-up"></i></span> Import</a>
+                        </div>
+                        
+                        <div class="col-md-6">
+    
+                            <strong>
+                                <label for="name">Export Data</label>
+                            </strong><br>
+                            <a href="/menu"  style="width: 60%;" class="btn btn-md btn-default"><span><i class="fa-solid fa-file-arrow-down"></i></span> Export</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <div class="form-row" >
+                        
+                        
+                        <div class="col-md-6">
+                            <strong>
+                                <label class="text-uppercase" style="font-size: larger;">Filtering Export</label>
+                            </strong><br>
+                        </div>
+                    </div>
+                </div>
+
+            
+                <div class="form-group">
+                    <div class="form-row" >
+                        
+                        <div class="col-md-6">
+    
+                            <strong>
+                                <label for="name">Business Address</label>
+                            </strong><br>
+                            <select class="form-control form_data_c" name="filter_addr" id="filter_addr">
+                                <option value="" selected disabled>Please select</option>
+                                <option>AGUSAN DEL NORTE</option>
+                                <option>AGUSAN DEL SUR</option>
+                                <option>SURIGAO DEL SUR</option>
+                                <option>MAGUINDANAO</option>
+                                <option>NORTHERN SAMAR</option>
+                                <option>LEYTE</option>
+                                <option>SOUTHERN LEYTE</option>
+                                <option>MISAMIS ORIENTAL</option>
+                                <option>BUKIDNON</option>
+                                <option>LANAO DEL NORTE</option>
+                                <option>NORTH COTABATO</option>
+                                <option>SULTAN KUDARAT</option>
+                                <option>SARANGANI</option>
+                                <option>ZAMBOANGA DEL NORTE</option>
+                                <option>ZAMBOANGA SIBUGAY</option>
+                                <option>ZAMBOANGA DEL SUR</option>
+                                <option>DAVAO DE ORO</option>
+                                <option>DAVAO ORIENTAL</option>
+                                <option>DAVAO DEL NORTE</option>
+                                <option>DAVAO DEL SUR</option>
+                                <option>DAVAO OCCIDENTAL</option>
+                            </select>
+                            
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <strong>
+                                <label for="position">Industry Cluster</label>
+                            </strong><br>
+                            <select class="form-control form_data_c" name="filter_cluster" id="filter_cluster">
+                                <option value="" selected disabled>Please select</option>
+                                <option value="Cacao">Cacao</option>
+                                <option value="Coconut">Coconut</option>
+                                <option value="Coffee">Coffee</option>
+                                <option value="PFN">PFN</option>
+                            </select>
+                        </div>
+                        
+                 
+                        
+                    </div>
+
+                    
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row" >
+          
+                        
+                        <div class="col-md-6">
+                            <a href="/menu"  style="width: 60%;" class="btn btn-md btn-default"><span><i class="fa-solid fa-file-arrow-down"></i></span> Export</a>
+                            
+                        </div>
+                    </div>
+                </div>
+    
+    
+            
+    
+    
+    
+        </div>
+    </div>
 
 
 

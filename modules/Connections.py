@@ -62,6 +62,7 @@ class mysql:
 			database=self.database)
 		return mydb
 
+
 	def do(self,sql):
 		if(self.err_page==1):
 			conn = mysql.init_db(self)
@@ -75,6 +76,7 @@ class mysql:
 				cur = conn.cursor()
 				cur.execute(sql)
 				conn.commit()
+				return {"response":"done","message":cur.lastrowid, "sql":sql}
 				return cur.lastrowid
 			except Exception as e:
 				return {"response":"error","message":str(e), "sql":sql}

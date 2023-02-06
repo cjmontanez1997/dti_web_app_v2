@@ -217,3 +217,41 @@ div,span{
   background-color: red;
   color: white;
 }
+
+
+/*span, h1, h2, h3, h4, b, i {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: block;
+  line-height: 1em;
+  max-height: 2em;
+}
+*/
+
+
+.x-text-rapid-teal-heavy{
+	color: #0f282e;
+}
+.x-rapid-teal-heavy{
+	background-color:#0f282e ;
+	color: white;
+}
+
+.x-text-rapid-teal-medium{
+	color: #1F4F5A;
+}
+.x-rapid-teal-medium{
+	background-color:#1F4F5A ;
+	color: white;
+}
+
+.x-text-rapid-macha-medium{
+	color: #81A33E;
+}
+
+.x-rapid-macha-medium{
+	background-color: #81A33E;
+	color: white;
+}
+

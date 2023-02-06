@@ -20,7 +20,6 @@ class _main:
 	@app.route("/login",methods=["POST","GET"])
 	def login():
 		# return render_template("SITE_OFF.html") # MAINTENANCE
-		# return render_template("login/login.html") # OLD LOGIN
 		return redirect("/login_v2023")
 
 
@@ -49,14 +48,12 @@ class _main:
 	@app.route("/logout")
 	def logout():
 		session.clear()
-		return redirect("/home")
+		return redirect("/")
 		# return jsonify(session )
 
 	@app.route("/get_session")
 	def get_session():
 		return jsonify(session )
-
-
 
 	@app.route("/check_username",methods=["POST"])
 	def check_username():

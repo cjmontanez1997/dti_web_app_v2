@@ -76,26 +76,6 @@
 	</div>
 
 	<!-- ================================================== -->
-	<div class="x-container x-padding-large">
-		<div id="x-container x-row" >
-			<span class="x-xlarge x-text-green">
-				What's in the Basket <span class="fa fa-basket"></span>
-			</span>
-		</div>
-		<div class="x-container x-pale-green x-padding x-border- x-border-dashed x-border-green x-round-large x-row">
-			<div id="basket_container" class="x-row x-container">
-
-				<div class="x-col x-padding" style="width:10%;">
-					<div class="x-container x-card x-white x-center x-padding x-round-large x-hover-black x-border" onclick="view_all_commodity_count()">
-						<b>Others</b><br>
-						<img src="../static/img/commodity/others.png" style="width:100%"><br>
-						<b class="x-tiny _money_tag">View all commodity</b>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- =========================================== -->
 
 	<div class="x-panel">
@@ -108,7 +88,9 @@
 				</div>
 			</div>
 			<div class="x-col l3">
-				<h5><b>Enumerators for Mobile</b></h5>
+				<span class="x-xlarge x-text-green">
+					What's in the Basket <span class="fa fa-basket"></span>
+				</span>
 				<div class="" style="overflow-y:scroll;height: 520px;">
 					{% for comdty_name in dash_data_['ls_arr']['primary_crop']['main']%}
 						{% if comdty_name[1] != 0 :%}
@@ -124,16 +106,21 @@
 						</div>
 						{% endif %}
 					{% endfor %}
+					<div class="x-padding" style="">
+						<div class="x-container x-card x-white x-padding x-round-large x-hover-green" onclick="view_all_commodity_count()">
+							<b>Others</b><br>
+							<img src="../static/img/commodity/others.png" style="width:10%"><br>
+							<b class="x-tiny">View all commodity</b>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="x-col l2">
-				<span class="x-xlarge x-text-green">
-					What's in the Basket <span class="fa fa-basket"></span>
-				</span>
+				<h5><b>Enumerators for Mobile</b></h5>
 				<div class="" style="overflow-y:scroll;height: 520px;">
 					<table class="x-table x-border x-striped x-white">
 						<thead>
-							<tr class="x-blue">
+							<tr class="x-rapid-teal-heavy">
 								<th>Name</th>
 								<th># of inputs</th>
 							</tr>
@@ -156,7 +143,7 @@
 				<div class="" style="overflow-y:scroll;height: 520px;">
 					<table class="x-table x-border x-striped x-white">
 						<thead>
-							<tr class="x-blue">
+							<tr class="x-rapid-teal-heavy">
 								<th>Name</th>
 								<th># of inputs</th>
 							</tr>
@@ -177,6 +164,7 @@
 		</div>
 	</div>
 	<hr>
+
 <!-- 	<div>
 		<div class="x-container">
 			<h5>General Stats</h5>
