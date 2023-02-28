@@ -7,7 +7,6 @@ app = Blueprint("webrep",__name__,template_folder='pages')
 # app = Blueprint("webrep",__name__,url_prefix='/webrep',template_folder='pages')
 
 
-
 class _main:
 	def is_on_session(): return ('USER_DATA' in session)
 
